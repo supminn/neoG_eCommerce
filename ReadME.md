@@ -36,3 +36,8 @@
 * useContext for product, cart and wishlist
 * useReducer to main the cart, product and wishlist state; address state.
 * Sort into respective folders
+
+### Additional Libraries
+1. Miragejs
+2. Faker
+3. Axios

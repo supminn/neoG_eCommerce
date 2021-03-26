@@ -1,8 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { Cart, ProductListing, CartHeader } from "./Components";
+import axios from 'axios';
 
 function App() {
+  useEffect(() => {
+    (async () => {
+      const response = await axios.get('api/products');
+      console.log({response});
+    })()
+  },[]);
+
   const [route, setRoute] = useState("products");
   return (
     <div className="App">
