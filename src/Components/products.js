@@ -21,11 +21,15 @@ export const products = [
   },
 ];
 
-export const Product = ({data:{ id = null, name = "DefaultName", price = 0, quantity=0 }}) => {
+export const Product = ({
+  data: { id = null, name = "DefaultName", price = 0, quantity = 0 },
+}) => {
   return (
     <div className="card">
-      <h4>{name}</h4>
-      <small>₹{price}</small>
+      <img className="card-img" alt="card-image" src="https://static.toiimg.com/thumb/msid-54559212,width-748,height-499,resizemode=4,imgsize-307081/.jpg" />
+      <h3 className="card-heading">{name}</h3>
+      <p className="card-desc">₹{price}</p>
+      {quantity && (<small>Quantity: {quantity}</small>)}
     </div>
   );
 };

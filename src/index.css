@@ -1,3 +1,4 @@
+@import url(https://deploy-preview-1--stylesup.netlify.app/styles/components.css);
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -14,4 +15,10 @@ code {
 
 h4{
   margin-block-end: 0;
+}
+
+.toast-msg{
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
 }

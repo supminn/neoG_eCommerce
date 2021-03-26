@@ -15,10 +15,10 @@ function App() {
   return (
     <div className="App">
       <h1>Supminn's eCommerce application</h1>
-      <button type="button" onClick={() => setRoute("cart")}>
+      <button type="button" className={route==="cart"?"btn btn-primary":"btn btn-secondary"} onClick={() => setRoute("cart")}>
         Cart
       </button>
-      <button type="button" onClick={() => setRoute("products")}>
+      <button type="button"  className={route==="products"?"btn btn-primary":"btn btn-secondary"}  onClick={() => setRoute("products")}>
         Products
       </button>
       <CartHeader />

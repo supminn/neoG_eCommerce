@@ -11,13 +11,13 @@ export const Cart = () => {
             <div key={item.id}>
             <Product data={item}/>
             <label>Quantity: </label>
-            <button type="button" onClick={() => removeFromCart(item)}>-</button>
+            <button type="button" className="btn btn-light" onClick={() => removeFromCart(item)}>-</button>
             <em>{item.quantity}</em>
-            <button type="button" onClick={() => addToCart(item)}>+</button>
+            <button type="button" className="btn btn-light" onClick={() => addToCart(item)}>+</button>
             </div>
         ))}
         {itemsInCart.length>0 && (<><h3>Cart Total: {cartTotal}</h3>
-        <button type='button' onClick={() => clearCart()}>Remove All</button></>)}
+        <button type="button" className="btn btn-dark" onClick={() => clearCart()}>Remove All</button></>)}
         </>
     )
 }
