@@ -1,23 +1,23 @@
-import { useCart } from "../Context/cart-context"
+import { useDataContext } from "../Context/data-context"
 import { Product } from '../Components';
 
 export const Cart = () => {
-    const {itemsInCart, addToCart, removeFromCart, clearCart} = useCart();
+    const {state:{itemsInCart}, dispatch} = useDataContext();
     const cartTotal = itemsInCart.reduce((acc, item)=> acc+(item.price * item.quantity),0);
     return(
         <>
         <h2>Cart Items</h2>
-        {itemsInCart.map(item => (
+        {itemsInCart.map(item => item.quantity>0 && (
             <div key={item.id}>
             <Product data={item}/>
             <label>Quantity: </label>
-            <button type="button" className="btn btn-light" onClick={() => removeFromCart(item)}>-</button>
+            <button type="button" className="btn btn-light" onClick={() => dispatch({type:"REMOVE_FROM_CART", payload:item})}>-</button>
             <em>{item.quantity}</em>
-            <button type="button" className="btn btn-light" onClick={() => addToCart(item)}>+</button>
+            <button type="button" className="btn btn-light" onClick={() => dispatch({type:"ADD_TO_CART",payload:item})}>+</button>
             </div>
         ))}
         {itemsInCart.length>0 && (<><h3>Cart Total: {cartTotal}</h3>
-        <button type="button" className="btn btn-dark" onClick={() => clearCart()}>Remove All</button></>)}
+        <button type="button" className="btn btn-dark" onClick={() => dispatch({type:"CLEAR_CART"})}>Remove All</button></>)}
         </>
     )
 }

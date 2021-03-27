@@ -21,7 +21,7 @@ export const products = [
     id: 4,
     name: "japani joota",
     image:"https://assets.ajio.com/medias/sys_master/root/h5a/h59/13018715881502/-1117Wx1400H-460342492-blue-MODEL.jpg",
-    price: 10000,
+    price: 5000,
   },
 ];
 

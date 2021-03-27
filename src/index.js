@@ -3,16 +3,16 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { CartProvider } from "./Context/cart-context";
+import { DataProvider } from "./Context/data-context";
 import setupMockServer from "./API/mock-server";
 
 setupMockServer();
 
 ReactDOM.render(
   <React.StrictMode>
-    <CartProvider>
+    <DataProvider>
       <App />
-    </CartProvider>
+    </DataProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

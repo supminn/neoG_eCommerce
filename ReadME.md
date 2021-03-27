@@ -4,7 +4,8 @@
 
 1. Product Listing Page
     * List of products
-    * wishlist button
+    * Search for products
+    * Wishlist button
     * Add to cart button
     * Increment/decrement quanity for products added to cart.
     * Sort by Price functionality
