@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { Cart, ProductListing, CartHeader } from "./Components";
+import { Cart, ProductListing, Wishlist} from "./Components";
 import { useDataContext } from "./Context/data-context";
 import { serverRequest } from "./API/serverRequest";
 
 function App() {
-  const {dispatch} = useDataContext();
+  const {state:{itemsInCart:items, route},dispatch} = useDataContext();
 
   useEffect(() => {
     (async () => {
@@ -16,7 +16,6 @@ function App() {
     })();
   }, []);
 
-  const [route, setRoute] = useState("products");
   return (
     <div className="App">
       <h1>Supminn's eCommerce application</h1>
@@ -25,20 +24,30 @@ function App() {
         className={
           route === "products" ? "btn btn-primary" : "btn btn-secondary"
         }
-        onClick={() => setRoute("products")}
+        onClick={() => dispatch({type:"ROUTE",payload:"products"})}
       >
-        Products
+        <i class="fas fa-store"></i> Products
       </button>
       <button
         type="button"
         className={route === "cart" ? "btn btn-primary" : "btn btn-secondary"}
-        onClick={() => setRoute("cart")}
+        onClick={() => dispatch({type:"ROUTE",payload:"cart"})}
       >
-        Cart
+        <i class="fas fa-shopping-cart"></i> Cart ({items.reduce((acc,curr) => acc+ curr.quantity,0)})
       </button>
-      <CartHeader />
+      <button
+        type="button"
+        className={
+          route === "wishlist" ? "btn btn-primary" : "btn btn-secondary"
+        }
+        onClick={() => dispatch({type:"ROUTE",payload:"wishlist"})}
+      >
+        <i class="fas fa-heart"></i> Wishlist <i class="far fa-heart"></i>
+      </button>
       {route === "cart" && <Cart />}
       {route === "products" && <ProductListing />}
+      {route === "wishlist" && <Wishlist />}
+
     </div>
   );
 }

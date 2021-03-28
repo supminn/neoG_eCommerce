@@ -1,15 +1,16 @@
-export const dataReducer = (state, action) => {
-  switch (action.type) {
-    case "SET_PRODUCTS": return {...state, products: action.payload};
+export const dataReducer = (state, {type, payload}) => {
+  switch (type) {
+    case "ROUTE": return {...state, route:payload};
+    case "SET_PRODUCTS": return {...state, products: payload};
     case "ADD_TO_CART":
       if (
-        state.itemsInCart.some((cartItem) => cartItem.id === action.payload.id)
+        state.itemsInCart.some((cartItem) => cartItem.id === payload.id)
       ) {
         //toast message - item added to cart again
         return {
           ...state,
           itemsInCart: state.itemsInCart.map((cartItem) =>
-            cartItem.id === action.payload.id
+            cartItem.id === payload.id
               ? { ...cartItem, quantity: cartItem.quantity + 1 }
               : cartItem
           ),
@@ -19,7 +20,7 @@ export const dataReducer = (state, action) => {
         return {
           ...state,
           itemsInCart: state.itemsInCart.concat({
-            ...action.payload,
+            ...payload,
             quantity: 1,
           }),
         };
@@ -30,7 +31,7 @@ export const dataReducer = (state, action) => {
       return {
         ...state,
         itemsInCart: state.itemsInCart.map((cartItem) =>
-          cartItem.id === action.payload.id
+          cartItem.id === payload.id
             ? { ...cartItem, quantity: cartItem.quantity - 1 }
             : cartItem
         ),

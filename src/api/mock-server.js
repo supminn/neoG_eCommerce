@@ -1,6 +1,8 @@
 import { createServer, Model, RestSerializer } from "miragejs";
 import faker from "faker";
 
+faker.seed(123);
+
 export default function setupMockServer() {
   createServer({
     serializers: {
