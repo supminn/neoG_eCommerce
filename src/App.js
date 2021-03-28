@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { Cart, ProductListing, CartHeader } from "./Components";
-import axios from "axios";
+import { useDataContext } from "./Context/data-context";
+import { serverRequest } from "./API/serverRequest";
 
 function App() {
+  const {dispatch} = useDataContext();
+
   useEffect(() => {
     (async () => {
-      const response = await axios.get("api/products");
-      console.log({ response });
+      const {response:{products}, error} = await serverRequest("api/products","GET");
+      if(!error){
+        dispatch({type:"SET_PRODUCTS", payload:products })
+      }
     })();
   }, []);
 

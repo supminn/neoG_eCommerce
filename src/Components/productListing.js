@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import {  useDataContext } from "../Context/data-context";
 import { Product } from "./products";
 
@@ -18,7 +18,7 @@ export const ProductListing = () => {
       {state.products.map((item) => (
         <div key={item.id}>
           <Product data={item} />
-          <button type="button" class="btn btn-fill" onClick={() => {/*setShowToast(true);*/ dispatch({type:"ADD_TO_CART",payload:item})}}>
+          <button type="button" className="btn btn-fill" onClick={() => {/*setShowToast(true);*/ dispatch({type:"ADD_TO_CART",payload:item})}}>
             Add to Cart
           </button>
         </div>

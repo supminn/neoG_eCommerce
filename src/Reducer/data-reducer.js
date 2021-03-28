@@ -1,5 +1,6 @@
 export const dataReducer = (state, action) => {
   switch (action.type) {
+    case "SET_PRODUCTS": return {...state, products: action.payload};
     case "ADD_TO_CART":
       if (
         state.itemsInCart.some((cartItem) => cartItem.id === action.payload.id)

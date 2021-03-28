@@ -1,12 +1,11 @@
 import { createContext, useContext, useReducer } from "react";
-import {products} from '../Components/products';
 import { dataReducer } from "../Reducer/data-reducer";
 export const DataContext = createContext();
 export const useDataContext = () => useContext(DataContext);
 
 
 const initialArg = {
-  products:products,
+  products:[],
   itemsInCart:[],
   itemsInWishList:[]
 };

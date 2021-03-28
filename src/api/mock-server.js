@@ -18,12 +18,14 @@ export default function setupMockServer() {
     },
 
     seeds(server) {
-      [...Array(6)].forEach((_) => {
+      [...Array(10)].forEach((_) => {
         server.create("product", {
           id: faker.datatype.uuid(),
           name: faker.commerce.productName(),
           image: faker.random.image(),
           price: faker.commerce.price(),
+          in_stock: faker.datatype.boolean(),
+          fast_delivery: faker.datatype.boolean()
         });
       });
     },
