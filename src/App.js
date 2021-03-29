@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import { Cart, ProductListing, Wishlist} from "./Components";
 import { useDataContext } from "./Context/data-context";
@@ -26,14 +26,14 @@ function App() {
         }
         onClick={() => dispatch({type:"ROUTE",payload:"products"})}
       >
-        <i class="fas fa-store"></i> Products
+        <i className="fas fa-store"></i> Products
       </button>
       <button
         type="button"
         className={route === "cart" ? "btn btn-primary" : "btn btn-secondary"}
         onClick={() => dispatch({type:"ROUTE",payload:"cart"})}
       >
-        <i class="fas fa-shopping-cart"></i> Cart ({items.reduce((acc,curr) => acc+ curr.quantity,0)})
+        <i className="fas fa-shopping-cart"></i> Cart ({items.reduce((acc,curr) => acc+ curr.quantity,0)})
       </button>
       <button
         type="button"
@@ -42,7 +42,7 @@ function App() {
         }
         onClick={() => dispatch({type:"ROUTE",payload:"wishlist"})}
       >
-        <i class="fas fa-heart"></i> Wishlist <i class="far fa-heart"></i>
+        <i className="fas fa-heart"></i> Wishlist <i className="far fa-heart"></i>
       </button>
       {route === "cart" && <Cart />}
       {route === "products" && <ProductListing />}

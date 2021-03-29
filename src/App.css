@@ -1,7 +1,10 @@
-.btn-sm{
-  padding:0.2rem 0.4rem;
+.btn-sm {
+  padding: 0.2rem 0.4rem;
 }
 
+.wish-active, .wish-inactive{
+  color: var(--secondaryTxt);
+}
 
 /* App defaults */
 .App {
@@ -38,6 +41,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

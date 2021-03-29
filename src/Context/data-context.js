@@ -7,7 +7,7 @@ export const useDataContext = () => useContext(DataContext);
 const initialArg = {
   products:[],
   itemsInCart:[],
-  itemsInWishList:[],
+  itemsInWishlist:[],
   route:"products"
 };
 

@@ -1,7 +1,10 @@
 export const dataReducer = (state, {type, payload}) => {
   switch (type) {
+   /* Setting page route */
     case "ROUTE": return {...state, route:payload};
-    case "SET_PRODUCTS": return {...state, products: payload};
+   /* Product Catelogue */
+    case "SET_PRODUCTS": return {...state, products: payload}; 
+    /* Cart functionality */
     case "ADD_TO_CART":
       if (
         state.itemsInCart.some((cartItem) => cartItem.id === payload.id)
@@ -25,7 +28,6 @@ export const dataReducer = (state, {type, payload}) => {
           }),
         };
       }
-
     case "REMOVE_FROM_CART":
       //toast - item removed from cart
       return {
@@ -38,11 +40,27 @@ export const dataReducer = (state, {type, payload}) => {
       };
     case "CLEAR_CART":
       return { ...state, itemsInCart: [] };
+
+      /* Wishlist functionality */
+      case "ADD_TO_WISHLIST":
+        return {
+          ...state,
+          itemsInWishlist: state.itemsInWishlist.concat({
+            ...payload,
+          }),
+        };
+        case "REMOVE_FROM_WISHLIST":
+          return {
+            ...state,
+            itemsInWishlist: state.itemsInWishlist.filter(item => item.id !== payload.id),
+          };
+
     default:
       return state;
   }
 };
 
+//Refactor to inc_qty, dec-qty, add/remove etc...
 //---------------------------------------------------------------
 /*
 const [itemsInCart, setItemsInCart] = useState(

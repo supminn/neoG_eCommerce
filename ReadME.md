@@ -7,22 +7,23 @@
     * Search for products
     * Wishlist button
     * Add to cart button
-    * Increment/decrement quanity for products added to cart.
+    * Increment/decrement quanity for products added to cart. (Go to cart)
     * Sort by Price functionality
     * Filters as follows
-        * Exclude "out of stock" products
+        * Exclude "out of stock" products (Greyed out | Cannot be added to cart)
+        * Show fast delivery products
         * Price range of products
 
 2. Cart functionality
-    * Add to cart
-    * Remove from cart
-    * Edit product Quanity on cart
+    * Cart item list
+    * Remove item from cart
+    * Increment/decrement item quanity on cart
     * Move from cart to wishlist
     * Total items present in the cart with overall cost
     * Checkout to add address data management
 
 3. Wishlist functionality
-    * Add to wishlist
+    * Wishlist item list
     * Remove from wishlist
     * Move from wishlist to cart
 
