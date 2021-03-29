@@ -11,7 +11,7 @@ export const AddToWishlist = ({product}) => {
     return(
         <>
         <i
-        className={isWishlisted?"fas fa-heart wish-active":"far fa-heart wish-inactive"}
+        className={isWishlisted?"fas fa-heart fa-lg wish-active":"far fa-heart fa-lg wish-inactive"}
         onClick={() => {
             isWishlisted?
             dispatch({

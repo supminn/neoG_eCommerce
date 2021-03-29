@@ -42,7 +42,7 @@ function App() {
         }
         onClick={() => dispatch({type:"ROUTE",payload:"wishlist"})}
       >
-        <i className="fas fa-heart"></i> Wishlist <i className="far fa-heart"></i>
+        <i className="fas fa-heart"></i> Wishlist
       </button>
       {route === "cart" && <Cart />}
       {route === "products" && <ProductListing />}

@@ -7,7 +7,7 @@ export const CartItem = ({ item }) => {
     <div className="card">
       <img className="card-img" alt={name} src={image} />
       <h3 className="card-heading">{name}</h3>
-      <p className="card-desc">₹{(price * quantity).toFixed(2)}</p>
+      <b className="card-desc">₹{(price * quantity).toFixed(2)}</b>
 
       <span className="font-sm">
         <button
@@ -15,7 +15,7 @@ export const CartItem = ({ item }) => {
           className="btn btn-light btn-sm"
           onClick={() => dispatch({ type: "REMOVE_FROM_CART", payload: item })}
         >
-          - <i class="fas fa-trash"></i>
+          {item.quantity > 1 ? "-" : <i className="fas fa-trash"></i>}
         </button>
 
         <em>{quantity}</em>
@@ -27,6 +27,13 @@ export const CartItem = ({ item }) => {
           +
         </button>
       </span>
+      <button
+        type="button"
+        onClick={() => dispatch({ type: "MOVE_TO_WISHLIST", payload: item })}
+        className="btn btn-secondary"
+      >
+        Move to Wishlist
+      </button>
     </div>
   );
 };

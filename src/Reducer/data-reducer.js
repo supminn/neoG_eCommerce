@@ -12,6 +12,7 @@ export const dataReducer = (state, {type, payload}) => {
         //toast message - item added to cart again
         return {
           ...state,
+          itemsInWishlist: state.itemsInWishlist.filter(wishItem => wishItem.id !== payload.id),
           itemsInCart: state.itemsInCart.map((cartItem) =>
             cartItem.id === payload.id
               ? { ...cartItem, quantity: cartItem.quantity + 1 }
@@ -22,6 +23,7 @@ export const dataReducer = (state, {type, payload}) => {
         //toast message - added to cart
         return {
           ...state,
+          itemsInWishlist: state.itemsInWishlist.filter(wishItem => wishItem.id !== payload.id),
           itemsInCart: state.itemsInCart.concat({
             ...payload,
             quantity: 1,
@@ -45,6 +47,7 @@ export const dataReducer = (state, {type, payload}) => {
       case "ADD_TO_WISHLIST":
         return {
           ...state,
+          itemsInCart: state.itemsInCart.filter(cartItem => cartItem.id !== payload.id),
           itemsInWishlist: state.itemsInWishlist.concat({
             ...payload,
           }),
@@ -54,7 +57,8 @@ export const dataReducer = (state, {type, payload}) => {
             ...state,
             itemsInWishlist: state.itemsInWishlist.filter(item => item.id !== payload.id),
           };
-
+          case "MOVE_TO_WISHLIST": 
+          return {...state, itemsInWishlist: state.itemsInWishlist.concat(payload), itemsInCart: state.itemsInCart.filter(cartItem => cartItem.id !== payload.id)};
     default:
       return state;
   }
