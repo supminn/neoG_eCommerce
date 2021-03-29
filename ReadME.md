@@ -20,7 +20,7 @@
     * Increment/decrement item quanity on cart
     * Move from cart to wishlist
     * Total items present in the cart with overall cost
-    * Checkout to add address data management
+    * Checkout to address data management
 
 3. Wishlist functionality
     * Wishlist item list

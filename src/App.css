@@ -2,7 +2,8 @@
   padding: 0.2rem 0.4rem;
 }
 
-.wish-active, .wish-inactive{
+.wish-active, .wish-inactive, .wish-remove{
+  cursor: pointer;
   color: var(--secondaryTxt);
   position: absolute;
   top:5%;
@@ -12,6 +13,11 @@
   background-color: rgba(255,255,255,0.5);
 }
 
+.wish-remove{
+  top:5%;
+  right: 7%;
+  padding:2%;
+}
 /* App defaults */
 .App {
   text-align: center;

@@ -76,7 +76,7 @@ export const dataReducer = (state, { type, payload }) => {
       case "SORT": return {...state, sortBy: payload};
       case "TOGGLE_STOCK": return {...state, inStock: !state.inStock};
       case "TOGGLE_DELIVERY": return {...state, fastDelivery: !state.fastDelivery};
-      case "PRICE_RANGE": console.log(payload); return {...state, priceRange: payload};
+      case "PRICE_RANGE": return {...state, priceRange: payload};
     default:
       return state;
   }
@@ -93,44 +93,4 @@ const [toastMsg, setToastMsg] = useState("");
 useEffect(()=>{
   localStorage.setItem('cartItems',JSON.stringify(itemsInCart));
 },[itemsInCart]);
-
-const removeFromCart = (item) => {
-  for (let cItem of itemsInCart) {
-    if (cItem.id === item.id) {
-      if(cItem.quantity === 1){
-        setItemsInCart((cItems) =>
-        cItems.filter((cVal) => cVal.id !== item.id)
-      );
-      break;
-      }
-      else{
-        setItemsInCart(cartItems => cartItems.map((cItemVal) =>
-        cItemVal.id === item.id
-          ? { ...cItemVal, quantity: cItemVal.quantity - 1 }
-          : cItemVal
-      ))
-      break;
-      } 
-    }
-  }
-};
-
-const addToCart = (item) =>
-  setItemsInCart((cartItems) => {
-    if (cartItems.some((cItem) => cItem.id === item.id)) {
-      setToastMsg(`${item.name} added to cart again.`);
-      return cartItems.map((cItem) =>
-        cItem.id === item.id
-          ? { ...cItem, quantity: cItem.quantity + 1 }
-          : cItem
-      );
-    } else {
-      setToastMsg(`${item.name} added to cart.`);
-      return cartItems.concat({ ...item, quantity: 1 });
-    }
-  });
-
-  const clearCart = () => {
-    setItemsInCart([]);
-  }
   */
