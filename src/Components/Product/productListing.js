@@ -1,15 +1,18 @@
 import {  useDataContext } from "../../Context/data-context";
+import { FilterProducts, getSortedProducts, getFilteredProducts } from "./filterProducts";
 import { Product } from "./products";
 
 export const ProductListing = () => {
-  const {state} = useDataContext();
+  const {state:{products, sortBy,inStock, fastDelivery, priceRange}} = useDataContext();
   
-  // const sortedProducts, filteredProducts
+  const sortedProducts = getSortedProducts(products,sortBy)
+  const filteredProducts = getFilteredProducts(sortedProducts,inStock, fastDelivery, priceRange);
+
   return (
     <>
       <h2 className="txt-header-2">Product <span className="txt-secondary">Catalogue</span></h2>
-      {/* <FilterProducts /> */}
-      {state.products.map((item) => (
+      <FilterProducts />
+      {filteredProducts.map((item) => (
         <div key={item.id}>
           <Product product={item} />
         </div>

@@ -8,7 +8,11 @@ const initialArg = {
   products:[],
   itemsInCart:[],
   itemsInWishlist:[],
-  route:"products"
+  route:"products",
+  sortBy: null,
+  inStock:false,
+  fastDelivery: false,
+  priceRange: 1000
 };
 
 export const DataProvider = ({ children }) => {
