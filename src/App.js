@@ -19,8 +19,10 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Supminn's eCommerce application</h1>
       {toastMsg && <Toast />}
+      <nav className="nav">
+      <h1>Supminn's eCommerce application</h1>
+      <section className="sec-nav-btns">
       <button
         type="button"
         className={
@@ -28,7 +30,7 @@ function App() {
         }
         onClick={() => dispatch({type:"ROUTE",payload:"products"})}
       >
-        <i className="fas fa-store"></i> Products
+        <i className="fas fa-store"></i> Store
       </button>
       <button
         type="button"
@@ -46,6 +48,8 @@ function App() {
       >
         <i className="fas fa-heart"></i> Wishlist ({wishes.length})
       </button>
+      </section>
+      </nav>
       {route === "cart" && <Cart />}
       {route === "products" && <ProductListing />}
       {route === "wishlist" && <Wishlist />}

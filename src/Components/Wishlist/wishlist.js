@@ -15,7 +15,8 @@ export const Wishlist = () => {
     {itemsInWishlist.map(
         (item) =>( <WishlistItem key={item.id} item={item} />
       ))}
-      {totalItems === 0 && (
+    </section>
+    {totalItems === 0 && (
         <>
           <h3>You don't have any wishes.</h3>
           {/* btn - add items from wishlist */}
@@ -27,7 +28,6 @@ export const Wishlist = () => {
           </button>
         </>
       )}
-    </section>
     </>
   );
 };

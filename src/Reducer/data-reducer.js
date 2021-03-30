@@ -88,7 +88,14 @@ export const dataReducer = (state, { type, payload }) => {
       return { ...state, fastDelivery: !state.fastDelivery };
     case "PRICE_RANGE":
       return { ...state, priceRange: payload };
-
+    case "CLEAR_ALL_FILTERS":
+      return {
+        ...state,
+        sortBy: null,
+        inStock: false,
+        fastDelivery: false,
+        priceRange: 1000,
+      };
     /* Toast message */
     case "SHOW_TOAST":
       return { ...state, toastMsg: payload };

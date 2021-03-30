@@ -5,6 +5,7 @@ export const FilterProducts = () => {
     return(
         <div className="filter-component">
         <h3>Filters</h3>
+        <button type="button" className="btn btn-light" onClick={() => dispatch({type:"CLEAR_ALL_FILTERS"})}>Clear All</button>
         <fieldset>
         <legend>Sort by Price</legend>
         <label>
@@ -59,7 +60,6 @@ export const FilterProducts = () => {
           />
         </label>
       </fieldset>
-      
         </div>
     )
 }

@@ -3,6 +3,7 @@
     grid-template-columns: repeat(2, 1fr);
     column-gap: 0.5rem;
     row-gap: 1rem;
+    padding: unset;
 }
 
 .flex-container .txt-container {
@@ -33,10 +34,6 @@
     flex-direction: column;
 }
 
-section {
-    border-bottom: unset;
-}
-
 @media screen and (min-width:576px) {
     .grid-container {
         grid-template-columns: repeat(3, 1fr);
@@ -49,13 +46,15 @@ section {
     .product-listing-container {
         display: grid;
         grid-template-areas: "filters product-list";
-        grid-template-columns: 20% 80%;
+        grid-template-columns: 20% 77%;
         column-gap: 2rem;
+        width: 100vw;
     }
 
     .grid-container {
         grid-template-columns: repeat(4, 1fr);
-        row-gap: 2rem;
+        row-gap: 1rem;
+        width: fit-content;
         grid-area: product-list;
     }
 
