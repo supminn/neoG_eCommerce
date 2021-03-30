@@ -29,9 +29,11 @@ export const Cart = () => {
           </button>
         </>
       )}
+      <section className="cart-items">
       {itemsInCart.map(
         (item) => item.quantity > 0 && <CartItem key={item.id} item={item} />
       )}
+      </section>
       {totalItems === 0 && (
         <>
           <h3>There are no items added to Cart</h3>
