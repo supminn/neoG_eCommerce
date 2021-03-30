@@ -1,6 +1,8 @@
 # eCommerce Application 
 
-## Functionalities to be implemented:
+This e-commerce application would have the following features. It is being built on ReactJS. The main hooks being used here are useContext and useReducer.
+
+## Functionalities to be implemented
 
 1. Product Listing Page
     * List of products
@@ -43,3 +45,11 @@
 1. Miragejs
 2. Faker
 3. Axios
+
+### Future Enchancements
+* Include more details on card
+* Styling for the app - mobile & desktop
+* Search products
+* Fix Price Range Issue
+* Use POST and PUT on cart and wishlist - inlcude in server - new API url (add models)
+* Filter on category/ include similar features

@@ -3,7 +3,7 @@ import { useDataContext } from "../../Context/data-context"
 export const FilterProducts = () => {
     const {state:{sortBy, inStock, fastDelivery, priceRange}, dispatch} = useDataContext();
     return(
-        <>
+        <div className="filter-component">
         <h3>Filters</h3>
         <fieldset>
         <legend>Sort by Price</legend>
@@ -60,7 +60,7 @@ export const FilterProducts = () => {
         </label>
       </fieldset>
       
-        </>
+        </div>
     )
 }
 

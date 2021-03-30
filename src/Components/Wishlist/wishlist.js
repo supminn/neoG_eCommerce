@@ -11,7 +11,8 @@ export const Wishlist = () => {
     <>
     <h2 className="txt-header-2">My <span className="txt-secondary">Wishlist</span></h2>
     {totalItems>0 && <span>({totalItems} items)</span>}
-      {itemsInWishlist.map(
+    <section className="grid-container">
+    {itemsInWishlist.map(
         (item) =>( <WishlistItem key={item.id} item={item} />
       ))}
       {totalItems === 0 && (
@@ -26,6 +27,7 @@ export const Wishlist = () => {
           </button>
         </>
       )}
+    </section>
     </>
   );
 };

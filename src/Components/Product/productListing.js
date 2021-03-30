@@ -11,12 +11,18 @@ export const ProductListing = () => {
   return (
     <>
       <h2 className="txt-header-2">Product <span className="txt-secondary">Catalogue</span></h2>
-      <FilterProducts />
+     <section className="product-listing-container">
+     <div className="filter-container">
+     <FilterProducts />
+     </div>
+      <section className="grid-container">
       {filteredProducts.map((item) => (
         <div key={item.id}>
           <Product product={item} />
         </div>
       ))}
+      </section>
+     </section>
     </>
   );
 };

@@ -1,0 +1,77 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 0.5rem;
+    row-gap: 1rem;
+}
+
+.flex-container .txt-container {
+    flex-grow: 1;
+}
+
+/* Changes on styleSUP classes */
+.card {
+    margin: 0;
+    font-size: 0.8em;
+}
+
+.card-badge::after {
+    border-width: 0.47rem 0.4rem;
+}
+
+.rating-block {
+    padding: 0.2rem 0.3rem;
+}
+
+.btn {
+    font-size: 0.8em;
+}
+
+.flex-container {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+section {
+    border-bottom: unset;
+}
+
+@media screen and (min-width:576px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 1.5rem;
+    }
+
+}
+
+@media screen and (min-width:768px) {
+    .product-listing-container {
+        display: grid;
+        grid-template-areas: "filters product-list";
+        grid-template-columns: 20% 80%;
+        column-gap: 2rem;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(4, 1fr);
+        row-gap: 2rem;
+        grid-area: product-list;
+    }
+
+    .filter-container {
+        grid-area: filters;
+    }
+
+    .filter-component {
+        position: sticky;
+        top: 10%;
+        left: 0;
+    }
+
+    .card {
+        margin: 0;
+        font-size: 0.9em;
+    }
+
+}

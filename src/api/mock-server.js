@@ -1,5 +1,6 @@
 import { createServer, Model, RestSerializer } from "miragejs";
 import faker from "faker";
+import { database } from "./database";
 
 faker.seed(4);
 
@@ -20,16 +21,9 @@ export default function setupMockServer() {
     },
 
     seeds(server) {
-      [...Array(10)].forEach((_) => {
-        server.create("product", {
-          id: faker.datatype.uuid(),
-          name: faker.commerce.productName(),
-          image: faker.random.image(),
-          price: faker.commerce.price(),
-          in_stock: faker.datatype.boolean(),
-          fast_delivery: faker.datatype.boolean()
-        });
-      });
+     database.forEach(item => {
+       server.create("product",item);
+     })
     },
   });
 }
