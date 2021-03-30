@@ -3,9 +3,10 @@ import "./App.css";
 import { Cart, ProductListing, Wishlist} from "./Components";
 import { useDataContext } from "./Context/data-context";
 import { serverRequest } from "./API/serverRequest";
+import { Toast } from "./Components/Toast/toast";
 
 function App() {
-  const {state:{itemsInCart:items, route},dispatch} = useDataContext();
+  const {state:{itemsInCart:items, itemsInWishlist: wishes, route, toastMsg},dispatch} = useDataContext();
 
   useEffect(() => {
     (async () => {
@@ -19,6 +20,7 @@ function App() {
   return (
     <div className="App">
       <h1>Supminn's eCommerce application</h1>
+      {toastMsg && <Toast />}
       <button
         type="button"
         className={
@@ -42,7 +44,7 @@ function App() {
         }
         onClick={() => dispatch({type:"ROUTE",payload:"wishlist"})}
       >
-        <i className="fas fa-heart"></i> Wishlist
+        <i className="fas fa-heart"></i> Wishlist ({wishes.length})
       </button>
       {route === "cart" && <Cart />}
       {route === "products" && <ProductListing />}

@@ -4,6 +4,7 @@ const itemExistsInCart = (cartItems, productId) =>
     cartItems.some(cartItem => cartItem.id === productId && cartItem.quantity>0);
 
 
+
 export const AddToCart = ({product}) => {
     const {state:{itemsInCart},dispatch} = useDataContext();
     const isItemInCart = itemExistsInCart(itemsInCart,product.id);
@@ -11,7 +12,7 @@ export const AddToCart = ({product}) => {
     return(
         <>
         <button
-        type="button"
+        type="button" disabled={!product.inStock}
         className={isItemInCart?"btn btn-primary":"btn btn-solid"}
         onClick={() => {
             isItemInCart?

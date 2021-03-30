@@ -12,7 +12,8 @@ const initialArg = {
   sortBy: null,
   inStock:false,
   fastDelivery: false,
-  priceRange: 1000
+  priceRange: 1000,
+  toastMsg: ""
 };
 
 export const DataProvider = ({ children }) => {
