@@ -3,11 +3,9 @@ export const dataReducer = (state, { type, payload }) => {
     /* Setting page route */
     case "ROUTE":
       return { ...state, route: payload };
-
-    /* Product Catelogue */
+    /* Product Catalogue */
     case "SET_PRODUCTS":
       return { ...state, products: payload };
-
     /* Cart functionality */
     case "ADD_TO_CART":
       if (state.itemsInCart.some((cartItem) => cartItem.id === payload.id)) {
@@ -95,7 +93,10 @@ export const dataReducer = (state, { type, payload }) => {
         inStock: false,
         fastDelivery: false,
         priceRange: 1000,
+        searchValue:""
       };
+      case "SEARCH_PRODUCT":  return {...state, searchValue: payload.toLowerCase()};
+      
     /* Toast message */
     case "SHOW_TOAST":
       return { ...state, toastMsg: payload };

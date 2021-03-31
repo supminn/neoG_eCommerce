@@ -31,3 +31,5 @@ export const Wishlist = () => {
     </>
   );
 };
+
+/* Check for card width in desktop screen */

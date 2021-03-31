@@ -49,3 +49,5 @@ export const Cart = () => {
     </>
   );
 };
+
+/* Add right panel for total items and price details, with discount */

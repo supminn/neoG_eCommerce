@@ -14,3 +14,7 @@ export { Wishlist } from "./Wishlist/wishlist";
 export { WishlistItem } from "./Wishlist/wishlistItem";
 
 /* Toast */
+export { Toast } from './Toast/toast';
+
+/* Navigation */
+export { Navigation } from './Navigation/navigation';

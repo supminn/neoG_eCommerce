@@ -81,11 +81,12 @@ export const getSortedProducts = (originalData, sortBy) => {
     productData,
     isInStock,
     isFastDelivery,
-    maxRange
+    maxRange, searchValue
   ) => {
     return productData
       .filter((product) => (isInStock ? product.inStock : true))
       .filter((product) => (isFastDelivery ? product.fastDelivery : true))
-      .filter((product) => product.price <= maxRange);
+      .filter((product) => product.price <= maxRange)
+      .filter(product => product.name.toLowerCase().includes(searchValue)||product.brand.toLowerCase().includes(searchValue));
   };
   

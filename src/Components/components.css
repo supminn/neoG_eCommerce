@@ -1,5 +1,6 @@
 @import './Product/productListing.css';
 @import './Cart/cart.css';
+@import './Navigation/navigation.css';
 
 .btn-sm {
     padding: 0.2rem 0.4rem;

@@ -1,9 +1,5 @@
 @import './Components/components.css';
 
-section {
-  border-bottom: unset;
-  padding-top: 1rem;
-}
 
 /* App defaults */
 .App {

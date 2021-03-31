@@ -13,7 +13,8 @@ const initialArg = {
   inStock:false,
   fastDelivery: false,
   priceRange: 1000,
-  toastMsg: ""
+  toastMsg: "",
+  searchValue:""
 };
 
 export const DataProvider = ({ children }) => {

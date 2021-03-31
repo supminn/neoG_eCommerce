@@ -3,10 +3,10 @@ import { FilterProducts, getSortedProducts, getFilteredProducts } from "./filter
 import { Product } from "./products";
 
 export const ProductListing = () => {
-  const {state:{products, sortBy,inStock, fastDelivery, priceRange}} = useDataContext();
+  const {state:{products, sortBy,inStock, fastDelivery, priceRange, searchValue}} = useDataContext();
   
   const sortedProducts = getSortedProducts(products,sortBy)
-  const filteredProducts = getFilteredProducts(sortedProducts,inStock, fastDelivery, priceRange);
+  const filteredProducts = getFilteredProducts(sortedProducts,inStock, fastDelivery, priceRange, searchValue);
 
   return (
     <>

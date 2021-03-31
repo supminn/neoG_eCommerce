@@ -1,18 +1,23 @@
 import { useEffect } from "react";
 import "./App.css";
-import { Cart, ProductListing, Wishlist} from "./Components";
+import { Cart, ProductListing, Wishlist, Toast, Navigation } from "./Components";
 import { useDataContext } from "./Context/data-context";
 import { serverRequest } from "./API/serverRequest";
-import { Toast } from "./Components/Toast/toast";
 
 function App() {
-  const {state:{itemsInCart:items, itemsInWishlist: wishes, route, toastMsg},dispatch} = useDataContext();
+  const {
+    state: {toastMsg, route},
+    dispatch,
+  } = useDataContext();
 
   useEffect(() => {
     (async () => {
-      const {response:{products}, error} = await serverRequest("api/products","GET");
-      if(!error){
-        dispatch({type:"SET_PRODUCTS", payload:products })
+      const {
+        response: { products },
+        error,
+      } = await serverRequest("api/products", "GET");
+      if (!error) {
+        dispatch({ type: "SET_PRODUCTS", payload: products });
       }
     })();
   }, []);
@@ -20,54 +25,13 @@ function App() {
   return (
     <div className="App">
       {toastMsg && <Toast />}
-      <nav className="nav">
-      <h1>Supminn's eCommerce application</h1>
-      <section className="sec-nav-btns">
-      <button
-        type="button"
-        className={
-          route === "products" ? "btn btn-primary" : "btn btn-secondary"
-        }
-        onClick={() => dispatch({type:"ROUTE",payload:"products"})}
-      >
-        <i className="fas fa-store"></i> Store
-      </button>
-      <button
-        type="button"
-        className={route === "cart" ? "btn btn-primary" : "btn btn-secondary"}
-        onClick={() => dispatch({type:"ROUTE",payload:"cart"})}
-      >
-        <i className="fas fa-shopping-cart"></i> Cart ({items.reduce((acc,curr) => acc+ curr.quantity,0)})
-      </button>
-      <button
-        type="button"
-        className={
-          route === "wishlist" ? "btn btn-primary" : "btn btn-secondary"
-        }
-        onClick={() => dispatch({type:"ROUTE",payload:"wishlist"})}
-      >
-        <i className="fas fa-heart"></i> Wishlist ({wishes.length})
-      </button>
-      </section>
-      </nav>
+      <Navigation/>
       {route === "cart" && <Cart />}
       {route === "products" && <ProductListing />}
       {route === "wishlist" && <Wishlist />}
-
     </div>
   );
 }
 
 export default App;
 
-/*
-{ showToast && <Toast message={"something to show"} timer={3000} />
-{ showToast, showLoader, hideLoader } = useLoaderAndToast()
-
-addToCart() {
-  showLoader();
-  // on success;
-   hideLoader();
-   showToast("success message");
-}
-*/
