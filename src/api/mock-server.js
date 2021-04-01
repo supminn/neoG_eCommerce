@@ -4,7 +4,7 @@ import { database } from "./database";
 
 faker.seed(4);
 
-export default function setupMockServer() {
+export const setupMockServer = () => {
   createServer({
     serializers: {
       application: RestSerializer,
