@@ -35,11 +35,11 @@ This e-commerce application would have the following features. It is being built
     * Change theme using ThemeProvider
 
 ## Practices
-* Mirage for backend. setup database, products and address management | faker data - seeded to mirage
+* Mirage for backend. Setup database, products and address management | faker data - seeded to mirage
 * Custom hook for axios calls
 * useContext for product, cart and wishlist
 * useReducer to main the cart, product and wishlist state; address state.
-* Sort into respective folders
+* Segregate into respective folders
 
 ### Additional Libraries
 1. Miragejs
@@ -47,9 +47,13 @@ This e-commerce application would have the following features. It is being built
 3. Axios
 
 ### Future Enchancements
-* Include more details on card
 * Styling for the app - mobile & desktop
-* Search products
+    * Nav bar
+    * Wishlist Card/grid-container width - fit
+    * Cart styling with total price container
 * Fix Price Range Issue
 * Use POST and PUT on cart and wishlist - inlcude in server - new API url (add models)
 * Filter on category/ include similar features
+* Add loading animation
+* Home page
+* Address management

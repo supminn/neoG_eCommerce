@@ -37,6 +37,7 @@ export const FilterProducts = () => {
           />
           Exclude out of stock{" "}
         </label>
+        <br/>
         <label>
           <input
             type="checkbox"

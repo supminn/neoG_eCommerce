@@ -32,6 +32,5 @@
 @media screen and (min-width: 375px){
     .cart-card{
     flex-direction: row;
-
     }
 }
