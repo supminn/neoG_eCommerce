@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { DataProvider } from "./Context/data-context";
-import {setupMockServer} from "./API/mock-server";
+import {setupMockServer} from "./api/mock-server";
 
 setupMockServer();
 
