@@ -28,26 +28,3 @@ export const AddToWishlist = ({product}) => {
         </>
     )
 }
-
-/*
-  <>
-        <button
-        type="button"
-        className={isWishlisted?"btn btn-primary":"btn btn-secondary"}
-        onClick={() => {
-            isWishlisted?
-            dispatch({
-                type: "REMOVE_FROM_WISHLIST",
-                payload: product,
-              })
-            :
-          dispatch({
-            type: "ADD_TO_WISHLIST",
-            payload: product,
-          });
-        }}
-      >
-       {isWishlisted?<i className="fas fa-heart"></i>: <i className="far fa-heart"></i>}
-      </button>
-        </>
-*/

@@ -1,6 +1,9 @@
-@import './Product/productListing.css';
+@import './Product/productCatalogue.css';
 @import './Cart/cart.css';
 @import './Navigation/navigation.css';
+@import './Product/filterContainer.css';
+@import './Toast/toast.css';
+@import './Wishlist/wishlist.css';
 
 .btn-sm {
     padding: 0.2rem 0.4rem;
@@ -54,14 +57,13 @@
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  background-color: rgb(234, 234, 236,0.6);
+  background-color: rgb(234, 234, 236,0.5);
   }
   
   .stock-txt-overlay{
    background-color: var(--primaryTxt);
    border: 1px solid var(--primaryBg);
    padding: 0.5rem;
-  box-shadow: 2px 2px 10px var(--primaryTxt);
   }
   
   .card-discount{

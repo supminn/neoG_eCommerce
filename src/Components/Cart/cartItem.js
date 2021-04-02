@@ -4,7 +4,7 @@ export const CartItem = ({ item }) => {
   const { name, image, price, quantity, brand, rating, offer } = item;
   const { dispatch } = useDataContext();
   return (
-    <div className="cart-card">
+    <div className="card-horizontal">
       <img className="card-img" alt={name} src={image} />
       <section className="card-details-container">
         <h3 className="card-heading">{brand}</h3>

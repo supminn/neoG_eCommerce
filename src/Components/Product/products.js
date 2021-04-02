@@ -13,7 +13,7 @@ export const Product = ({ product }) => {
     fastDelivery,
   } = product;
   return (
-    <div className="card flex-container">
+    <div className="card">
       <img className="card-img" alt={name} src={image} />
       <div className="txt-container">
         <h3 className="card-heading">{brand}</h3>

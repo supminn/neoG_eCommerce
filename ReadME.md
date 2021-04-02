@@ -15,6 +15,7 @@ This e-commerce application would have the following features. It is being built
         * Exclude "out of stock" products (Greyed out | Cannot be added to cart)
         * Show fast delivery products
         * Price range of products
+        * Category/brand checkbox (upcoming)
 
 2. Cart functionality
     * Cart item list
@@ -22,7 +23,7 @@ This e-commerce application would have the following features. It is being built
     * Increment/decrement item quanity on cart
     * Move from cart to wishlist
     * Total items present in the cart with overall cost
-    * Checkout to address data management
+    * Checkout to address data management (upcoming)
 
 3. Wishlist functionality
     * Wishlist item list
@@ -32,7 +33,7 @@ This e-commerce application would have the following features. It is being built
 4. Beautifying with styleSUP
     * Import the css library on .css file
     * Add respective classes
-    * Change theme using ThemeProvider
+    * Change theme using ThemeProvider (upcoming)
 
 ## Practices
 * Mirage for backend. Setup database, products and address management | faker data - seeded to mirage
@@ -51,9 +52,7 @@ This e-commerce application would have the following features. It is being built
     * Nav bar
     * Wishlist Card/grid-container width - fit
     * Cart styling with total price container
-* Fix Price Range Issue
 * Use POST and PUT on cart and wishlist - inlcude in server - new API url (add models)
 * Filter on category/ include similar features
 * Add loading animation
 * Home page
-* Address management

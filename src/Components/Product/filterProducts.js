@@ -1,13 +1,46 @@
+import { useState } from "react";
 import { useDataContext } from "../../Context/data-context"
 
 export const FilterProducts = () => {
+  const [searchTxt, setSearchTxt] = useState("");
     const {state:{sortBy, inStock, fastDelivery, priceRange}, dispatch} = useDataContext();
+    
+    const searchHandler = (e) => {
+      if (e.keyCode === 13) {
+        dispatch({ type: "SEARCH_PRODUCT", payload: searchTxt });
+        setSearchTxt("");
+      }
+    };
+
     return(
         <div className="filter-component">
-        <h3>Filters</h3>
-        <button type="button" className="btn btn-light" onClick={() => dispatch({type:"CLEAR_ALL_FILTERS"})}>Clear All</button>
-        <fieldset>
-        <legend>Sort by Price</legend>
+        <div className="flex-container">
+        <h3 className="txt-header-3">Filters</h3>
+        <button type="button" className="btn-clear" onClick={() => dispatch({type:"CLEAR_ALL_FILTERS"})}>Clear All</button>
+        </div>
+      
+        <div className="txt-box">
+          <input
+            className="txt-input"
+            type="text"
+            value={searchTxt}
+            onChange={(e) => setSearchTxt(e.target.value)}
+            onKeyDown={searchHandler}
+            placeholder="Search Products"
+          />
+          <span
+            className="txt-icon"
+            onClick={() => {
+              dispatch({ type: "SEARCH_PRODUCT", payload: searchTxt });
+              setSearchTxt("");
+            }}
+          >
+            <i className="fas fa-search fa-lg"></i>
+          </span>
+        </div>
+
+        <div className="sort-container">
+        <h4>Sort by Price:</h4>
         <label>
           <input
             type="radio"
@@ -17,6 +50,7 @@ export const FilterProducts = () => {
           />
           Low to High
         </label>
+        
         <label>
           <input
             type="radio"
@@ -26,9 +60,10 @@ export const FilterProducts = () => {
           />
           High to Low
         </label>
-      </fieldset>
-      <fieldset>
-        <legend>Filters</legend>
+      </div>
+
+      <div className="filter-container">
+        <h4>Filters:</h4>
         <label>
           <input
             type="checkbox"
@@ -37,7 +72,6 @@ export const FilterProducts = () => {
           />
           Exclude out of stock{" "}
         </label>
-        <br/>
         <label>
           <input
             type="checkbox"
@@ -46,9 +80,8 @@ export const FilterProducts = () => {
           />
           Fast Delivery only{" "}
         </label>
-        <br />
         <label>
-          Price Range:{" "}
+          Price Range: 0 to {priceRange}
           <input
             type="range"
             min="0"
@@ -60,7 +93,7 @@ export const FilterProducts = () => {
             }
           />
         </label>
-      </fieldset>
+      </div>
         </div>
     )
 }
@@ -87,7 +120,7 @@ export const getSortedProducts = (originalData, sortBy) => {
     return productData
       .filter((product) => (isInStock ? product.inStock : true))
       .filter((product) => (isFastDelivery ? product.fastDelivery : true))
-      .filter((product) => product.price <= maxRange)
+      .filter((product) => Number(product.price) <= maxRange)
       .filter(product => product.name.toLowerCase().includes(searchValue)||product.brand.toLowerCase().includes(searchValue));
   };
   

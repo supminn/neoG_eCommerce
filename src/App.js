@@ -24,8 +24,10 @@ function App() {
 
   return (
     <div className="App">
-      {toastMsg && <Toast />}
       <Navigation/>
+      <div className="route-container">
+      {toastMsg && <Toast />}
+      </div>
       {route === "cart" && <Cart />}
       {route === "products" && <ProductListing />}
       {route === "wishlist" && <Wishlist />}

@@ -1,5 +1,8 @@
 @import './Components/components.css';
 
+.route-container{
+ min-height: 3rem;
+}
 
 /* App defaults */
 .App {
