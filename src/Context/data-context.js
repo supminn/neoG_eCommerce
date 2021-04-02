@@ -8,7 +8,7 @@ const initialArg = {
   products:[],
   itemsInCart:[],
   itemsInWishlist:[],
-  route:"products",
+  route:"home",
   sortBy: null,
   inStock:false,
   fastDelivery: false,

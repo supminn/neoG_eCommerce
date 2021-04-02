@@ -1,3 +1,6 @@
+/* Home component */
+export { Home } from './Home/home';
+
 /* Cart Components */
 export { AddToCart } from "./Cart/addToCart";
 export { Cart } from "./Cart/cart";

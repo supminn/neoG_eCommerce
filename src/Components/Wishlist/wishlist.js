@@ -1,5 +1,6 @@
 import { useDataContext } from "../../Context/data-context";
 import { WishlistItem } from "./wishlistItem";
+import wishlist from "../../images/wishlist.svg";
 
 export const Wishlist = () => {
   const {
@@ -18,6 +19,7 @@ export const Wishlist = () => {
     </section>
     {totalItems === 0 && (
         <>
+        <img className="img-res img-svg" src={wishlist} alt="wishlist"/>
           <h3>You don't have any wishes.</h3>
           <button
             className="btn btn-primary"

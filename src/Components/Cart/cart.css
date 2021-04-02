@@ -5,6 +5,10 @@
     grid-gap: 1rem;
 }
 
+.img-svg {
+    padding: 0 1rem;
+}
+
 .card-horizontal .btn {
     margin: 0.5rem;
 }
@@ -43,6 +47,10 @@
         display: flex;
         flex-direction: column;
     }
+    .img-svg {
+        width: 50%;
+        margin: auto;
+     }
 }
 
 @media screen and (min-width: 768px) {

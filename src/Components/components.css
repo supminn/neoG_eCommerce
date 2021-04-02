@@ -4,6 +4,7 @@
 @import './Product/filterContainer.css';
 @import './Toast/toast.css';
 @import './Wishlist/wishlist.css';
+@import './Home/home.css';
 
 .btn-sm {
     padding: 0.2rem 0.4rem;

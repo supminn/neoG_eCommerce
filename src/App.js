@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import "./App.css";
-import { Cart, ProductListing, Wishlist, Toast, Navigation } from "./Components";
+import { Home,Cart, ProductListing, Wishlist, Toast, Navigation } from "./Components";
 import { useDataContext } from "./Context/data-context";
 import { serverRequest } from "./api/serverRequest";
 
@@ -28,6 +28,7 @@ function App() {
       <div className="route-container">
       {toastMsg && <Toast />}
       </div>
+      {route === "home" && <Home />}
       {route === "cart" && <Cart />}
       {route === "products" && <ProductListing />}
       {route === "wishlist" && <Wishlist />}

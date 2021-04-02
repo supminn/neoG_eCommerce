@@ -48,10 +48,6 @@ This e-commerce application would have the following features. It is being built
 3. Axios
 
 ### Future Enchancements
-* Styling for the app - mobile & desktop
-    * Nav bar
-    * Wishlist Card/grid-container width - fit
-    * Cart styling with total price container
 * Use POST and PUT on cart and wishlist - inlcude in server - new API url (add models)
 * Filter on category/ include similar features
 * Add loading animation
