@@ -51,4 +51,4 @@ This e-commerce application would have the following features. It is being built
 * Use POST and PUT on cart and wishlist - inlcude in server - new API url (add models)
 * Filter on category/ include similar features
 * Add loading animation
-* Home page
+* Filters to be made sticky
