@@ -12,7 +12,7 @@ export const Toast = () => {
   useEffect(() => {
     const timeID = setTimeout(closeToast ,2000);
     return () => clearTimeout(timeID);  
-  },[])
+  })
 
   return (
     <div className="toast-container">

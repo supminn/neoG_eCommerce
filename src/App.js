@@ -20,7 +20,7 @@ function App() {
         dispatch({ type: "SET_PRODUCTS", payload: products });
       }
     })();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">

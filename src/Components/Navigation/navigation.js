@@ -8,9 +8,9 @@ export const Navigation = () => {
 
   return (
     <nav className="nav flex-container">
-      <div className="nav-logo-container">
-        <img class="img-rd img-logo" src={logo} alt="logo" />
-        <span class="nav-header"> SupMart</span>
+      <div className="nav-logo-container" onClick={() => dispatch({type:"ROUTE",payload:"home"})}>
+        <img className="img-rd img-logo" src={logo} alt="logo" />
+        <span className="nav-header"> SupMart</span>
       </div>
       <section className="sec-nav-btns">
         <i

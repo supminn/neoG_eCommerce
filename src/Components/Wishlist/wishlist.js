@@ -9,7 +9,7 @@ export const Wishlist = () => {
   const totalItems = itemsInWishlist.length;
   return (
     <>
-    <h2 className="txt-header-2">My <span className="txt-secondary">Wishlist</span></h2>
+    <h2 className="txt-header-2">My <span className="secondary-txt">Wishlist</span></h2>
     {totalItems>0 && <span className="total-wishes">({totalItems} items)</span>}
     <section className={totalItems>1?"grid-container":"wishes-container"}>
     {itemsInWishlist.map(

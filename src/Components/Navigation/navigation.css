@@ -19,6 +19,10 @@
 
 .nav-logo-container {
   width: 9rem;
+  cursor: pointer;
+}
+.fas{
+  cursor: pointer;
 }
 
 .flex-container {

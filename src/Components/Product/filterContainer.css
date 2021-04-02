@@ -23,3 +23,22 @@
     align-items: flex-start;
     width:100vw;
 }
+
+@media screen and (min-width:768px) {
+    .txt-input{
+        width: 100%;
+    }
+    .txt-range{
+        display: block;
+    }
+    .sort-container, .filter-container{
+        line-height: 2.5;
+        padding-top: 1rem;
+    }
+    
+    /* .filter-component{
+        position: fixed;
+        top: 10%;
+        max-width: 15rem;
+    } */
+}

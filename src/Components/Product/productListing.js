@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDataContext } from "../../Context/data-context";
 import {
   FilterProducts,
@@ -22,21 +22,27 @@ export const ProductListing = () => {
     searchValue
   );
 
+    useEffect(() => {
+      if(window.innerWidth>=768){
+        setShowFilters(true);
+      }
+    },[]);
+
   return (
     <>
       <h2 className="txt-header-2">
-        Product <span className="txt-secondary">Catalogue</span>
+        Product <span className="secondary-txt">Catalogue</span>
       </h2>
       <section className="product-listing-container">
         <p className="btn-filter" onClick={() => setShowFilters(!showFilters)}>
-        <i class="fas fa-filter">{showFilters?"Apply":"Filters"}</i>
+        <i className="fas fa-filter">{showFilters?"Apply":"Filters"}</i>
         </p>
         {showFilters && (
-          <div className="filter-component">
+          <div className="filter-component-container">
             <FilterProducts />
           </div>
         )}
-        <section className="grid-container">
+        <section className="grid-container product-list">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((item) => (
               <div key={item.id}>
