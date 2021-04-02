@@ -6,6 +6,7 @@ export const Navigation = () => {
     dispatch,
   } = useDataContext();
 
+  const totalCartItems = items.reduce((acc, curr) => acc + curr.quantity, 0);
   return (
     <nav className="nav flex-container">
       <div className="nav-logo-container" onClick={() => dispatch({type:"ROUTE",payload:"home"})}>
@@ -29,7 +30,7 @@ export const Navigation = () => {
               : "fas fa-lg fa-heart secondary-txt"
           }
           onClick={() => dispatch({ type: "ROUTE", payload: "wishlist" })}
-        ><span className="badge-icon primaryBg-txt">{wishes.length}</span></i>
+        ><span className={wishes.length>0?"badge-icon primaryBg-txt":"hidden-vis"}>{wishes.length}</span></i>
         
         <i
           className={
@@ -38,8 +39,8 @@ export const Navigation = () => {
               : "fas fa-lg fa-shopping-cart secondary-txt"
           }
           onClick={() => dispatch({ type: "ROUTE", payload: "cart" })}
-        ><span className="badge-icon primaryBg-txt">
-        {items.reduce((acc, curr) => acc + curr.quantity, 0)}
+        ><span className={totalCartItems>0?"badge-icon primaryBg-txt":"hidden-vis"}>
+        {totalCartItems}
       </span></i>
         
       </section>
