@@ -10,7 +10,7 @@ export const CartItem = ({ item }) => {
         <h3 className="card-heading">{brand}</h3>
         <div className="cart-item-desc-content">
           <p className="card-heading">{name}</p>
-          <span className="card-desc">₹{price} </span>
+          <span className="card-desc">₹{(price * quantity).toFixed(2)} </span>
           <span className="card-discount txt-small"> ({offer})</span>
           <div className="rating">
             <span className="txt-primaryBg">Rating: </span>
