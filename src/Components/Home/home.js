@@ -3,9 +3,15 @@ import { useDataContext } from "../../Context/data-context";
 import onlineShop from "../../images/online-shopping.svg";
 import purchaseSucces from "../../images/purchase-success.svg";
 import shoppingApp from "../../images/shopping-app.svg";
+import { useEffect } from "react";
 
 export const Home = () => {
   const { dispatch } = useDataContext();
+
+  useEffect(() => {
+    document.title = "SupMart | Home"
+  },[]);
+
   return (
     <>
       <h2 className="txt-header-1">

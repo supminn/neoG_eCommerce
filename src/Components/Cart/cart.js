@@ -1,6 +1,7 @@
 import { useDataContext } from "../../Context/data-context";
 import { CartItem } from "./cartItem";
 import addToCart from '../../images/add-to-cart.svg';
+import { useEffect } from "react";
 
 export const Cart = () => {
   const {
@@ -12,6 +13,11 @@ export const Cart = () => {
     0
   );
   const totalItems = itemsInCart.reduce((acc, curr) => acc + curr.quantity, 0);
+  
+  useEffect(() => {
+    document.title = "SupMart | Cart"
+  },[]);
+
   return (
     <>
       <h2 className="txt-header-2">

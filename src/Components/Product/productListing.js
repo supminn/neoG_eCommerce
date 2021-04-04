@@ -24,6 +24,7 @@ export const ProductListing = () => {
   );
 
   useEffect(() => {
+    document.title = "SupMart | Products";
     if (window.innerWidth >= 768) {
       setShowFilters(true);
     }

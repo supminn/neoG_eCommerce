@@ -1,6 +1,7 @@
 import { useDataContext } from "../../Context/data-context";
 import { WishlistItem } from "./wishlistItem";
 import wishlist from "../../images/wishlist.svg";
+import { useEffect } from "react";
 
 export const Wishlist = () => {
   const {
@@ -8,6 +9,11 @@ export const Wishlist = () => {
     dispatch,
   } = useDataContext();
   const totalItems = itemsInWishlist.length;
+
+  useEffect(() => {
+    document.title = "SupMart | Wishlist"
+  },[]);
+
   return (
     <>
     <h2 className="txt-header-2">My <span className="secondary-txt">Wishlist</span></h2>
