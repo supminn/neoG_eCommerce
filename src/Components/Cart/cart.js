@@ -2,6 +2,7 @@ import { useDataContext } from "../../Context/data-context";
 import { CartItem } from "./cartItem";
 import addToCart from '../../images/add-to-cart.svg';
 import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 export const Cart = () => {
   const {
@@ -44,12 +45,13 @@ export const Cart = () => {
           <>
         <img className="img-res img-svg" src={addToCart} alt="cart"/>
             <h3>There are no items added to Cart</h3>
+            <NavLink to="/products">
             <button
               className="btn btn-primary"
-              onClick={() => dispatch({ type: "ROUTE", payload: "products" })}
-            >
+             >
               View Products
             </button>
+            </NavLink>
           </>
         )}
 

@@ -7,6 +7,9 @@
   z-index: 1;
 }
 
+.no-line{
+  text-decoration: none;
+}
 .img-logo {
   width: 30%;
 }

@@ -1,12 +1,21 @@
 import { useEffect } from "react";
+import { Routes, Route } from 'react-router-dom';
 import "./App.css";
-import { Home,Cart, ProductListing, Wishlist, Toast, Navigation } from "./Components";
+import {
+  Home,
+  Cart,
+  ProductListing,
+  Wishlist,
+  Toast,
+  Navigation,
+} from "./Components";
 import { useDataContext } from "./Context/data-context";
 import { serverRequest } from "./api/serverRequest";
 
+
 function App() {
   const {
-    state: {toastMsg, route},
+    state: { toastMsg },
     dispatch,
   } = useDataContext();
 
@@ -24,17 +33,16 @@ function App() {
 
   return (
     <div className="App">
-      <Navigation/>
-      <div className="route-container">
-      {toastMsg && <Toast />}
-      </div>
-      {route === "home" && <Home />}
-      {route === "cart" && <Cart />}
-      {route === "products" && <ProductListing />}
-      {route === "wishlist" && <Wishlist />}
+      <Navigation />
+      <div className="route-container">{toastMsg && <Toast />}</div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="products" element={<ProductListing />} />
+        <Route path="wishlist" element={<Wishlist />} />
+      </Routes>
     </div>
   );
 }
 
 export default App;
-

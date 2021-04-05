@@ -2,6 +2,7 @@ import { useDataContext } from "../../Context/data-context";
 import { WishlistItem } from "./wishlistItem";
 import wishlist from "../../images/wishlist.svg";
 import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 export const Wishlist = () => {
   const {
@@ -27,12 +28,14 @@ export const Wishlist = () => {
         <>
         <img className="img-res img-svg" src={wishlist} alt="wishlist"/>
           <h3>You don't have any wishes.</h3>
+          <NavLink to="/products">
           <button
             className="btn btn-primary"
             onClick={() => dispatch({ type: "ROUTE", payload: "products" })}
           >
             Add some wishes!
           </button>
+          </NavLink>
         </>
       )}
     </>

@@ -4,6 +4,7 @@ import onlineShop from "../../images/online-shopping.svg";
 import purchaseSucces from "../../images/purchase-success.svg";
 import shoppingApp from "../../images/shopping-app.svg";
 import { useEffect } from "react";
+import {NavLink} from "react-router-dom";
 
 export const Home = () => {
   const { dispatch } = useDataContext();
@@ -27,7 +28,7 @@ export const Home = () => {
           generation aprroach with <b>SupMart</b>. Best brands with attractive
           pricing!
         </p>
-
+        <NavLink to="products">
         <button
           type="button"
           className="btn btn-solid"
@@ -35,6 +36,7 @@ export const Home = () => {
         >
           Shop Now
         </button>
+        </NavLink>
       </div>
 
       <h2 className="txt-header-2">

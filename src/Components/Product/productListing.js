@@ -8,6 +8,7 @@ import {
 } from "./filterProducts";
 import { Product } from "./products";
 
+
 export const ProductListing = () => {
   const [showFilters, setShowFilters] = useState(false);
   const {
