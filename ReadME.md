@@ -52,4 +52,4 @@ This e-commerce application would have the following features. It is being built
 * Filter on category/ include similar features
 * Add loading animation
 * Filters to be made sticky
-* Adding React Router for routes
+* Creating individual product page

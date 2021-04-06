@@ -5,7 +5,6 @@ export const Toast = () => {
   const {state:{toastMsg}, dispatch} = useDataContext();
 
   const  closeToast = () => {
-    console.log(toastMsg); //undefined -- FIX IT
     dispatch({type:"SHOW_TOAST", payload:null});
   }
 
