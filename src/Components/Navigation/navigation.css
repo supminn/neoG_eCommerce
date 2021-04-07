@@ -1,15 +1,16 @@
 .nav {
   padding: 0.2rem;
   max-height: 3.5rem;
-  position:fixed;
-  top:0px;
-  left:0px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
   z-index: 1;
 }
 
-.no-line{
+.no-line {
   text-decoration: none;
 }
+
 .img-logo {
   width: 30%;
 }
@@ -24,7 +25,8 @@
   width: 9rem;
   cursor: pointer;
 }
-.fas{
+
+.fas {
   cursor: pointer;
 }
 
