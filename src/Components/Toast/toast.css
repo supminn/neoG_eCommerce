@@ -1,0 +1,19 @@
+.toast-container{
+    font-size: 0.8em;
+}
+
+ /* Toast Component */
+ .toast-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+    width: 15rem;
+    color: var(--successBg);
+    font-size: 0.85em;
+    z-index: 1;
+  }
+  
+  .toast-message{
+    padding: 0.2rem 1rem;
+  }

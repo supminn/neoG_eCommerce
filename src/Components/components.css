@@ -1,0 +1,61 @@
+@import './Product/productCatalogue.css';
+@import './Cart/cart.css';
+@import './Navigation/navigation.css';
+@import './Product/filterContainer.css';
+@import './Toast/toast.css';
+@import './Wishlist/wishlist.css';
+@import './Home/home.css';
+
+.btn-sm {
+    padding: 0.2rem 0.4rem;
+  }
+  
+  /* Wishlist ♥ styling */
+  .wish-active, .wish-inactive, .wish-remove{
+    cursor: pointer;
+    color: var(--secondaryTxt);
+    position: absolute;
+    top:5%;
+    right: 8%;
+    border-radius: 50%;
+    padding: 3% 2%;
+    background-color: rgba(255,255,255,0.5);
+  }
+  
+  /* Wishlist dismiss btn */
+  .wish-remove{
+    top:5%;
+    right: 7%;
+    padding:2%;
+  }
+  
+
+  /* Product out of stock */
+  .stock-container-overlay{
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  position: absolute;
+  top: 0;
+  left:0;
+  right:0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgb(234, 234, 236,0.5);
+  }
+  
+  .stock-txt-overlay{
+   background-color: var(--primaryTxt);
+   border: 1px solid var(--primaryBg);
+   padding: 0.5rem;
+  }
+  
+  .card-discount{
+    color: var(--secondaryTxt);
+  }
+
+  .txt-primaryBg{
+    color: var(--primaryBg);
+  }

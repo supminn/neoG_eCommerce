@@ -1,0 +1,44 @@
+.btn-clear{
+    background-color: transparent;
+    border: transparent;
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--secondaryTxt);
+}
+
+.btn-clear:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.txt-input{
+    width: 80vw;
+}
+
+.sort-container, .filter-container{
+    padding: 0 0.5rem;
+    line-height: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width:100vw;
+}
+
+@media screen and (min-width:768px) {
+    .txt-input{
+        width: 100%;
+    }
+    .txt-range{
+        display: block;
+    }
+    .sort-container, .filter-container{
+        line-height: 2.5;
+        padding-top: 1rem;
+    }
+    
+    /* .filter-component{
+        position: sticky;
+        top: 10%;
+        max-width: 15rem;
+    } */
+}

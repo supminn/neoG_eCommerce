@@ -1,0 +1,39 @@
+.nav {
+  padding: 0.2rem;
+  max-height: 3.5rem;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+}
+
+.no-line {
+  text-decoration: none;
+}
+
+.img-logo {
+  width: 30%;
+}
+
+.badge-icon {
+  top: -1.1rem;
+  left: -0.5rem;
+  padding: 0 0.2rem;
+}
+
+.nav-logo-container {
+  width: 9rem;
+  cursor: pointer;
+}
+
+.fas {
+  cursor: pointer;
+}
+
+.flex-container {
+  justify-content: space-between;
+}
+
+.hidden-vis {
+  visibility: hidden;
+}
