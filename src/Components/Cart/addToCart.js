@@ -1,4 +1,5 @@
 import { useDataContext } from "../../Context/data-context";
+import { useNavigate } from "react-router-dom";
 
 const itemExistsInCart = (cartItems, productId) => 
     cartItems.some(cartItem => cartItem.id === productId && cartItem.quantity>0);
@@ -8,7 +9,7 @@ const itemExistsInCart = (cartItems, productId) =>
 export const AddToCart = ({product}) => {
     const {state:{itemsInCart},dispatch} = useDataContext();
     const isItemInCart = itemExistsInCart(itemsInCart,product.id);
-
+    const navigate = useNavigate();
     return(
         <>
         <button
@@ -16,7 +17,7 @@ export const AddToCart = ({product}) => {
         className={isItemInCart?"btn btn-primary":"btn btn-solid"}
         onClick={() => {
             isItemInCart?
-            dispatch({type:"ROUTE", payload:"cart"})
+            navigate('/cart')
             :
           dispatch({
             type: "ADD_TO_CART",
