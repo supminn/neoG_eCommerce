@@ -53,3 +53,6 @@ This e-commerce application would have the following features. It is being built
 * Add loading animation
 * Filters to be made sticky
 * Creating individual product page
+* Login/sign up page for authentication such that products can be added to wishlist only when logged in. Similarly, products can be ordered once user is logged in.
+* Re-structure database - user data.
+* Create server on expressJS and use those apis.
