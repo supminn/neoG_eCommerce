@@ -36,9 +36,12 @@
         padding-top: 1rem;
     }
     
-    /* .filter-component{
-        position: sticky;
-        top: 10%;
-        max-width: 15rem;
-    } */
+    .filter-component{
+        position: fixed;
+        top: 4rem;
+        left: 1rem;
+    }
+    .filter-header{
+        width: 15rem;
+    }
 }

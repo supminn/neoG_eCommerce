@@ -17,7 +17,7 @@ export const FilterProducts = () => {
 
   return (
     <div className="filter-component">
-      <div className="flex-container">
+      <div className="flex-container filter-header">
         <h3 className="txt-header-3">Filters</h3>
         <button
           type="button"

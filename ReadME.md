@@ -35,6 +35,12 @@ This e-commerce application would have the following features. It is being built
     * Add respective classes
     * Change theme using ThemeProvider (upcoming)
 
+5. Authentication
+    * Login form - exsisting users
+    * Private route - wishlist and checkout
+    * Sign up - new users
+    * Persist login state
+
 ## Practices
 * Mirage for backend. Setup database, products and address management | faker data - seeded to mirage
 * Custom hook for axios calls
@@ -53,5 +59,5 @@ This e-commerce application would have the following features. It is being built
 * Add loading animation
 * Filters to be made sticky
 * Creating individual product page
-* Login/sign up page for authentication such that products can be added to wishlist only when logged in. Similarly, products can be ordered once user is logged in.
+* Authentication section
 * Re-structure database - user data.
