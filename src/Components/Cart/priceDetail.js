@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { useDataContext } from "../../Context/data-context";
 
 export const PriceDetails = ({ totalItems, cartTotal }) => {
@@ -30,18 +31,13 @@ export const PriceDetails = ({ totalItems, cartTotal }) => {
           <b>₹{(cartTotal - 100).toFixed(2)}</b>
         </span>
       </div>
+      <NavLink to="/checkout" className="no-line">
       <button
         type="button"
-        className="btn btn-primary"
-        onClick={() =>
-          dispatch({
-            type: "SHOW_TOAST",
-            payload: "functionality coming soon...",
-          })
-        }
-      >
+        className="btn btn-primary">
         Place Order
       </button>
+      </NavLink>
     </section>
   );
 };

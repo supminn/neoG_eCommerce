@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router";
+import { useAuth } from "../../Context/auth-context";
 import { useDataContext } from "../../Context/data-context";
 
 const itemExistsInWishlist = (wishlistItems, productId) => 
@@ -7,6 +9,8 @@ const itemExistsInWishlist = (wishlistItems, productId) =>
 export const AddToWishlist = ({product}) => {
     const {state:{itemsInWishlist},dispatch} = useDataContext();
     const isWishlisted = itemExistsInWishlist(itemsInWishlist,product.id);
+    const {login} = useAuth();
+    const navigate = useNavigate();
 
     return(
         <>
@@ -18,11 +22,11 @@ export const AddToWishlist = ({product}) => {
                 type: "REMOVE_FROM_WISHLIST",
                 payload: product,
               })
-            :
+            : login?
           dispatch({
             type: "ADD_TO_WISHLIST",
             payload: product,
-          });
+          }): navigate("/login")
         }}
       ></i>
         </>

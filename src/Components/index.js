@@ -1,10 +1,11 @@
 /* Home component */
-export { Home } from './Home/home';
+export { Home } from "./Home/home";
 
 /* Cart Components */
 export { AddToCart } from "./Cart/addToCart";
 export { Cart } from "./Cart/cart";
 export { CartItem } from "./Cart/cartItem";
+export { Address } from "./Address/address";
 
 /* Product Components */
 export { FilterProducts } from "./Product/filterProducts";
@@ -17,7 +18,11 @@ export { Wishlist } from "./Wishlist/wishlist";
 export { WishlistItem } from "./Wishlist/wishlistItem";
 
 /* Toast */
-export { Toast } from './Toast/toast';
+export { Toast } from "./Toast/toast";
 
 /* Navigation */
-export { Navigation } from './Navigation/navigation';
+export { Navigation } from "./Navigation/navigation";
+
+/* Authentication */
+export { Login } from "./Authentication/login";
+export { Signup } from "./Authentication/signup";
