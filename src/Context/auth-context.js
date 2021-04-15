@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthContextProvider = ({ children }) => {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ export const AuthContextProvider = ({ children }) => {
   const loginUser = async (name, pwd, state) => {
     try {
       const { status } = await axios.post(
-        "https://supminn-api.herokuapp.com/login",
+        "https://api-supminn.herokuapp.com/login",
         {
           username: name,
           password: pwd
@@ -21,7 +21,7 @@ export const AuthContextProvider = ({ children }) => {
       );
         setLogin(true);
         navigate(state?.from ? state.from : "/products");
-        // localStorage.setItem("login", login);
+        localStorage.setItem("login", login);
         return status;
     } catch (err) {
       //show loader and error
@@ -33,7 +33,7 @@ export const AuthContextProvider = ({ children }) => {
   const logOutUser = () => {
     setLogin(false);
     navigate("/");
-    // localStorage.removeItem("login");
+    localStorage.removeItem("login");
   };
 
   return (

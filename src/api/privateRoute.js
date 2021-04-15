@@ -1,8 +1,8 @@
 import { Navigate, Route } from "react-router";
-import { useAuth } from "../Context/auth-context"
+import { useAuthContext } from "../Context/auth-context"
 
 export const PrivateRoute = ({path, ...props}) => {
-    const {login} = useAuth();
+    const {login} = useAuthContext();
     return login ? (
         <Route {...props} path={path} />
       ) : (

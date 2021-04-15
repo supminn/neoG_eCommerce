@@ -15,6 +15,7 @@ import {
   Address,
   Signup,
 } from "./Components";
+import { UserProfile } from "./Components/Authentication/userProfile";
 
 
 
@@ -29,7 +30,7 @@ function App() {
       const {
         response: products ,
         error,
-      } = await serverRequest("https://supminn-api.herokuapp.com/products", "GET");
+      } = await serverRequest("https://api-supminn.herokuapp.com/products", "GET");
       if (!error) {
         dispatch({ type: "SET_PRODUCTS", payload: products });
       }
@@ -46,6 +47,7 @@ function App() {
         <Route path="/products" element={<ProductListing />} />
         <PrivateRoute path="/wishlist" element={<Wishlist/>}/>
         <PrivateRoute path="/checkout" element={<Address/>}/>
+        <PrivateRoute path="/user-profile" element={<UserProfile/>}/>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>

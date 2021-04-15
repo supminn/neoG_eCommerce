@@ -1,27 +1,35 @@
 import { useReducer } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../../Context/auth-context";
+import { useAuthContext } from "../../Context";
 import { Password } from "./password";
 
 export const Login = () => {
-  const { loginUser } = useAuth();
-  const [{username, password}, userDispatch] = useReducer(userCredReducer, {
+  const { loginUser } = useAuthContext();
+  const { state } = useLocation();
+  const navigate = useNavigate();
+   const [{ username, password }, userDispatch] = useReducer(userCredReducer, {
     username: "",
     password: "",
   });
-  const { state } = useLocation();
-  const navigate = useNavigate();
-
 
   return (
     <>
-      <h3 className="txt-header-3">Login to <span className="secondary-txt">continue!</span></h3>
-      <form className="login-container">
+      <h3 className="txt-header-3">
+        Login to <span className="secondary-txt">continue!</span>
+      </h3>
+      <form
+        className="login-container"
+        onSubmit={async (e) => {
+          e.preventDefault();
+          await loginUser(username, password, state);
+        }}
+      >
         <div className="txt-box">
           <span className="txt-icon">
             <i className="fas fa-at fa-lg"></i>
           </span>
-          <input required
+          <input
+            required
             className="txt-input"
             type="text"
             value={username}
@@ -32,10 +40,7 @@ export const Login = () => {
           />
         </div>
         <Password userValue={password} dispatch={userDispatch} />
-        <button type="submit"
-          className="btn btn-primary"
-          onClick={async () => await loginUser(username, password, state)}
-        >
+        <button type="submit" className="btn btn-primary">
           Login
         </button>
       </form>

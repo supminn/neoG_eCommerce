@@ -1,8 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { useDataContext } from "../../Context/data-context";
 
 export const PriceDetails = ({ totalItems, cartTotal }) => {
-  const { dispatch } = useDataContext();
   return (
     <section className="price-details">
       <h3 className="txt-header-3">

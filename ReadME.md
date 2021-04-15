@@ -61,3 +61,5 @@ This e-commerce application would have the following features. It is being built
 * Creating individual product page
 * Authentication section
 * Re-structure database - user data.
+* Individual product card - /products/:productId
+* When a product is checked to be added to wishlist - login - success - add the product to wishlist

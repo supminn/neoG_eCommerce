@@ -1,0 +1,12 @@
+.login-container{
+    border: 1px solid var(--primaryBg);
+    border-radius: 1rem;
+    width: 85vw;
+    margin: auto;
+    padding: 1rem;
+}
+
+.login-container .txt-input{
+    width: 100%;
+    margin: auto;
+}
