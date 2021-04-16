@@ -1,12 +1,26 @@
-.login-container{
+.login-container {
     border: 1px solid var(--primaryBg);
     border-radius: 1rem;
     width: 85vw;
-    margin: auto;
+    margin: 1rem auto;
     padding: 1rem;
 }
 
-.login-container .txt-input{
+.login-container .txt-input {
     width: 100%;
     margin: auto;
+}
+
+.login-container .txt-box {
+    margin: 1rem auto;
+}
+
+.login-container .btn {
+    width: 40%;
+}
+
+@media screen and (min-width: 576px) {
+    .login-container {
+        width: 50%;
+    }
 }

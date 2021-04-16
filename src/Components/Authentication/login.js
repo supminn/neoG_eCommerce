@@ -1,9 +1,12 @@
-import { useReducer } from "react";
+import Loader from "react-loader-spinner";
+import { useReducer, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../Context";
 import { Password } from "./password";
 
 export const Login = () => {
+  const [showLoader, setShowLoader] = useState(false);
+  const [ErrorMsg, setErrorMsg] = useState("");
   const { loginUser } = useAuthContext();
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -12,17 +15,23 @@ export const Login = () => {
     password: "",
   });
 
+  const loginHandler = async (e) => {
+      setShowLoader(true);
+      e.preventDefault();
+      const res = await loginUser(username, password, state);
+      setShowLoader(false);
+      if(!res.success){
+        setErrorMsg(res.message);
+      }
+  }
   return (
     <>
-      <h3 className="txt-header-3">
+      <h2 className="txt-header-2">
         Login to <span className="secondary-txt">continue!</span>
-      </h3>
+      </h2>
       <form
         className="login-container"
-        onSubmit={async (e) => {
-          e.preventDefault();
-          await loginUser(username, password, state);
-        }}
+        onSubmit={loginHandler}
       >
         <div className="txt-box">
           <span className="txt-icon">
@@ -43,7 +52,9 @@ export const Login = () => {
         <button type="submit" className="btn btn-primary">
           Login
         </button>
+        {ErrorMsg && <p className="txt-desc primaryBg-txt">{ErrorMsg}</p>}
       </form>
+
       <div className="signup-container">
         <b className="primaryBg-txt">Not a member? </b>
         <button
@@ -53,6 +64,7 @@ export const Login = () => {
           Sign Up
         </button>
       </div>
+      {showLoader && <Loader type="Oval" color="#00BFFF" height={80} width={80} /> }
     </>
   );
 };

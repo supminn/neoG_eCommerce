@@ -12,8 +12,9 @@ export const AuthContextProvider = ({ children }) => {
 
   const loginUser = async (name, pwd, state) => {
     try {
-      const { status } = await axios.post(
-        "https://api-supminn.herokuapp.com/login",
+      // "https://api-supminn.herokuapp.com/login"
+      const {data} = await axios.post(
+        "http://localhost:3001/login",
         {
           username: name,
           password: pwd
@@ -22,11 +23,12 @@ export const AuthContextProvider = ({ children }) => {
         setLogin(true);
         navigate(state?.from ? state.from : "/products");
         localStorage.setItem("login", login);
-        return status;
+        return data;
     } catch (err) {
       //show loader and error
       const errorResponse = JSON.stringify(err.response.data);
       console.error(errorResponse);
+      return err.response.data;
     }
   };
 
