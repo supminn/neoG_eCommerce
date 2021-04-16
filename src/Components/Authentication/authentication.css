@@ -1,0 +1,59 @@
+.div-container {
+    border: 1px solid var(--primaryBg);
+    border-radius: 1rem;
+    width: 85vw;
+    margin: 1rem auto;
+    padding: 1rem;
+}
+
+.div-container .txt-input {
+    width: 100%;
+    margin: auto;
+}
+
+.div-container .txt-box {
+    margin: 1rem auto;
+}
+
+.div-container .btn {
+    width: 40%;
+}
+
+.user-nav-container {
+    margin: auto;
+    width: max-content;
+}
+
+.user-nav-container .no-line {
+    border: 1px solid var(--theme600);
+    border-radius: 0.4rem;
+    margin: 0.8rem;
+    display: block;
+    padding: 0.8rem;
+    text-align: left;
+}
+
+.user-nav-container .no-line:hover {
+    box-shadow: 1px 1px 4px var(--theme600);
+}
+
+.user-nav-container .txt-small {
+    font-size: 0.8em;
+}
+
+@media screen and (min-width: 576px) {
+    .div-container {
+        width: 70%;
+    }
+
+    .div-container .txt-input {
+        width: 18rem;
+        margin: auto;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .div-container {
+        width: 50%;
+    }
+}

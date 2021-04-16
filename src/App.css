@@ -6,7 +6,7 @@
 @import './Components/Toast/toast.css';
 @import './Components/Wishlist/wishlist.css';
 @import './Components/Home/home.css';
-@import './Components/Authentication/login.css';
+@import './Components/Authentication/authentication.css';
 
 .btn-sm {
   padding: 0.2rem 0.4rem;

@@ -32,7 +32,7 @@ export const Signup = () => {
         Sign <span className="secondary-txt">up</span>
       </h2>
       {!showMsg && (
-        <form className="login-container" onSubmit={signupHandler}>
+        <form className="div-container" onSubmit={signupHandler}>
           <div className="txt-box">
             <span className="txt-icon">
               <i className="fas fa-at fa-lg"></i>
@@ -74,8 +74,8 @@ export const Signup = () => {
         <Loader type="Oval" color="#00BFFF" height={80} width={80} />
       )}
       {showMsg && (
-        <div className="login-container">
-          <p className="txt-desc primaryBg-txt">Hi <span className="secondary-txt">{userName}</span>, thank you for signing up with <b>SupMart</b>.</p>
+        <div className="div-container">
+          <p className="txt-desc primaryBg-txt">Hi <b className="secondary-txt">{userName.toUpperCase()}</b>, thank you for signing up with <b>SupMart</b>.</p>
           <p className="txt-desc primaryBg-txt">You can now avail <em>express delivery</em> on select products</p>
           <NavLink to="/products">
             <button className="btn btn-primary">Start shopping!</button>

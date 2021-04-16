@@ -30,7 +30,7 @@ export const Login = () => {
         Login to <span className="secondary-txt">continue!</span>
       </h2>
       <form
-        className="login-container"
+        className="div-container"
         onSubmit={loginHandler}
       >
         <div className="txt-box">

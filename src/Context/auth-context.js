@@ -7,7 +7,7 @@ export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthContextProvider = ({ children }) => {
   const [login, setLogin] = useState(localStorage.getItem("login") || false);
-  const [userName, setUser] = useState("");
+  const [userName, setUser] = useState(localStorage.getItem("username") || "");
   const [userState, userDispatch] = useReducer(userCredReducer, {
     username: "",
     password: "",
@@ -15,14 +15,14 @@ export const AuthContextProvider = ({ children }) => {
   });
   const loginUser = async (name, pwd) => {
     try {
-      // "https://api-supminn.herokuapp.com/login"
-      const { data } = await axios.post("http://localhost:3001/login", {
+      const { data } = await axios.post("https://api-supminn.herokuapp.com/login", {
         username: name.toLowerCase(),
         password: pwd,
       });
       setLogin(true);
       localStorage.setItem("login", login);
       setUser(name);
+      localStorage.setItem("username", name);
       userDispatch({ type: "CLEAR" });
       return data;
     } catch (err) {
@@ -34,19 +34,22 @@ export const AuthContextProvider = ({ children }) => {
 
   const logOutUser = () => {
     setLogin(false);
+    setUser("");
     localStorage.removeItem("login");
+    localStorage.removeItem("username");
+
   };
 
   const registerUser = async (username, password, email) => {
     try {
-      // "https://api-supminn.herokuapp.com/login"
-      const { data } = await axios.post("http://localhost:3001/signup", {
+      const { data } = await axios.post("https://api-supminn.herokuapp.com/signup", {
         username: username.toLowerCase(),
         password,
         email: email.toLowerCase(),
       });
       setLogin(true);
       setUser(username);
+      localStorage.setItem("username", username);
       userDispatch({ type: "CLEAR" });
       return data;
     } catch (err) {
