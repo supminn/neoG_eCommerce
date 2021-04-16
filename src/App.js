@@ -14,10 +14,9 @@ import {
   Login,
   Address,
   Signup,
+  UserProfile
 } from "./Components";
-import { UserProfile } from "./Components/Authentication/userProfile";
-
-
+import Loader from "react-loader-spinner";
 
 function App() {
   const {

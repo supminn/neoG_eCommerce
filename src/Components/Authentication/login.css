@@ -21,6 +21,16 @@
 
 @media screen and (min-width: 576px) {
     .login-container {
+        width: 70%;
+    }
+    .login-container .txt-input {
+        width: 18rem;
+        margin: auto;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .login-container {
         width: 50%;
     }
 }

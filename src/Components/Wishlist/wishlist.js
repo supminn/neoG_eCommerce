@@ -7,7 +7,6 @@ import { NavLink } from "react-router-dom";
 export const Wishlist = () => {
   const {
     state: { itemsInWishlist },
-    dispatch,
   } = useDataContext();
   const totalItems = itemsInWishlist.length;
 
@@ -31,7 +30,6 @@ export const Wishlist = () => {
           <NavLink to="/products">
           <button
             className="btn btn-primary"
-            onClick={() => dispatch({ type: "ROUTE", payload: "products" })}
           >
             Add some wishes!
           </button>

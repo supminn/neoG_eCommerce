@@ -26,3 +26,5 @@ export { Navigation } from "./Navigation/navigation";
 /* Authentication */
 export { Login } from "./Authentication/login";
 export { Signup } from "./Authentication/signup";
+export { Password } from "./Authentication/password";
+export { UserProfile } from "./Authentication/userProfile";

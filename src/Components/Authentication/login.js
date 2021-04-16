@@ -1,5 +1,5 @@
 import Loader from "react-loader-spinner";
-import { useReducer, useState } from "react";
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../Context";
 import { Password } from "./password";
@@ -7,13 +7,10 @@ import { Password } from "./password";
 export const Login = () => {
   const [showLoader, setShowLoader] = useState(false);
   const [ErrorMsg, setErrorMsg] = useState("");
-  const { loginUser } = useAuthContext();
+  const { loginUser, userDispatch, userState:{username, password} } = useAuthContext();
   const { state } = useLocation();
   const navigate = useNavigate();
-   const [{ username, password }, userDispatch] = useReducer(userCredReducer, {
-    username: "",
-    password: "",
-  });
+ 
 
   const loginHandler = async (e) => {
       setShowLoader(true);
@@ -22,6 +19,9 @@ export const Login = () => {
       setShowLoader(false);
       if(!res.success){
         setErrorMsg(res.message);
+      }
+      else{
+        navigate(state?.from ? state.from : "/products");
       }
   }
   return (
@@ -69,15 +69,3 @@ export const Login = () => {
   );
 };
 
-export const userCredReducer = (state, { type, payload }) => {
-  switch (type) {
-    case "SET_USERNAME":
-      return { ...state, username: payload };
-
-    case "SET_PASSWORD":
-      return { ...state, password: payload };
-
-    default:
-      return { ...state };
-  }
-};

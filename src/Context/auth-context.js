@@ -1,31 +1,31 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-
+import { userCredReducer } from "../Reducer/auth-reducer";
 const AuthContext = createContext();
 
 export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthContextProvider = ({ children }) => {
-  const navigate = useNavigate();
   const [login, setLogin] = useState(localStorage.getItem("login") || false);
-
-  const loginUser = async (name, pwd, state) => {
+  const [userName, setUser] = useState("");
+  const [userState, userDispatch] = useReducer(userCredReducer, {
+    username: "",
+    password: "",
+    email: "",
+  });
+  const loginUser = async (name, pwd) => {
     try {
       // "https://api-supminn.herokuapp.com/login"
-      const {data} = await axios.post(
-        "http://localhost:3001/login",
-        {
-          username: name,
-          password: pwd
-        }
-      );
-        setLogin(true);
-        navigate(state?.from ? state.from : "/products");
-        localStorage.setItem("login", login);
-        return data;
+      const { data } = await axios.post("http://localhost:3001/login", {
+        username: name.toLowerCase(),
+        password: pwd,
+      });
+      setLogin(true);
+      localStorage.setItem("login", login);
+      setUser(name);
+      userDispatch({ type: "CLEAR" });
+      return data;
     } catch (err) {
-      //show loader and error
       const errorResponse = JSON.stringify(err.response.data);
       console.error(errorResponse);
       return err.response.data;
@@ -34,12 +34,39 @@ export const AuthContextProvider = ({ children }) => {
 
   const logOutUser = () => {
     setLogin(false);
-    navigate("/");
     localStorage.removeItem("login");
   };
 
+  const registerUser = async (username, password, email) => {
+    try {
+      // "https://api-supminn.herokuapp.com/login"
+      const { data } = await axios.post("http://localhost:3001/signup", {
+        username: username.toLowerCase(),
+        password,
+        email: email.toLowerCase(),
+      });
+      setLogin(true);
+      setUser(username);
+      userDispatch({ type: "CLEAR" });
+      return data;
+    } catch (err) {
+      const errorResponse = JSON.stringify(err.response.data);
+      console.error(errorResponse);
+      return err.response.data;
+    }
+  };
   return (
-    <AuthContext.Provider value={{ login, loginUser, logOutUser }}>
+    <AuthContext.Provider
+      value={{
+        login,
+        loginUser,
+        logOutUser,
+        userState,
+        userDispatch,
+        registerUser,
+        userName,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
