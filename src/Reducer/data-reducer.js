@@ -8,15 +8,15 @@ export const dataReducer = (state, { type, payload }) => {
       return { ...state, products: payload };
     /* Cart functionality */
     case "ADD_TO_CART":
-      if (state.itemsInCart.some((cartItem) => cartItem.id === payload.id)) {
+      if (state.itemsInCart.some((cartItem) => cartItem._id === payload._id)) {
         return {
           ...state,
           toastMsg: `Cart updated successfully!`,
           itemsInWishlist: state.itemsInWishlist.filter(
-            (wishItem) => wishItem.id !== payload.id
+            (wishItem) => wishItem._id !== payload._id
           ),
           itemsInCart: state.itemsInCart.map((cartItem) =>
-            cartItem.id === payload.id
+            cartItem._id === payload._id
               ? { ...cartItem, quantity: cartItem.quantity + 1 }
               : cartItem
           ),
@@ -26,7 +26,7 @@ export const dataReducer = (state, { type, payload }) => {
           ...state,
           toastMsg: `"${payload.name}" added to cart`,
           itemsInWishlist: state.itemsInWishlist.filter(
-            (wishItem) => wishItem.id !== payload.id
+            (wishItem) => wishItem._id !== payload._id
           ),
           itemsInCart: state.itemsInCart.concat({
             ...payload,
@@ -39,7 +39,7 @@ export const dataReducer = (state, { type, payload }) => {
         ...state,
         toastMsg: `Cart updated successfully!`,
         itemsInCart: state.itemsInCart.map((cartItem) =>
-          cartItem.id === payload.id
+          cartItem._id === payload._id
             ? { ...cartItem, quantity: cartItem.quantity - 1 }
             : cartItem
         ),
@@ -53,7 +53,7 @@ export const dataReducer = (state, { type, payload }) => {
         ...state,
         toastMsg: `"${payload.name}" added to wishlist`,
         itemsInCart: state.itemsInCart.filter(
-          (cartItem) => cartItem.id !== payload.id
+          (cartItem) => cartItem._id !== payload._id
         ),
         itemsInWishlist: state.itemsInWishlist.concat({
           ...payload,
@@ -64,7 +64,7 @@ export const dataReducer = (state, { type, payload }) => {
         ...state,
         toastMsg: `"${payload.name}" removed from wishlist`,
         itemsInWishlist: state.itemsInWishlist.filter(
-          (item) => item.id !== payload.id
+          (item) => item._id !== payload._id
         ),
       };
     case "MOVE_TO_WISHLIST":
@@ -73,7 +73,7 @@ export const dataReducer = (state, { type, payload }) => {
         toastMsg: `"${payload.name}" moved to wishlist`,
         itemsInWishlist: state.itemsInWishlist.concat(payload),
         itemsInCart: state.itemsInCart.filter(
-          (cartItem) => cartItem.id !== payload.id
+          (cartItem) => cartItem._id !== payload._id
         ),
       };
 

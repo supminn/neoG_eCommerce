@@ -20,7 +20,7 @@ export const Wishlist = () => {
     {totalItems>0 && <span className="total-wishes">({totalItems} items)</span>}
     <section className={totalItems>1?"grid-container":"wishes-container"}>
     {itemsInWishlist.map(
-        (item) =>( <WishlistItem key={item.id} item={item} />
+        (item) =>( <WishlistItem key={item._id} item={item} />
       ))}
     </section>
     {totalItems === 0 && (

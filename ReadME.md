@@ -56,7 +56,7 @@ This e-commerce application would have the following features. It is being built
 
 ### Future Enchancements
 * Use POST and PUT on cart and wishlist - inlcude in server - new API url (add models)
-* Filter on category/ include similar features
+* Filter on category/brand
 * Creating individual product page - /products/:productId
 * Re-structure database - user data.
 * Persist cart and wishlist data for user.

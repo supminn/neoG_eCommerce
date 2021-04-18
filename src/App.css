@@ -55,6 +55,14 @@
   border: 1px solid var(--primaryBg);
   padding: 0.5rem;
 }
+.txt-container{
+  flex-grow: 1;
+}
+
+.card-img {
+  flex-grow: 1;
+  max-height: 50%;
+}
 
 .card-discount {
   color: var(--secondaryTxt);

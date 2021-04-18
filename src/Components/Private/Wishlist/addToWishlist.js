@@ -2,14 +2,14 @@ import { useNavigate } from "react-router";
 import { useAuthContext, useDataContext } from "../../../Context";
 
 const itemExistsInWishlist = (wishlistItems, productId) =>
-  wishlistItems.some((wishlistItem) => wishlistItem.id === productId);
+  wishlistItems.some((wishlistItem) => wishlistItem._id === productId);
 
 export const AddToWishlist = ({ product }) => {
   const {
     state: { itemsInWishlist },
     dispatch,
   } = useDataContext();
-  const isWishlisted = itemExistsInWishlist(itemsInWishlist, product.id);
+  const isWishlisted = itemExistsInWishlist(itemsInWishlist, product._id);
   const { login } = useAuthContext();
   const navigate = useNavigate();
 

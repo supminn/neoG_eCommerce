@@ -13,7 +13,7 @@ const initialArg = {
   sortBy: null,
   inStock:false,
   fastDelivery: false,
-  priceRange: 1000,
+  priceRange: 30000,
   toastMsg: "",
   searchValue:""
 };

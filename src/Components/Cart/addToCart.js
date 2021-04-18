@@ -2,13 +2,13 @@ import { useDataContext } from "../../Context/data-context";
 import { useNavigate } from "react-router-dom";
 
 const itemExistsInCart = (cartItems, productId) => 
-    cartItems.some(cartItem => cartItem.id === productId && cartItem.quantity>0);
+    cartItems.some(cartItem => cartItem._id === productId && cartItem.quantity>0);
 
 
 
 export const AddToCart = ({product}) => {
     const {state:{itemsInCart},dispatch} = useDataContext();
-    const isItemInCart = itemExistsInCart(itemsInCart,product.id);
+    const isItemInCart = itemExistsInCart(itemsInCart,product._id);
     const navigate = useNavigate();
     return(
         <>

@@ -64,6 +64,9 @@
         min-width: 15rem;
         width: 40rem;
     }
+    .card-details-container{
+        padding-left: 1%;
+    }
 }
 
 @media screen and (min-width: 1200px) {

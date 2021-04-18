@@ -1,8 +1,14 @@
+
+import { useNavigate } from "react-router";
+import { useAuthContext } from "../../Context";
 import { useDataContext } from "../../Context/data-context";
 
 export const CartItem = ({ item }) => {
   const { name, image, price, quantity, brand, rating, offer } = item;
   const { dispatch } = useDataContext();
+  const {login} = useAuthContext();
+  const navigate = useNavigate();
+
   return (
     <div className="card-horizontal">
       <img className="card-img" alt={name} src={image} />
@@ -48,8 +54,10 @@ export const CartItem = ({ item }) => {
           </span>
           <button
             type="button"
-            onClick={() =>
+            onClick={() => {if(!login)navigate("/login");
               dispatch({ type: "MOVE_TO_WISHLIST", payload: item })
+            }
+              
             }
             className="btn btn-secondary"
           >

@@ -95,7 +95,7 @@ export const FilterProducts = () => {
             className="txt-range"
             type="range"
             min="0"
-            max="1000"
+            max="30000"
             value={priceRange}
             step="100"
             onChange={(event) =>
@@ -135,6 +135,7 @@ export const getFilteredProducts = (
     .filter(
       (product) =>
         product.name.toLowerCase().includes(searchValue) ||
-        product.brand.toLowerCase().includes(searchValue)
+        product.brand.toLowerCase().includes(searchValue) ||
+        product.category.toLowerCase().includes(searchValue)
     );
 };

@@ -31,10 +31,10 @@ export const ProductListing = () => {
     (async () => {
       try {
         setShowLoader(true);
-        const { data } = await axios.get(
+        const {data: {products}} = await axios.get(
           "https://api-supminn.herokuapp.com/products"
         );
-        dispatch({ type: "SET_PRODUCTS", payload: data });
+        dispatch({ type: "SET_PRODUCTS", payload: products });
         setShowLoader(false);
       } catch (err) {
         console.error(err);
@@ -76,7 +76,7 @@ export const ProductListing = () => {
         >
           {filteredProducts.length > 0 ? (
             filteredProducts.map((item) => (
-              <div key={item.id}>
+              <div key={item._id}>
                 <Product product={item} />
               </div>
             ))

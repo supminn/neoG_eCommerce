@@ -39,7 +39,7 @@ export const Cart = () => {
         <section className="cart-items">
           {itemsInCart.map(
             (item) =>
-              item.quantity > 0 && <CartItem key={item.id} item={item} />
+              item.quantity > 0 && <CartItem key={item._id} item={item} />
           )}
         </section>
         {totalItems === 0 && (
