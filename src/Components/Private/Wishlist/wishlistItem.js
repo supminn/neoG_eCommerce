@@ -1,5 +1,5 @@
-import { useDataContext } from "../../Context/data-context";
-import { AddToCart } from "../Cart/addToCart";
+import { useDataContext } from "../../../Context";
+import { AddToCart } from "../../Cart/addToCart";
 
 export const WishlistItem = ({ item }) => {
   const { name, image, price, inStock, brand, rating, offer, fastDelivery } = item;

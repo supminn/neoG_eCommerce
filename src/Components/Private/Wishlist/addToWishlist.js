@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { useAuthContext, useDataContext } from "../../Context";
+import { useAuthContext, useDataContext } from "../../../Context";
 
 const itemExistsInWishlist = (wishlistItems, productId) =>
   wishlistItems.some((wishlistItem) => wishlistItem.id === productId);

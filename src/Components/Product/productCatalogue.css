@@ -41,6 +41,10 @@
     height: 96vh;
 }
 
+.loader-container{
+    margin-top: 10rem;
+}
+
 @media screen and (min-width: 768px) {
     .btn-filter{
         display: none;

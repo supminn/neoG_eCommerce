@@ -1,5 +1,5 @@
 import { AddToCart } from "../Cart/addToCart";
-import { AddToWishlist } from "../Wishlist/addToWishlist";
+import { AddToWishlist } from "../Private/Wishlist/addToWishlist";
 
 export const Product = ({ product }) => {
   const {
@@ -18,7 +18,7 @@ export const Product = ({ product }) => {
       <div className="txt-container">
         <h3 className="card-heading">{brand}</h3>
         <p className="card-heading">{name}</p>
-        <span className="card-desc">₹{price} </span>
+        <b className="card-desc">₹{price} </b>
         <span className="card-discount txt-small"> ({offer})</span>
         <div className="rating">
           <span className="txt-primaryBg">Rating: </span>

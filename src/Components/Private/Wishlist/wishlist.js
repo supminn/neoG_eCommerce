@@ -1,6 +1,6 @@
-import { useDataContext } from "../../Context/data-context";
+import { useDataContext } from "../../../Context";
 import { WishlistItem } from "./wishlistItem";
-import wishlist from "../../images/wishlist.svg";
+import wishlist from "../../../images/wishlist.svg";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 

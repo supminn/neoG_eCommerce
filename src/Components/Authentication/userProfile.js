@@ -15,7 +15,7 @@ export const UserProfile = () => {
         User <span className="secondary-txt">Profile</span>
       </h2>
       <div className="div-container">
-        <i class="fas fa-5x fa-user-circle primaryBg-txt"></i>
+        <i className="fas fa-5x fa-user-circle primaryBg-txt"></i>
         <h3 className="txt-header-3">
           Welcome <span>{userName.toUpperCase()}</span>
         </h3>

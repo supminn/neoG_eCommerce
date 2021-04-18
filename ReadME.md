@@ -47,6 +47,7 @@ This e-commerce application would have the following features. It is being built
 * useContext for product, cart and wishlist
 * useReducer to main the cart, product and wishlist state; address state.
 * Segregate into respective folders
+* ExpressJS api calls for backend. Data added on mongoDB using mongoose.
 
 ### Additional Libraries
 1. Miragejs
@@ -56,11 +57,7 @@ This e-commerce application would have the following features. It is being built
 ### Future Enchancements
 * Use POST and PUT on cart and wishlist - inlcude in server - new API url (add models)
 * Filter on category/ include similar features
-* Add loading animation
-* Filters to be made sticky
-* Creating individual product page
-* Authentication section
+* Creating individual product page - /products/:productId
 * Re-structure database - user data.
-* Individual product card - /products/:productId
-* When a product is checked to be added to wishlist - login - success - add the product to wishlist
-* Password conditions and strength
+* Persist cart and wishlist data for user.
+* Password conditions and strength.

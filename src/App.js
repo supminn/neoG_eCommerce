@@ -1,8 +1,6 @@
-import { useEffect } from "react";
 import { Routes, Route } from 'react-router-dom';
 import "./App.css";
 import { useDataContext } from "./Context/data-context";
-import { serverRequest } from "./api/serverRequest";
 import { PrivateRoute } from "./api/privateRoute";
 import {
   Home,
@@ -16,25 +14,14 @@ import {
   Signup,
   UserProfile
 } from "./Components";
-import Loader from "react-loader-spinner";
+
 
 function App() {
   const {
     state: { toastMsg },
-    dispatch,
   } = useDataContext();
 
-  useEffect(() => {
-    (async () => {
-      const {
-        response: products ,
-        error,
-      } = await serverRequest("https://api-supminn.herokuapp.com/products", "GET");
-      if (!error) {
-        dispatch({ type: "SET_PRODUCTS", payload: products });
-      }
-    })();
-  }, [dispatch]);
+ 
 
   return (
     <div className="App">

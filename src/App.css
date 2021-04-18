@@ -4,7 +4,7 @@
 @import './Components/Navigation/navigation.css';
 @import './Components/Product/filterContainer.css';
 @import './Components/Toast/toast.css';
-@import './Components/Wishlist/wishlist.css';
+@import './Components/Private/Wishlist/wishlist.css';
 @import './Components/Home/home.css';
 @import './Components/Authentication/authentication.css';
 

@@ -5,7 +5,7 @@ export { Home } from "./Home/home";
 export { AddToCart } from "./Cart/addToCart";
 export { Cart } from "./Cart/cart";
 export { CartItem } from "./Cart/cartItem";
-export { Address } from "./Address/address";
+export { Address } from "./Private/Address/address";
 
 /* Product Components */
 export { FilterProducts } from "./Product/filterProducts";
@@ -13,9 +13,9 @@ export { ProductListing } from "./Product/productListing";
 export { Product } from "./Product/products";
 
 /* Wishlist Components */
-export { AddToWishlist } from "./Wishlist/addToWishlist";
-export { Wishlist } from "./Wishlist/wishlist";
-export { WishlistItem } from "./Wishlist/wishlistItem";
+export { AddToWishlist } from "./Private/Wishlist/addToWishlist";
+export { Wishlist } from "./Private/Wishlist/wishlist";
+export { WishlistItem } from "./Private/Wishlist/wishlistItem";
 
 /* Toast */
 export { Toast } from "./Toast/toast";
