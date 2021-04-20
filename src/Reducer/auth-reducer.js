@@ -1,5 +1,11 @@
+import { initialUserState } from "../Context/auth-context";
+
 export const userCredReducer = (state, { type, payload }) => {
   switch (type) {
+    case "SET_NAME":
+      return { ...state, name: payload };
+
+
     case "SET_USERNAME":
       return { ...state, username: payload };
 
@@ -10,6 +16,6 @@ export const userCredReducer = (state, { type, payload }) => {
       return { ...state, email: payload };
 
     default:
-      return { username:"", password:"", email:"" };
+      return { ...initialUserState};
   }
 };

@@ -9,16 +9,16 @@ export const Signup = () => {
   const [ErrorMsg, setErrorMsg] = useState("");
   const [showMsg, setShowMsg] = useState(false);
   const {
-    userState: { username, password, email },
+    userState: { name, username, password, email },
     userDispatch,
     registerUser,
-    userName
+    userData
   } = useAuthContext();
 
   const signupHandler = async (e) => {
     setShowLoader(true);
     e.preventDefault();
-    const res = await registerUser(username, password, email);
+    const res = await registerUser(name, username, password, email);
     setShowLoader(false);
     if (!res.success) {
       setErrorMsg(res.message);
@@ -33,6 +33,21 @@ export const Signup = () => {
       </h2>
       {!showMsg && (
         <form className="div-container" onSubmit={signupHandler}>
+          <div className="txt-box">
+            <input
+              required
+              className="txt-input"
+              type="text"
+              value={name}
+              onChange={(e) =>
+                userDispatch({ type: "SET_NAME", payload: e.target.value })
+              }
+              placeholder="Name"
+            />
+            <span className="txt-icon">
+              <i className="fas fa-address-card fa-lg"></i>
+            </span>
+          </div>
           <div className="txt-box">
             <span className="txt-icon">
               <i className="fas fa-at fa-lg"></i>
@@ -75,7 +90,7 @@ export const Signup = () => {
       )}
       {showMsg && (
         <div className="div-container">
-          <p className="txt-desc primaryBg-txt">Hi <b className="secondary-txt">{userName.toUpperCase()}</b>, thank you for signing up with <b>SupMart</b>.</p>
+          <p className="txt-desc primaryBg-txt">Hi <b className="secondary-txt">{userData.name}</b>, thank you for signing up with <b>SupMart</b>.</p>
           <p className="txt-desc primaryBg-txt">You can now avail <em>express delivery</em> on select products</p>
           <NavLink to="/products">
             <button className="btn btn-primary">Start shopping!</button>

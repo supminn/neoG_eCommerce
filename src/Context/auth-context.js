@@ -5,24 +5,24 @@ const AuthContext = createContext();
 
 export const useAuthContext = () => useContext(AuthContext);
 
+export const initialUserState = { name:"", username:"", password:"", email:"" };
+
 export const AuthContextProvider = ({ children }) => {
   const [login, setLogin] = useState(localStorage.getItem("login") || false);
-  const [userName, setUser] = useState(localStorage.getItem("username") || "");
-  const [userState, userDispatch] = useReducer(userCredReducer, {
-    username: "",
-    password: "",
-    email: "",
-  });
+  const [userState, userDispatch] = useReducer(userCredReducer, initialUserState);
+  const [userData, setUser] = useState(JSON.parse(localStorage.getItem("userData")) || {});
+  // JSON.parse(localStorage.getItem("userData")) ||
+
   const loginUser = async (name, pwd) => {
     try {
-      const { data } = await axios.post("https://api-supminn.herokuapp.com/login", {
+      const { data } = await axios.post("https://api-supminn.herokuapp.com/users/login", {
         username: name.toLowerCase(),
         password: pwd,
       });
       setLogin(true);
       localStorage.setItem("login", login);
-      setUser(name);
-      localStorage.setItem("username", name);
+      setUser(data.user);
+      localStorage.setItem("userData", JSON.stringify(data.user));
       userDispatch({ type: "CLEAR" });
       return data;
     } catch (err) {
@@ -36,20 +36,22 @@ export const AuthContextProvider = ({ children }) => {
     setLogin(false);
     setUser("");
     localStorage.removeItem("login");
-    localStorage.removeItem("username");
+    localStorage.removeItem("userData");
 
   };
 
-  const registerUser = async (username, password, email) => {
+  const registerUser = async (name,username, password, email) => {
     try {
-      const { data } = await axios.post("https://api-supminn.herokuapp.com/signup", {
+      const { data } = await axios.post("https://api-supminn.herokuapp.com/users/signup", {
+        name,
         username: username.toLowerCase(),
         password,
         email: email.toLowerCase(),
       });
       setLogin(true);
-      setUser(username);
-      localStorage.setItem("username", username);
+      localStorage.setItem("login", login);
+      setUser(data.user);
+      localStorage.setItem("userData", JSON.stringify(data.user));
       userDispatch({ type: "CLEAR" });
       return data;
     } catch (err) {
@@ -67,7 +69,7 @@ export const AuthContextProvider = ({ children }) => {
         userState,
         userDispatch,
         registerUser,
-        userName,
+        userData,
       }}
     >
       {children}
