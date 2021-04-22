@@ -1,15 +1,20 @@
 import { useDataContext } from "../../Context/data-context";
 import { CartItem } from "./cartItem";
 import addToCart from '../../images/add-to-cart.svg';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { PriceDetails } from "./priceDetail";
+import axios from "axios";
+import { useAuthContext } from "../../Context";
 
 export const Cart = () => {
   const {
     state: { itemsInCart },
     dispatch,
   } = useDataContext();
+  const {login, userData} = useAuthContext();
+  const [showLoader, setShowLoader] = useState(false);
+
   const cartTotal = itemsInCart.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -20,6 +25,15 @@ export const Cart = () => {
     document.title = "SupMart | Cart"
   },[]);
 
+  const clearCart = async () => {
+    if(login){
+      setShowLoader(true);
+      const { status } = await axios.delete(
+        `https://api-supminn.herokuapp.com/cart/${userData._id}`);
+    }
+    dispatch({ type: "CLEAR_CART" });
+    setShowLoader(false);
+  }
   return (
     <>
       <h2 className="txt-header-2">
@@ -29,9 +43,9 @@ export const Cart = () => {
           <button
             type="button"
             className="btn btn-dark"
-            onClick={() => dispatch({ type: "CLEAR_CART" })}
+            onClick={clearCart}
           >
-            Remove All
+            Remove All {showLoader && <i className="fa fa-spinner fa-pulse" />}
           </button>
       )}
       

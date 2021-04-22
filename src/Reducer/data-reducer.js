@@ -6,6 +6,9 @@ export const dataReducer = (state, { type, payload }) => {
       case "SET_WISHLIST":
       return { ...state, itemsInWishlist: payload };
 
+      case "SET_CART":
+      return { ...state, itemsInCart: payload };
+
     case "ADD_TO_CART":
       if (state.itemsInCart.some((cartItem) => cartItem._id === payload._id)) {
         return {

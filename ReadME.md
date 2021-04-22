@@ -61,4 +61,5 @@ This e-commerce application would have the following features. It is being built
 * Re-structure database - user data.
 * Persist cart and wishlist data for user.
 * Password conditions and strength.
+* Add query params for filters.
 * Loader, serverCalls, disablled button - refactor

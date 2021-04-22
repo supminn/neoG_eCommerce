@@ -37,6 +37,19 @@ function App() {
     }
   },[login, userData, dispatch])
 
+  useEffect(() => {
+    if(login && userData._id){
+      (async () => {
+        const {data:{cart}} = await axios.get(`https://api-supminn.herokuapp.com/cart/${userData._id}`);
+          dispatch({type:"SET_CART", payload: cart});
+      })();
+    }
+    else{
+      dispatch({type:"SET_CART", payload: []});
+    }
+  },[login, userData, dispatch])
+
+
   return (
     <div className="App">
       <Navigation />
