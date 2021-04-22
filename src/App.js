@@ -14,14 +14,25 @@ import {
   Signup,
   UserProfile
 } from "./Components";
+import { useAuthContext } from './Context';
+import { useEffect } from 'react';
+import axios from 'axios';
 
 
 function App() {
   const {
-    state: { toastMsg },
+    state: { toastMsg }, dispatch
   } = useDataContext();
-
+  const {login, userData} = useAuthContext();
  
+  useEffect(() => {
+    if(login){
+      (async () => {
+        const {data:{wishlistItems}} = await axios.get(`http://localhost:5000/wishlist/${userData._id}`);
+        dispatch({type:"SET_WISHLIST", payload: wishlistItems});
+      })();
+    }
+  },[login])
 
   return (
     <div className="App">

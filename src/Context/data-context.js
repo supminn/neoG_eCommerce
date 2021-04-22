@@ -9,7 +9,6 @@ const initialArg = {
   products:[],
   itemsInCart:[],
   itemsInWishlist:[],
-  route:"home",
   sortBy: null,
   inStock:false,
   fastDelivery: false,

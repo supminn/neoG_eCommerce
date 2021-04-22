@@ -1,12 +1,11 @@
 export const dataReducer = (state, { type, payload }) => {
   switch (type) {
-    /* Setting page route */
-    case "ROUTE":
-      return { ...state, route: payload };
-    /* Product Catalogue */
     case "SET_PRODUCTS":
       return { ...state, products: payload };
-    /* Cart functionality */
+
+      case "SET_WISHLIST":
+      return { ...state, itemsInWishlist: payload };
+
     case "ADD_TO_CART":
       if (state.itemsInCart.some((cartItem) => cartItem._id === payload._id)) {
         return {
@@ -47,7 +46,6 @@ export const dataReducer = (state, { type, payload }) => {
     case "CLEAR_CART":
       return { ...state, itemsInCart: [] };
 
-    /* Wishlist functionality */
     case "ADD_TO_WISHLIST":
       return {
         ...state,
@@ -77,7 +75,6 @@ export const dataReducer = (state, { type, payload }) => {
         ),
       };
 
-    /* Product listing filters */
     case "SORT":
       return { ...state, sortBy: payload };
     case "TOGGLE_STOCK":
@@ -93,25 +90,15 @@ export const dataReducer = (state, { type, payload }) => {
         inStock: false,
         fastDelivery: false,
         priceRange: 1000,
-        searchValue:""
+        searchValue: "",
       };
-      case "SEARCH_PRODUCT":  return {...state, searchValue: payload.toLowerCase()};
-      
-    /* Toast message */
+    case "SEARCH_PRODUCT":
+      return { ...state, searchValue: payload.toLowerCase() };
+
     case "SHOW_TOAST":
       return { ...state, toastMsg: payload };
+
     default:
       return state;
   }
 };
-
-//---------------------------------------------------------------
-/*
-const [itemsInCart, setItemsInCart] = useState(
-  JSON.parse(localStorage.getItem('cartItems')) || []);
-const [toastMsg, setToastMsg] = useState("");
-
-useEffect(()=>{
-  localStorage.setItem('cartItems',JSON.stringify(itemsInCart));
-},[itemsInCart]);
-  */
