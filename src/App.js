@@ -26,13 +26,16 @@ function App() {
   const {login, userData} = useAuthContext();
  
   useEffect(() => {
-    if(login){
+    if(login && userData._id){
       (async () => {
         const {data:{wishlistItems}} = await axios.get(`http://localhost:5000/wishlist/${userData._id}`);
         dispatch({type:"SET_WISHLIST", payload: wishlistItems});
       })();
     }
-  },[login])
+    else{
+      dispatch({type:"SET_WISHLIST", payload: []});
+    }
+  },[login, userData])
 
   return (
     <div className="App">
