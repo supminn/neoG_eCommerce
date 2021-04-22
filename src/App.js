@@ -28,14 +28,14 @@ function App() {
   useEffect(() => {
     if(login && userData._id){
       (async () => {
-        const {data:{wishlistItems}} = await axios.get(`http://localhost:5000/wishlist/${userData._id}`);
+        const {data:{wishlistItems}} = await axios.get(`https://api-supminn.herokuapp.com/wishlist/${userData._id}`);
         dispatch({type:"SET_WISHLIST", payload: wishlistItems});
       })();
     }
     else{
       dispatch({type:"SET_WISHLIST", payload: []});
     }
-  },[login, userData])
+  },[login, userData, dispatch])
 
   return (
     <div className="App">

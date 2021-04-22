@@ -1,11 +1,12 @@
 import axios from "axios";
 
-export const updateWishlist = async (login, product, isWishlisted, userId, dispatch, navigate) => {
+export const updateWishlist = async (login, product, isWishlisted, userId, dispatch, setShowLoader, navigate) => {
     if (!login) {
       navigate("/login");
     }
+    setShowLoader(true);
     const { status } = await axios.post(
-      `http://localhost:5000/wishlist/${userId}`,
+      `https://api-supminn.herokuapp.com/wishlist/${userId}`,
       {
         _id: product._id,
       }
@@ -22,4 +23,5 @@ export const updateWishlist = async (login, product, isWishlisted, userId, dispa
         payload: product,
       });
     } 
+    setShowLoader(false);
   };

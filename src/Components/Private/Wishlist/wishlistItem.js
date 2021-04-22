@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useAuthContext, useDataContext } from "../../../Context";
 import { updateWishlist } from "../../../Utils/serverRequests";
 import { AddToCart } from "../../Cart/addToCart";
@@ -15,6 +16,7 @@ export const WishlistItem = ({ item }) => {
   } = item;
   const { dispatch } = useDataContext();
   const { login, userData } = useAuthContext();
+  const [showLoader, setShowLoader] = useState(false);
 
   return (
     <div className="card">
@@ -49,9 +51,10 @@ export const WishlistItem = ({ item }) => {
       </div>
       <AddToCart product={item} />
       <i
-        className="fa fa-times wish-remove"
+        className={showLoader?"fa fa-spinner fa-pulse wish-loading"
+        :"fa fa-times wish-remove"}
         onClick={() =>
-          updateWishlist(login, item, true, userData._id, dispatch)
+          updateWishlist(login, item, true, userData._id, dispatch, setShowLoader)
         }
       ></i>
     </div>
