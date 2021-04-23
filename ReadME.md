@@ -55,11 +55,10 @@ This e-commerce application would have the following features. It is being built
 3. Axios
 
 ### Future Enchancements
-* Use POST and PUT on cart and wishlist - inlcude in server - new API url (add models)
 * Filter on category/brand
 * Creating individual product page - /products/:productId
 * Re-structure database - user data.
-* Persist cart and wishlist data for user.
-* Password conditions and strength.
+* Password validation (conditions and strength).
 * Add query params for filters.
-* Loader, serverCalls, disablled button - refactor
+* Loader (move to context), serverCalls, disablled button - refactor
+* Move items in cart to DB when logged in. (concat)

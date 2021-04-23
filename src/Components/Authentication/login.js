@@ -5,9 +5,8 @@ import { useAuthContext } from "../../Context";
 import { Password } from "./password";
 
 export const Login = () => {
-  const [showLoader, setShowLoader] = useState(false);
   const [ErrorMsg, setErrorMsg] = useState("");
-  const { loginUser, userDispatch, userState:{username, password} } = useAuthContext();
+  const { loginUser, userDispatch, userState:{username, password},showLoader, setShowLoader } = useAuthContext();
   const { state } = useLocation();
   const navigate = useNavigate();
  

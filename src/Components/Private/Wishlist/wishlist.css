@@ -8,6 +8,7 @@
 }
 .wishes-container{
     display: grid;
+    margin: 1rem;
     grid-template-columns: 1fr;
 }
 

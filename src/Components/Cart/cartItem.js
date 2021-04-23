@@ -1,5 +1,3 @@
-
-import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useAuthContext } from "../../Context";
 import { useDataContext } from "../../Context/data-context";
@@ -8,9 +6,8 @@ import { updateCart } from "../../Utils/serverRequests";
 export const CartItem = ({ item }) => {
   const { name, image, price, quantity, brand, rating, offer } = item;
   const { dispatch } = useDataContext();
-  const {login, userData} = useAuthContext();
+  const { login, userData, showLoader, setShowLoader } = useAuthContext();
   const navigate = useNavigate();
-  const [showLoader, setShowLoader] = useState(false);
 
   return (
     <div className="card-horizontal">
@@ -37,62 +34,60 @@ export const CartItem = ({ item }) => {
         <div className="cart-item-desc-btns">
           <span className="font-sm">
             <button
-              type="button" disabled={showLoader}
+              type="button"
+              disabled={showLoader}
               className="btn btn-light btn-sm"
-              onClick={() => login
-                ? updateCart(
-                    item,
-                    "REMOVE",
-                    userData._id,
-                    dispatch,
-                    setShowLoader
-                  )
-                :
-                dispatch({ type: "REMOVE_FROM_CART", payload: item })
+              onClick={() =>
+                login
+                  ? updateCart(
+                      item,
+                      "REMOVE",
+                      userData._id,
+                      dispatch,
+                      setShowLoader
+                    )
+                  : dispatch({ type: "REMOVE_FROM_CART", payload: item })
               }
             >
-              {item.quantity > 1 ?showLoader?<i className="fa fa-spinner fa-pulse" />:"-" : <i className="fas fa-trash"></i>}
+              {item.quantity > 1 ? "-" : <i className="fas fa-trash"></i>}
             </button>
 
             <em>{quantity}</em>
             <button
-              type="button" disabled={showLoader}
+              type="button"
+              disabled={showLoader}
               className="btn btn-light btn-sm"
-              onClick={() => login
-                ? updateCart(
-                    item,
-                    "ADD",
-                    userData._id,
-                    dispatch,
-                    setShowLoader
-                  )
-                : dispatch({
-                    type: "ADD_TO_CART",
-                    payload: item,
-                  })}
+              onClick={() =>
+                login
+                  ? updateCart(
+                      item,
+                      "ADD",
+                      userData._id,
+                      dispatch,
+                      setShowLoader
+                    )
+                  : dispatch({
+                      type: "ADD_TO_CART",
+                      payload: item,
+                    })
+              }
             >
-              {showLoader?<i className="fa fa-spinner fa-pulse" />:"+"}
+              +
             </button>
           </span>
           <button
-            type="button" disabled={showLoader}
-            onClick={() => {if(!login)navigate("/login");
-            updateCart(
-              item,
-              "MOVE",
-              userData._id,
-              dispatch,
-              setShowLoader
-            )
-            }
-              
-            }
+            type="button"
+            disabled={showLoader}
+            onClick={() => {
+              if (!login) navigate("/login");
+              updateCart(item, "MOVE", userData._id, dispatch, setShowLoader);
+            }}
             className="btn btn-secondary"
           >
-              {showLoader?"Moving...":"Move to Wishlist"}
+            Move to Wishlist
           </button>
         </div>
-        </section>
+      </section>
     </div>
   );
 };

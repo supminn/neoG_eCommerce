@@ -2,7 +2,6 @@ import { useDataContext } from "../../Context/data-context";
 import { useNavigate } from "react-router-dom";
 import { updateCart, updateWishlist } from "../../Utils/serverRequests";
 import { useAuthContext } from "../../Context";
-import { useState } from "react";
 import { itemExists } from "../../Utils/arrayOperations";
 
 const itemExistsInCart = (cartItems, productId) =>
@@ -15,10 +14,9 @@ export const AddToCart = ({ product }) => {
     state: { itemsInCart, itemsInWishlist },
     dispatch,
   } = useDataContext();
-  const { login, userData } = useAuthContext();
+  const { login, userData ,showLoader, setShowLoader} = useAuthContext();
   const isItemInCart = itemExistsInCart(itemsInCart, product._id);
   const navigate = useNavigate();
-  const [showLoader, setShowLoader] = useState(false);
   const isWishlisted = itemExists(itemsInWishlist, product._id);
 
   const updateLists = () => {
@@ -57,7 +55,7 @@ export const AddToCart = ({ product }) => {
               });
         }}
       >
-        {showLoader ? "Adding..." : isItemInCart ? "Go to Cart" : "Add to Cart"}
+        {isItemInCart ? "Go to Cart" : "Add to Cart"}
       </button>
     </>
   );

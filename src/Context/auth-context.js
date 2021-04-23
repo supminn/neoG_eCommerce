@@ -11,6 +11,7 @@ export const AuthContextProvider = ({ children }) => {
   const [login, setLogin] = useState(localStorage.getItem("login") || false);
   const [userState, userDispatch] = useReducer(userCredReducer, initialUserState);
   const [userData, setUser] = useState(JSON.parse(localStorage.getItem("userData")) || {});
+  const [showLoader, setShowLoader] = useState(false);
 
   const loginUser = async (name, pwd) => {
     try {
@@ -69,6 +70,8 @@ export const AuthContextProvider = ({ children }) => {
         userDispatch,
         registerUser,
         userData,
+        showLoader, 
+        setShowLoader
       }}
     >
       {children}

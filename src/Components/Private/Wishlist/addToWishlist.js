@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useAuthContext, useDataContext } from "../../../Context";
 import { itemExists } from "../../../Utils/arrayOperations";
@@ -9,16 +8,14 @@ export const AddToWishlist = ({ product }) => {
     state: { itemsInWishlist },
 dispatch
   } = useDataContext();
-  const { login, userData } = useAuthContext();
+  const { login, userData,showLoader, setShowLoader } = useAuthContext();
   const navigate = useNavigate();
   const isWishlisted = itemExists(itemsInWishlist, product._id);
-  const [showLoader, setShowLoader] = useState(false);
 
   return (
     <>
       <i 
-        className={showLoader?"fa fa-spinner fa-pulse wish-loading"
-          :isWishlisted
+        className={isWishlisted
             ? "fas fa-heart fa-lg wish-active"
             : "far fa-heart fa-lg wish-inactive"
         }

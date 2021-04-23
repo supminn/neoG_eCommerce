@@ -13,6 +13,7 @@ export const updateWishlist = async (
     navigate("/login");
   }
   setShowLoader(true);
+  dispatch({type:"SHOW_TOAST",payload:"Updating wishlist..."});
   const { status } = await axios.post(
     `https://api-supminn.herokuapp.com/wishlist/${userId}`,
     {
@@ -41,6 +42,7 @@ export const updateCart = async (
   setShowLoader
 ) => {
   setShowLoader(true);
+  dispatch({type:"SHOW_TOAST",payload:"Updating cart..."});
   const { status } = await axios.post(
     `https://api-supminn.herokuapp.com/cart/${userId}`,
     {
