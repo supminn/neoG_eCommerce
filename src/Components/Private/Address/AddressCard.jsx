@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDataContext } from "../../../Context";
-import { AddNewAddress } from "./addNewAddress";
+import { AddNewAddress } from "./AddNewAddress";
 
 export const AddressCard = ({
   id,

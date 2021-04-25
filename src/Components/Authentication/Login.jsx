@@ -2,7 +2,7 @@ import Loader from "react-loader-spinner";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../Context";
-import { Password } from "./password";
+import { Password } from "./Password";
 
 export const Login = () => {
   const [ErrorMsg, setErrorMsg] = useState("");

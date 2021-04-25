@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { AddNewAddress } from "./addNewAddress";
-import { ShowAddresses } from "./showAddresses";
+import { AddNewAddress } from "./AddNewAddress";
+import { ShowAddresses } from "./ShowAddresses";
 
 export const Address = () => {
   const [editMode, setEditMode] = useState(false);

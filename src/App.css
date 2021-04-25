@@ -1,8 +1,8 @@
 @import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-@import './Components/Product/productCatalogue.css';
+@import './Components/Product/product.css';
 @import './Components/Cart/cart.css';
 @import './Components/Navigation/navigation.css';
-@import './Components/Product/filterContainer.css';
+@import './Components/Product/filter.css';
 @import './Components/Toast/toast.css';
 @import './Components/Private/Wishlist/wishlist.css';
 @import './Components/Home/home.css';

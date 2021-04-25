@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router";
-import { useAuthContext } from "../../Context";
-import { useDataContext } from "../../Context/data-context";
+import { useAuthContext, useDataContext } from "../../Context";
 import { updateCart } from "../../Utils/serverRequests";
 
 export const CartItem = ({ item }) => {

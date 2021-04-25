@@ -7,7 +7,7 @@ export const useAuthContext = () => useContext(AuthContext);
 
 export const initialUserState = { name:"", username:"", password:"", email:"" };
 
-export const AuthContextProvider = ({ children }) => {
+export const AuthenticationProvider = ({ children }) => {
   const [login, setLogin] = useState(localStorage.getItem("login") || false);
   const [userState, userDispatch] = useReducer(userCredReducer, initialUserState);
   const [userData, setUser] = useState(JSON.parse(localStorage.getItem("userData")) || {});

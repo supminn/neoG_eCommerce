@@ -1,11 +1,10 @@
-import { useDataContext } from "../../Context/data-context";
-import { CartItem } from "./cartItem";
+import { useAuthContext, useDataContext } from "../../Context";
+import { CartItem } from "./CartItem";
 import addToCart from "../../images/add-to-cart.svg";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { PriceDetails } from "./priceDetail";
+import { PriceDetails } from "./PriceDetail";
 import axios from "axios";
-import { useAuthContext } from "../../Context";
 
 export const Cart = () => {
   const {

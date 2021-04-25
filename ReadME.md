@@ -58,7 +58,7 @@ This e-commerce application would have the following features. It is being built
 * Filter on category/brand
 * Add query params for filters.
 * Update home page.
-* Address management - split street and locality details
+* Address management - split street and locality details | persistent using backend
 * Creating individual product page - /products/:productId
 * Password validation (conditions and strength).
 * Delete individual product on cart.

@@ -1,4 +1,4 @@
-import { initialUserState } from "../Context/auth-context";
+import { initialUserState } from "../Context/AuthenticationProvider";
 
 export const userCredReducer = (state, { type, payload }) => {
   switch (type) {

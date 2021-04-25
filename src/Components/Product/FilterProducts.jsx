@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDataContext } from "../../Context/data-context";
+import { useDataContext } from "../../Context";
 
 export const FilterProducts = () => {
   const [searchTxt, setSearchTxt] = useState("");

@@ -1,5 +1,5 @@
 import webShop from "../../images/web-shop.svg";
-import { useDataContext } from "../../Context/data-context";
+import { useDataContext } from "../../Context";
 import onlineShop from "../../images/online-shopping.svg";
 import purchaseSucces from "../../images/purchase-success.svg";
 import shoppingApp from "../../images/shopping-app.svg";

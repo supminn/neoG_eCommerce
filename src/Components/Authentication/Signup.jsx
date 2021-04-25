@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Loader from "react-loader-spinner";
 import { NavLink } from "react-router-dom";
-import { useAuthContext } from "../../Context/auth-context";
-import { Password } from "./password";
+import { useAuthContext } from "../../Context";
+import { Password } from "./Password";
 
 export const Signup = () => {
   const [ErrorMsg, setErrorMsg] = useState("");

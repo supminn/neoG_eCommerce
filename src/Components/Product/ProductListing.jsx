@@ -1,14 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Loader from "react-loader-spinner";
-import { useDataContext } from "../../Context/data-context";
+import { useDataContext } from "../../Context";
 import shopProduct from "../../images/window-shop.svg";
 import {
   FilterProducts,
   getSortedProducts,
   getFilteredProducts,
-} from "./filterProducts";
-import { Product } from "./products";
+} from "./FilterProducts";
+import { Product } from "./Products";
 
 export const ProductListing = () => {
   const [showLoader, setShowLoader] = useState(false);

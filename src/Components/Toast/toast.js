@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDataContext } from "../../Context/data-context";
+import { useDataContext } from "../../Context";
 
 export const Toast = () => {
   const {state:{toastMsg}, dispatch} = useDataContext();

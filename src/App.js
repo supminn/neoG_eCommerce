@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import "./App.css";
-import { useDataContext } from "./Context/data-context";
-import { PrivateRoute } from "./api/privateRoute";
+import { useDataContext } from "./Context";
+import { PrivateRoute } from "./api/PrivateRoute";
 import {
   Home,
   Cart,

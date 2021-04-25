@@ -1,5 +1,5 @@
 import { useDataContext } from "../../../Context";
-import { AddressCard } from "./addressCard";
+import { AddressCard } from "./AddressCard";
 
 export const ShowAddresses = () => {
     const {state:{addresses}} = useDataContext();

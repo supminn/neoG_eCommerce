@@ -1,27 +1,27 @@
-export { Home } from "./Home/home";
+export { Home } from "./Home/Home";
 
-export { AddToCart } from "./Cart/addToCart";
-export { Cart } from "./Cart/cart";
-export { CartItem } from "./Cart/cartItem";
+export { AddToCart } from "./Cart/AddToCart";
+export { Cart } from "./Cart/Cart";
+export { CartItem } from "./Cart/CartItem";
 
-export { FilterProducts } from "./Product/filterProducts";
-export { ProductListing } from "./Product/productListing";
-export { Product } from "./Product/products";
+export { FilterProducts } from "./Product/FilterProducts";
+export { ProductListing } from "./Product/ProductListing";
+export { Product } from "./Product/Products";
 
-export { AddToWishlist } from "./Private/Wishlist/addToWishlist";
-export { Wishlist } from "./Private/Wishlist/wishlist";
-export { WishlistItem } from "./Private/Wishlist/wishlistItem";
+export { AddToWishlist } from "./Private/Wishlist/AddToWishlist";
+export { Wishlist } from "./Private/Wishlist/Wishlist";
+export { WishlistItem } from "./Private/Wishlist/WishlistItem";
 
 export { Toast } from "./Toast/toast";
-export { Navigation } from "./Navigation/navigation";
+export { Navigation } from "./Navigation/Navigation";
 
-export { Login } from "./Authentication/login";
-export { Signup } from "./Authentication/signup";
-export { Password } from "./Authentication/password";
-export { UserProfile } from "./Authentication/userProfile";
+export { Login } from "./Authentication/Login";
+export { Signup } from "./Authentication/Signup";
+export { Password } from "./Authentication/Password";
+export { UserProfile } from "./Authentication/UserProfile";
 
-export { OrderSummary } from "./Private/OrderSummary/orderSummary";
-export { Address } from "./Private/Address/address";
-export { AddressCard } from "./Private/Address/addressCard";
-export { AddNewAddress } from "./Private/Address/addNewAddress";
-export { ShowAddresses } from "./Private/Address/showAddresses";
+export { OrderSummary } from "./Private/OrderSummary/OrderSummary";
+export { Address } from "./Private/Address/Address";
+export { AddressCard } from "./Private/Address/AddressCard";
+export { AddNewAddress } from "./Private/Address/AddNewAddress";
+export { ShowAddresses } from "./Private/Address/ShowAddresses";
