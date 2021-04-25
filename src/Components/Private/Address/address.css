@@ -1,0 +1,30 @@
+.txt-error{
+    color: var(--failureBg);
+    font-size: 0.85em;
+}
+
+.txt-input{
+    margin: 0.2rem auto;
+}
+
+.card-address, .edit-address-container{
+    margin: 1rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    border: 1px solid var(--primaryBg)
+}
+
+.address-container .btn{
+    margin: 0.5rem;
+}
+
+@media screen and (min-width: 768px) {
+    .card-address, .edit-address-container{
+        width: 50%;
+        margin: 1rem auto;
+    }
+    .txt-input{
+        width: 70%;
+        margin: 0.4rem auto;
+    }
+}

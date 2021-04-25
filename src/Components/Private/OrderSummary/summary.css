@@ -1,0 +1,20 @@
+.txt-address{
+    color: var(--theme700);
+    display: block;
+    margin: 0.5rem;
+}
+
+.list-spaced{
+    margin: auto;
+}
+
+.list-spaced>li{
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
+
+.list-spaced>li:hover{
+    cursor: default;
+    background-color: unset;
+    box-shadow: unset;
+}

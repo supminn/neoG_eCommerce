@@ -12,7 +12,8 @@ import {
   Login,
   Address,
   Signup,
-  UserProfile
+  UserProfile,
+  OrderSummary
 } from "./Components";
 import { useAuthContext } from './Context';
 import {useEffect, useMemo} from 'react';
@@ -50,7 +51,7 @@ function App() {
           dispatch({type:"SET_CART", payload: cart});
       })();
     }
-  },[login, userData, dispatch])
+  },[login, userData])
 
   useEffect(() => {
     if(login && userData._id){
@@ -76,6 +77,7 @@ function App() {
         <PrivateRoute path="/wishlist" element={<Wishlist/>}/>
         <PrivateRoute path="/checkout" element={<Address/>}/>
         <PrivateRoute path="/user-profile" element={<UserProfile/>}/>
+        <PrivateRoute path="/order-summary" element={<OrderSummary/>}/>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>

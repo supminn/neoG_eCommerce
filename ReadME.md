@@ -56,9 +56,10 @@ This e-commerce application would have the following features. It is being built
 
 ### Future Enchancements
 * Filter on category/brand
+* Add query params for filters.
+* Update home page.
+* Address management - split street and locality details
 * Creating individual product page - /products/:productId
 * Re-structure database - user data.
 * Password validation (conditions and strength).
-* Add query params for filters.
-* Loader (move to context), serverCalls, disablled button - refactor
-* Move items in cart to DB when logged in. (concat)
+* Delete individual product on cart.

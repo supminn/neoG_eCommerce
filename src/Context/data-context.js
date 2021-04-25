@@ -14,7 +14,16 @@ const initialArg = {
   fastDelivery: false,
   priceRange: 30000,
   toastMsg: "",
-  searchValue:""
+  searchValue:"",
+  addresses:[JSON.parse(localStorage.getItem("addresses")) || {
+    id:1, 
+    name: "Supminn",
+    streetLocality: "Jayanagar",
+    city: "Bengaluru",
+    state: "Karnataka",
+    country: "India",
+    pinCode: "567082",
+    mobileNo: "983741837"}]
 };
 
 export const DataProvider = ({ children }) => {

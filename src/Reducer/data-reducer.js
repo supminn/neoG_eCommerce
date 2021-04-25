@@ -3,10 +3,10 @@ export const dataReducer = (state, { type, payload }) => {
     case "SET_PRODUCTS":
       return { ...state, products: payload };
 
-      case "SET_WISHLIST":
+    case "SET_WISHLIST":
       return { ...state, itemsInWishlist: payload };
 
-      case "SET_CART":
+    case "SET_CART":
       return { ...state, itemsInCart: payload };
 
     case "ADD_TO_CART":
@@ -100,6 +100,28 @@ export const dataReducer = (state, { type, payload }) => {
 
     case "SHOW_TOAST":
       return { ...state, toastMsg: payload };
+
+    case "ADD_ADDRESS":
+      payload.id = state.addresses.length + 1;
+      return {
+        ...state,
+        toastMsg: "New address added successfully",
+        addresses: state.addresses.concat(payload),
+      };
+    case "UPDATE_ADDRESS":
+      return {
+        ...state,
+        toastMsg: "Address updated successfully",
+        addresses: state.addresses.map((address) =>
+          address.id === payload.id ? payload : address
+        ),
+      };
+    case "REMOVE_ADDRESS":
+      return {
+        ...state,
+        toastMsg: "Address removed",
+        addresses: state.addresses.filter((address) => address.id !== payload),
+      };
 
     default:
       return state;

@@ -5,7 +5,6 @@ export const userCredReducer = (state, { type, payload }) => {
     case "SET_NAME":
       return { ...state, name: payload };
 
-
     case "SET_USERNAME":
       return { ...state, username: payload };
 
