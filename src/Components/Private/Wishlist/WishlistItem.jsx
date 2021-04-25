@@ -14,7 +14,7 @@ export const WishlistItem = ({ item }) => {
     fastDelivery,
   } = item;
   const { dispatch } = useDataContext();
-  const { login, userData, setShowLoader } = useAuthContext();
+  const {userData, setShowLoader } = useAuthContext();
 
   return (
     <div className="card">
