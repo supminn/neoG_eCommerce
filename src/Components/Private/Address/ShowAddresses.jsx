@@ -6,7 +6,7 @@ export const ShowAddresses = () => {
     return(
         <>
         {addresses.map((address) => (
-            <AddressCard key={address.id} {...address} />
+            <AddressCard key={address._id} {...address} />
         ))}
         </>
     )

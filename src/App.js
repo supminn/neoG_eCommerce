@@ -58,6 +58,8 @@ function App() {
       (async () => {
         const {data:{wishlistItems}} = await axios.get(`https://api-supminn.herokuapp.com/wishlist/${userData._id}`);
         dispatch({type:"SET_WISHLIST", payload: wishlistItems});
+        const {data:{address}} =  await axios.get(`https://api-supminn.herokuapp.com/address/${userData._id}`);
+        dispatch({type:"SET_ADDRESS", payload: address});
       })();
     }
     else{

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useDataContext } from "../../../Context";
+import { useAuthContext, useDataContext } from "../../../Context";
+import { updateUserAddress } from "../../../Utils/serverRequests";
 
 const defaultData = {
   name: "",
@@ -14,6 +15,7 @@ const defaultData = {
 
 export const AddNewAddress = ({setEditMode, editAddress = defaultData}) => {
   const {dispatch} = useDataContext();
+  const {userData, showLoader, setShowLoader} = useAuthContext();
   const [address, setAddress] = useState(editAddress);
   const [errorMsg, setErrorMsg] = useState({});
 
@@ -32,12 +34,13 @@ export const AddNewAddress = ({setEditMode, editAddress = defaultData}) => {
   const addNewAddress = (e) => {
     e.preventDefault();
     if(dataValidation()){
-      if(editAddress.id){
-        dispatch({type:"UPDATE_ADDRESS",payload: address})
-      }
-      else{
-        dispatch({type:"ADD_ADDRESS", payload: address});
-      }
+      updateUserAddress(address, userData._id,dispatch, setShowLoader);
+      // if(editAddress._id){
+      // dispatch({type:"UPDATE_ADDRESS",payload: address})
+      // }
+      // else{
+      // dispatch({type:"ADD_ADDRESS", payload: address});
+      // }
       setEditMode(val => !val);
     }
 
@@ -48,6 +51,7 @@ export const AddNewAddress = ({setEditMode, editAddress = defaultData}) => {
       <form className="form-address" onSubmit={addNewAddress}>
         <input className="txt-input"
           required
+          disabled={showLoader}
           type="text"
           placeholder="Full name"
           value={address.name}
@@ -57,6 +61,7 @@ export const AddNewAddress = ({setEditMode, editAddress = defaultData}) => {
         />
         <input className="txt-input"
           required
+          disabled={showLoader}
           type="number"
           placeholder="10 digit Mobile number"
           minLength="10"
@@ -68,6 +73,7 @@ export const AddNewAddress = ({setEditMode, editAddress = defaultData}) => {
         <p className="txt-error">{errorMsg.mobileNo}</p>
         <input className="txt-input"
           required
+          disabled={showLoader}
           type="text"
           placeholder="House/Flat No., Street, Colony"
           value={address.street}
@@ -80,6 +86,7 @@ export const AddNewAddress = ({setEditMode, editAddress = defaultData}) => {
         />
         <input className="txt-input"
           required
+          disabled={showLoader}
           type="text"
           placeholder="Area/Locality"
           value={address.locality}
@@ -92,6 +99,7 @@ export const AddNewAddress = ({setEditMode, editAddress = defaultData}) => {
         />
         <input className="txt-input"
           required
+          disabled={showLoader}
           type="text"
           placeholder="City/Town"
           value={address.city}
@@ -101,6 +109,7 @@ export const AddNewAddress = ({setEditMode, editAddress = defaultData}) => {
         />
         <input className="txt-input"
           required
+          disabled={showLoader}
           type="text"
           placeholder="State/Province/Region"
           value={address.state}
@@ -110,6 +119,7 @@ export const AddNewAddress = ({setEditMode, editAddress = defaultData}) => {
         />
         <input className="txt-input"
           required
+          disabled={showLoader}
           type="text"
           placeholder="Country/Region"
           value={address.country}
@@ -119,6 +129,7 @@ export const AddNewAddress = ({setEditMode, editAddress = defaultData}) => {
         />
           <input className="txt-input"
           required
+          disabled={showLoader}
           type="number"
           placeholder="Pincode"
           minLength="6"
@@ -129,8 +140,10 @@ export const AddNewAddress = ({setEditMode, editAddress = defaultData}) => {
           }
         />
         <p className="txt-error">{errorMsg.pinCode}</p>
-        <button type="submit" className="btn btn-solid">Save and Continue</button>
-        <button typ="button" className="btn btn-secondary" onClick={() => setEditMode(val => !val)}>Cancel</button>
+        <button disabled={showLoader}
+        type="submit" className="btn btn-solid">Save and Continue</button>
+        <button disabled={showLoader}
+        type="button" className="btn btn-secondary" onClick={() => setEditMode(val => !val)}>Cancel</button>
       </form>
     </div>
   );

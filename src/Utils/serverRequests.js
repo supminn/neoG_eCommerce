@@ -1,3 +1,4 @@
+/* eslint-disable default-case */
 import axios from "axios";
 
 export const updateWishlist = async (
@@ -13,7 +14,7 @@ export const updateWishlist = async (
     navigate("/login");
   }
   setShowLoader(true);
-  dispatch({type:"SHOW_TOAST",payload:"Updating wishlist..."});
+  dispatch({ type: "SHOW_TOAST", payload: "Updating wishlist..." });
   const { status } = await axios.post(
     `https://api-supminn.herokuapp.com/wishlist/${userId}`,
     {
@@ -42,7 +43,7 @@ export const updateCart = async (
   setShowLoader
 ) => {
   setShowLoader(true);
-  dispatch({type:"SHOW_TOAST",payload:"Updating cart..."});
+  dispatch({ type: "SHOW_TOAST", payload: "Updating cart..." });
   const { status } = await axios.post(
     `https://api-supminn.herokuapp.com/cart/${userId}`,
     {
@@ -50,7 +51,6 @@ export const updateCart = async (
       action: actionOnUpdate,
     }
   );
-  // eslint-disable-next-line default-case
   switch (actionOnUpdate.toUpperCase()) {
     case "ADD":
       dispatch({
@@ -74,5 +74,43 @@ export const updateCart = async (
       dispatch({ type: "MOVE_TO_WISHLIST", payload: product });
       break;
   }
+  setShowLoader(false);
+};
+
+export const updateUserAddress = async (
+  address,
+  userId,
+  dispatch,
+  setShowLoader
+) => {
+  setShowLoader(true);
+  dispatch({ type: "SHOW_TOAST", payload: "Updating address..." });
+  const { status } = await axios.post(
+    `https://api-supminn.herokuapp.com/address/${userId}`,
+    {
+      ...address,
+    }
+  );
+  if (address._id) {
+    dispatch({ type: "UPDATE_ADDRESS", payload: address });
+  } else {
+    dispatch({ type: "ADD_ADDRESS", payload: address });
+  }
+  setShowLoader(false);
+};
+
+export const removeUserAddress = async (
+  _id,
+  userId,
+  dispatch,
+  setShowLoader
+) => {
+  setShowLoader(true);
+  dispatch({ type: "SHOW_TOAST", payload: "Updating address..." });
+  const { status } = await axios.put(
+    `https://api-supminn.herokuapp.com/address/${userId}`,
+      {_id}
+  );
+  dispatch({ type: "REMOVE_ADDRESS", payload: _id });
   setShowLoader(false);
 };

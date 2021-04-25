@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useDataContext } from "../../../Context";
+import { useAuthContext, useDataContext } from "../../../Context";
+import { removeUserAddress } from "../../../Utils/serverRequests";
 import { AddNewAddress } from "./AddNewAddress";
 
 export const AddressCard = ({
-  id,
+  _id,
   name,
   street,
   locality,
@@ -16,6 +17,8 @@ export const AddressCard = ({
 }) => {
   const [editMode, setEditMode] = useState(false);
   const { dispatch } = useDataContext();
+  const { userData, setShowLoader } = useAuthContext();
+
   return (
     <>
       {!editMode && (
@@ -45,7 +48,8 @@ export const AddressCard = ({
                   pinCode,
                 },
               }}
-            > {" "}
+            >
+              {" "}
               Deliver to this address
             </Link>
             <i
@@ -57,7 +61,9 @@ export const AddressCard = ({
             </i>
             <i
               className="fas fa-lg btn btn-dark fa-trash-alt"
-              onClick={() => dispatch({ type: "REMOVE_ADDRESS", payload: id })}
+              onClick={() =>
+                removeUserAddress(_id, userData._id, dispatch, setShowLoader)
+              }
             >
               {" "}
               Delete
@@ -69,7 +75,7 @@ export const AddressCard = ({
         <AddNewAddress
           setEditMode={setEditMode}
           editAddress={{
-            id,
+            _id,
             name,
             street,
             locality,

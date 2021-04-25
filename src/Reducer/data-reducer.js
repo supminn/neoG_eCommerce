@@ -9,6 +9,9 @@ export const dataReducer = (state, { type, payload }) => {
     case "SET_CART":
       return { ...state, itemsInCart: payload };
 
+    case "SET_ADDRESS":
+      return { ...state, addresses: payload };
+
     case "ADD_TO_CART":
       if (state.itemsInCart.some((cartItem) => cartItem._id === payload._id)) {
         return {
@@ -102,7 +105,7 @@ export const dataReducer = (state, { type, payload }) => {
       return { ...state, toastMsg: payload };
 
     case "ADD_ADDRESS":
-      payload.id = state.addresses.length + 1;
+      payload._id = state.addresses.length + 1;
       return {
         ...state,
         toastMsg: "New address added successfully",
@@ -113,14 +116,14 @@ export const dataReducer = (state, { type, payload }) => {
         ...state,
         toastMsg: "Address updated successfully",
         addresses: state.addresses.map((address) =>
-          address.id === payload.id ? payload : address
+          address._id === payload._id ? payload : address
         ),
       };
     case "REMOVE_ADDRESS":
       return {
         ...state,
         toastMsg: "Address removed",
-        addresses: state.addresses.filter((address) => address.id !== payload),
+        addresses: state.addresses.filter((address) => address._id !== payload),
       };
 
     default:
