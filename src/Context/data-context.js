@@ -23,7 +23,7 @@ const initialArg = {
     state: "Karnataka",
     country: "India",
     pinCode: "567082",
-    mobileNo: "983741837"}]
+    mobileNo: "8856214578"}]
 };
 
 export const DataProvider = ({ children }) => {

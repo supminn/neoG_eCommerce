@@ -60,6 +60,5 @@ This e-commerce application would have the following features. It is being built
 * Update home page.
 * Address management - split street and locality details
 * Creating individual product page - /products/:productId
-* Re-structure database - user data.
 * Password validation (conditions and strength).
 * Delete individual product on cart.
