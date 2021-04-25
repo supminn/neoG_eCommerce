@@ -18,7 +18,7 @@ const initialArg = {
   addresses:[JSON.parse(localStorage.getItem("addresses")) || {
     id:1, 
     name: "Supminn",
-    streetLocality: "Jayanagar",
+    streetLocality: "Banashankari",
     city: "Bengaluru",
     state: "Karnataka",
     country: "India",
