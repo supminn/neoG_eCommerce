@@ -8,7 +8,7 @@ export const AddToWishlist = ({ product }) => {
     state: { itemsInWishlist },
 dispatch
   } = useDataContext();
-  const { login, userData,showLoader, setShowLoader } = useAuthContext();
+  const { login, userData, setShowLoader } = useAuthContext();
   const navigate = useNavigate();
   const isWishlisted = itemExists(itemsInWishlist, product._id);
 
@@ -19,7 +19,7 @@ dispatch
             ? "fas fa-heart fa-lg wish-active"
             : "far fa-heart fa-lg wish-inactive"
         }
-        onClick={() => showLoader?"":updateWishlist(login, product, isWishlisted, userData._id, dispatch, setShowLoader, navigate)}
+        onClick={() => login?updateWishlist(product, isWishlisted, userData._id, dispatch, setShowLoader):navigate("/login")}
       ></i>
     </>
   );

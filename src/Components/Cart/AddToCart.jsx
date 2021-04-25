@@ -20,7 +20,6 @@ export const AddToCart = ({ product }) => {
 
   const updateLists = () => {
     updateWishlist(
-      login,
       product,
       isWishlisted,
       userData._id,

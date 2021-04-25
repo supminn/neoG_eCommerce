@@ -51,7 +51,7 @@ export const WishlistItem = ({ item }) => {
       <i
         className="fa fa-times wish-remove"
         onClick={() =>
-          updateWishlist(login, item, true, userData._id, dispatch, setShowLoader)
+          updateWishlist(item, true, userData._id, dispatch, setShowLoader)
         }
       ></i>
     </div>

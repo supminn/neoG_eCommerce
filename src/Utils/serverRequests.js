@@ -2,17 +2,12 @@
 import axios from "axios";
 
 export const updateWishlist = async (
-  login,
   product,
   isWishlisted,
   userId,
   dispatch,
-  setShowLoader,
-  navigate
+  setShowLoader
 ) => {
-  if (!login) {
-    navigate("/login");
-  }
   setShowLoader(true);
   dispatch({ type: "SHOW_TOAST", payload: "Updating wishlist..." });
   const { status } = await axios.post(
