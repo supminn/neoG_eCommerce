@@ -4,7 +4,7 @@ import { useDataContext } from "../../../Context";
 export const OrderSummary = () => {
   const {
     state: {
-      address: { name, streetLocality, city, state, country, pinCode },
+      address: { name, street, locality, city, state, country, pinCode },
     },
   } = useLocation();
   const {
@@ -21,7 +21,7 @@ export const OrderSummary = () => {
       </h2>
       <em className="txt-address">
         <span className="secondary-txt">Deliver to: </span>
-        {name}, {streetLocality}, {city}, {state}, {country} - {pinCode}
+        {name}, {street}, {locality}, {city}, {state}, {country} - {pinCode}
       </em>
       <p className="primaryBg-txt">
         <b>₹{totalPrice}</b> ({itemsInCart.length} items)

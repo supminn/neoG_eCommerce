@@ -3,7 +3,8 @@ import { useDataContext } from "../../../Context";
 
 const defaultData = {
   name: "",
-  streetLocality: "",
+  street: "",
+  locality:"",
   city: "",
   state: "",
   country: "India",
@@ -68,12 +69,24 @@ export const AddNewAddress = ({setEditMode, editAddress = defaultData}) => {
         <input className="txt-input"
           required
           type="text"
-          placeholder="House/Flat No., Street, Colony, Area/Locality"
-          value={address.streetLocality}
+          placeholder="House/Flat No., Street, Colony"
+          value={address.street}
           onChange={(e) =>
             setAddress((address) => ({
               ...address,
-              streetLocality: e.target.value,
+              street: e.target.value,
+            }))
+          }
+        />
+        <input className="txt-input"
+          required
+          type="text"
+          placeholder="Area/Locality"
+          value={address.locality}
+          onChange={(e) =>
+            setAddress((address) => ({
+              ...address,
+              locality: e.target.value,
             }))
           }
         />

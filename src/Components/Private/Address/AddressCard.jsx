@@ -6,7 +6,8 @@ import { AddNewAddress } from "./AddNewAddress";
 export const AddressCard = ({
   id,
   name,
-  streetLocality,
+  street,
+  locality,
   city,
   state,
   country,
@@ -20,7 +21,8 @@ export const AddressCard = ({
       {!editMode && (
         <div className="card-address">
           <h3>{name}</h3>
-          <p>{streetLocality}</p>
+          <p>{street}</p>
+          <p>{locality}</p>
           <span>
             {city}, {state}
           </span>
@@ -35,7 +37,8 @@ export const AddressCard = ({
               state={{
                 address: {
                   name,
-                  streetLocality,
+                  street,
+                  locality,
                   city,
                   state,
                   country,
@@ -68,7 +71,8 @@ export const AddressCard = ({
           editAddress={{
             id,
             name,
-            streetLocality,
+            street,
+            locality,
             city,
             state,
             country,
