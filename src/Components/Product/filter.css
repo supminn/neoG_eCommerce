@@ -20,6 +20,10 @@
     overflow-y: scroll;
 }
 
+.filter-component .txt-box{
+    display: unset;
+}
+
 .sort-container, .filter-container{
     padding: 0 0.5rem;
     line-height: 2;

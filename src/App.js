@@ -13,7 +13,8 @@ import {
   Address,
   Signup,
   UserProfile,
-  OrderSummary
+  OrderSummary,
+  ProductDetails
 } from "./Components";
 import { useAuthContext } from './Context';
 import {useEffect, useMemo} from 'react';
@@ -73,11 +74,12 @@ function App() {
   return (
     <div className="App">
       <Navigation />
-      <div className="route-container">{toastMsg && <Toast />}</div>
+      <div className="toastmsg-container">{toastMsg && <Toast />}</div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<Cart />} /> 
         <Route path="/products" element={<ProductListing />} />
+        <Route path="/products/:productId" element={<ProductDetails />} />
         <PrivateRoute path="/wishlist" element={<Wishlist/>}/>
         <PrivateRoute path="/address" element={<Address/>}/>
         <PrivateRoute path="/user-profile" element={<UserProfile/>}/>

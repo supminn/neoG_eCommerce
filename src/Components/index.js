@@ -7,6 +7,7 @@ export { CartItem } from "./Cart/CartItem";
 export { FilterProducts } from "./Product/FilterProducts";
 export { ProductListing } from "./Product/ProductListing";
 export { Product } from "./Product/Products";
+export { ProductDetails } from "./Product/ProductDetails";
 
 export { AddToWishlist } from "./Private/Wishlist/AddToWishlist";
 export { Wishlist } from "./Private/Wishlist/Wishlist";
