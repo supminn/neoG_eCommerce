@@ -29,7 +29,7 @@ export const PriceDetails = ({ totalItems, cartTotal }) => {
           <b>₹{(cartTotal - 100).toFixed(2)}</b>
         </span>
       </div>
-      <NavLink to="/checkout" className="no-line">
+      <NavLink to="/address" className="no-line">
       <button
         type="button"
         className="btn btn-primary">

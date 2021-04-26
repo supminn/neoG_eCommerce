@@ -40,6 +40,12 @@ export const UserProfile = () => {
           >
                 <span className="txt-small primaryBg-txt"> My Cart</span>
           </Link>
+          <Link
+            to="/address"
+            className="no-line fas fa-lg fa-address-book secondary-txt"
+          >
+            <span className="txt-small primaryBg-txt"> Address Management</span>
+          </Link>
         </div>
         <button className="btn btn-primary" onClick={logOutHandler}>
           Logout

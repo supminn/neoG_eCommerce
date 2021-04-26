@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { useDataContext } from "../../Context";
+import { distinct } from "../../Utils/arrayOperations";
 
 export const FilterProducts = () => {
   const [searchTxt, setSearchTxt] = useState("");
   const {
-    state: { sortBy, inStock, fastDelivery, priceRange },
+    state: { products, sortBy, inStock, fastDelivery, priceRange, brandFilter, categoryFilter },
     dispatch,
   } = useDataContext();
+
+  const brands = products.map(product => product.brand).filter(distinct);
+  const categories = products.map(product => product.category).filter(distinct);
 
   const searchHandler = (e) => {
     if (e.keyCode === 13) {
@@ -103,6 +107,28 @@ export const FilterProducts = () => {
             }
           />
         </label>
+        <h4>Brands</h4>
+            {brands.map(brand => (
+              <label>
+              <input
+                type="checkbox"
+                onChange={() => dispatch({ type: "TOGGLE_BRAND" , payload: brand})}
+                checked={brandFilter.some(value => value === brand)}
+              />
+              {" "}{brand}{" "}
+            </label>
+            ))}
+            <h4>Categories</h4>
+            {categories.map(category => (
+              <label>
+              <input
+                type="checkbox"
+                onChange={() => dispatch({ type: "TOGGLE_CATEGORY" , payload: category})}
+                checked={categoryFilter.some(value => value === category)}
+              />
+              {" "}{category}{" "}
+            </label>
+            ))}
       </div>
     </div>
   );
@@ -126,10 +152,11 @@ export const getFilteredProducts = (
   isInStock,
   isFastDelivery,
   maxRange,
-  searchValue
+  searchValue,
+  brandFilter,
+  categoryFilter
 ) => {
-  return productData
-    .filter((product) => (isInStock ? product.inStock : true))
+    productData = productData.filter((product) => (isInStock ? product.inStock : true))
     .filter((product) => (isFastDelivery ? product.fastDelivery : true))
     .filter((product) => Number(product.price) <= maxRange)
     .filter(
@@ -138,4 +165,11 @@ export const getFilteredProducts = (
         product.brand.toLowerCase().includes(searchValue) ||
         product.category.toLowerCase().includes(searchValue)
     );
+    if(brandFilter.length>0){
+      productData = productData.filter(product => brandFilter.includes(product.brand));
+    }
+    if(categoryFilter.length>0){
+      productData = productData.filter(product => categoryFilter.includes(product.category));
+    }
+    return productData;
 };

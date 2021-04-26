@@ -14,7 +14,16 @@ export const ProductListing = () => {
   const [showLoader, setShowLoader] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
   const {
-    state: { products, sortBy, inStock, fastDelivery, priceRange, searchValue },
+    state: {
+      products,
+      sortBy,
+      inStock,
+      fastDelivery,
+      priceRange,
+      searchValue,
+      brandFilter,
+      categoryFilter,
+    },
     dispatch,
   } = useDataContext();
 
@@ -24,16 +33,18 @@ export const ProductListing = () => {
     inStock,
     fastDelivery,
     priceRange,
-    searchValue
+    searchValue,
+    brandFilter,
+    categoryFilter
   );
 
   useEffect(() => {
     (async () => {
       try {
         setShowLoader(true);
-        const {data: {products}} = await axios.get(
-          "https://api-supminn.herokuapp.com/products"
-        );
+        const {
+          data: { products },
+        } = await axios.get("https://api-supminn.herokuapp.com/products");
         dispatch({ type: "SET_PRODUCTS", payload: products });
         setShowLoader(false);
       } catch (err) {

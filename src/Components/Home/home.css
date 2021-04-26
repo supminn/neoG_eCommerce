@@ -8,6 +8,7 @@
     text-align: center;
     border-radius: 1rem;
     padding: 0 1rem;
+    margin:1rem;
 }
 
 .home-txt-desc .btn-solid{
@@ -83,7 +84,8 @@
         height: 20rem;
     }
     .img-main{
-        max-height: 50vh;
+        max-height: 53vh;
+        width: auto;
     }
     .home-txt-desc{
         width: 60%;

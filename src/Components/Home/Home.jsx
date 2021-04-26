@@ -1,8 +1,8 @@
-import webShop from "../../images/web-shop.svg";
+import homeImg from "../../images/home_page.png";
 import { useDataContext } from "../../Context";
-import onlineShop from "../../images/online-shopping.svg";
-import purchaseSucces from "../../images/purchase-success.svg";
-import shoppingApp from "../../images/shopping-app.svg";
+import amazonBasic from "../../images/amazon_basic.png";
+import rushAthletics from "../../images/rush_athletics.jpg";
+import crossrope from "../../images/crossrope.jpg";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -20,19 +20,18 @@ export const Home = () => {
         <span className="secondary-txt">SupMart</span>!
       </h2>
 
-      <img className="img-res img-svg img-main" src={webShop} alt="webShop" />
+      <img className="img-res img-svg img-main" src={homeImg} alt="Home page" />
 
       <div className="home-txt-desc">
         <p className="txt-desc primaryBg-txt">
           Avoid the struggle of offline shopping and experience the new
           generation aprroach with <b>SupMart</b>. Best brands with attractive
-          pricing!
+          pricing! One stop shop for all your <em>jump rope workout</em> needs!
         </p>
         <NavLink to="/products">
           <button
             type="button"
             className="btn btn-solid"
-            onClick={() => dispatch({ type: "ROUTE", payload: "products" })}
           >
             Shop Now
           </button>
@@ -40,32 +39,32 @@ export const Home = () => {
       </div>
 
       <h2 className="txt-header-2">
-        Featured <span className="secondary-txt">Categories</span>
+        Featured <span className="secondary-txt">Brands</span>
       </h2>
 
       <div className="cartegory-container">
         <NavLink to="/products">
           <img
-            onClick={() => dispatch({ type: "ROUTE", payload: "products" })}
             className="img-res img-svg"
-            src={onlineShop}
-            alt="onlineShop"
+            src={amazonBasic}
+            alt="Amazon Basic"
+            onClick={() => dispatch({type: "TOGGLE_BRAND", payload:"AmazonBasics"})}
           />
         </NavLink>
         <NavLink to="/products">
         <img
-          onClick={() => dispatch({ type: "ROUTE", payload: "products" })}
           className="img-res img-svg"
-          src={purchaseSucces}
-          alt="purchase"
+          src={rushAthletics}
+          alt="Rush Athletics"
+          onClick={() => dispatch({type: "TOGGLE_BRAND", payload:"Rush Athletics"})}
         />
         </NavLink>
         <NavLink to="/products">
         <img
-          onClick={() => dispatch({ type: "ROUTE", payload: "products" })}
           className="img-res img-svg"
-          src={shoppingApp}
-          alt="app"
+          src={crossrope}
+          alt="Crossrope"
+          onClick={() => dispatch({type: "TOGGLE_BRAND", payload:"Crossrope"})}
         />
         </NavLink>
       </div>

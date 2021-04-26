@@ -89,14 +89,30 @@ export const dataReducer = (state, { type, payload }) => {
       return { ...state, fastDelivery: !state.fastDelivery };
     case "PRICE_RANGE":
       return { ...state, priceRange: payload };
+    case "TOGGLE_BRAND":
+      return {
+        ...state,
+        brandFilter: state.brandFilter.some((value) => value === payload)
+          ? state.brandFilter.filter((value) => value !== payload)
+          : state.brandFilter.concat(payload),
+      };
+    case "TOGGLE_CATEGORY":
+      return {
+        ...state,
+        categoryFilter: state.categoryFilter.some((value) => value === payload)
+          ? state.categoryFilter.filter((value) => value !== payload)
+          : state.categoryFilter.concat(payload),
+      };
     case "CLEAR_ALL_FILTERS":
       return {
         ...state,
         sortBy: null,
         inStock: false,
         fastDelivery: false,
-        priceRange: 1000,
+        priceRange: 30000,
         searchValue: "",
+        brandFilter: [],
+        categoryFilter: [],
       };
     case "SEARCH_PRODUCT":
       return { ...state, searchValue: payload.toLowerCase() };

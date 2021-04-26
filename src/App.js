@@ -37,13 +37,15 @@ function App() {
     if(login && userData._id){
       if(cartItems){
         cartItems.forEach(product => {
-          updateCart(
-            product,
-            "ADD",
-            userData._id,
-            dispatch,
-            setShowLoader
-          );
+          while(product.quantity-- > 0){
+            updateCart(
+              product,
+              "ADD",
+              userData._id,
+              dispatch,
+              setShowLoader
+            );
+          }
         })
       }
       (async () => {
@@ -77,7 +79,7 @@ function App() {
         <Route path="/cart" element={<Cart />} /> 
         <Route path="/products" element={<ProductListing />} />
         <PrivateRoute path="/wishlist" element={<Wishlist/>}/>
-        <PrivateRoute path="/checkout" element={<Address/>}/>
+        <PrivateRoute path="/address" element={<Address/>}/>
         <PrivateRoute path="/user-profile" element={<UserProfile/>}/>
         <PrivateRoute path="/order-summary" element={<OrderSummary/>}/>
         <Route path="/login" element={<Login />} />
