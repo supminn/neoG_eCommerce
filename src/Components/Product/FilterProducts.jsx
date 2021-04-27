@@ -109,7 +109,7 @@ export const FilterProducts = () => {
         </label>
         <h4>Brands</h4>
             {brands.map(brand => (
-              <label>
+              <label key={brand}>
               <input
                 type="checkbox"
                 onChange={() => dispatch({ type: "TOGGLE_BRAND" , payload: brand})}
@@ -120,7 +120,7 @@ export const FilterProducts = () => {
             ))}
             <h4>Categories</h4>
             {categories.map(category => (
-              <label>
+              <label key={category}>
               <input
                 type="checkbox"
                 onChange={() => dispatch({ type: "TOGGLE_CATEGORY" , payload: category})}

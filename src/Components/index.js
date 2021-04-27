@@ -9,10 +9,6 @@ export { ProductListing } from "./Product/ProductListing";
 export { Product } from "./Product/Products";
 export { ProductDetails } from "./Product/ProductDetails";
 
-export { AddToWishlist } from "./Private/Wishlist/AddToWishlist";
-export { Wishlist } from "./Private/Wishlist/Wishlist";
-export { WishlistItem } from "./Private/Wishlist/WishlistItem";
-
 export { Toast } from "./Toast/toast";
 export { Navigation } from "./Navigation/Navigation";
 
@@ -20,6 +16,12 @@ export { Login } from "./Authentication/Login";
 export { Signup } from "./Authentication/Signup";
 export { Password } from "./Authentication/Password";
 export { UserProfile } from "./Authentication/UserProfile";
+
+export {PrivateRoute} from "./Private/PrivateRoute";
+
+export { AddToWishlist } from "./Private/Wishlist/AddToWishlist";
+export { Wishlist } from "./Private/Wishlist/Wishlist";
+export { WishlistItem } from "./Private/Wishlist/WishlistItem";
 
 export { OrderSummary } from "./Private/OrderSummary/OrderSummary";
 export { Address } from "./Private/Address/Address";

@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import "./App.css";
 import { useDataContext } from "./Context";
-import { PrivateRoute } from "./api/PrivateRoute";
 import {
   Home,
   Cart,
@@ -14,7 +13,8 @@ import {
   Signup,
   UserProfile,
   OrderSummary,
-  ProductDetails
+  ProductDetails,
+  PrivateRoute
 } from "./Components";
 import { useAuthContext } from './Context';
 import {useEffect, useMemo} from 'react';
