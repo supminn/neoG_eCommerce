@@ -9,65 +9,24 @@
 @import './Components/Authentication/authentication.css';
 @import './Components/Private/Address/address.css';
 @import './Components/Private/OrderSummary/summary.css';
+@import './Components/Product/productDetail.css';
 
 .btn-sm {
   padding: 0.2rem 0.4rem;
 }
 
-.card .rating{
+.card .rating,
+.card-horizontal .rating {
   cursor: unset;
-}
-
-/* Wishlist ♥ styling */
-.wish-active,
-.wish-inactive,
-.wish-remove {
-  cursor: pointer;
-  color: var(--secondaryTxt);
-  position: absolute;
-  top: 5%;
-  right: 8%;
-  border-radius: 50%;
-  padding: 3% 2%;
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-/* Wishlist dismiss btn */
-.wish-remove {
-  top: 5%;
-  right: 7%;
-  padding: 2%;
-}
-
-/* Product out of stock */
-.stock-container-overlay {
-  border-bottom-right-radius: 1rem;
-  border-top-left-radius: 1rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  background-color: rgb(234, 234, 236, 0.5);
-}
-
-.stock-txt-overlay {
-  background-color: var(--primaryTxt);
-  border: 1px solid var(--primaryBg);
-  padding: 0.5rem;
 }
 
 .txt-container {
   flex-grow: 1;
 }
 
-.card-img {
+.card .card-img {
   flex-grow: 1;
-  max-height: 50%;
+  max-height: 11rem;
 }
 
 .card-discount {
@@ -80,6 +39,10 @@
 
 .toastmsg-container {
   min-height: 3rem;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 /* App defaults */

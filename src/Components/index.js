@@ -17,7 +17,7 @@ export { Signup } from "./Authentication/Signup";
 export { Password } from "./Authentication/Password";
 export { UserProfile } from "./Authentication/UserProfile";
 
-export {PrivateRoute} from "./Private/PrivateRoute";
+export { PrivateRoute } from "./Private/PrivateRoute";
 
 export { AddToWishlist } from "./Private/Wishlist/AddToWishlist";
 export { Wishlist } from "./Private/Wishlist/Wishlist";

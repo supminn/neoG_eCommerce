@@ -18,6 +18,7 @@
 .filter-component{
     height: 95vh;
     overflow-y: scroll;
+    width: 100vw;
 }
 
 .filter-component .txt-box{
@@ -48,6 +49,7 @@
         position: fixed;
         top: 4rem;
         left: 1rem;
+        width: unset;
     }
     .filter-header{
         width: 15rem;

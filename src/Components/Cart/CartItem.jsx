@@ -1,18 +1,32 @@
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 import { useAuthContext, useDataContext } from "../../Context";
 import { updateCart } from "../../Utils/serverRequests";
 
 export const CartItem = ({ item }) => {
-  const { name, image, price, quantity, brand, rating, offer } = item;
+  const { _id, name, image, price, quantity, brand, rating, offer } = item;
   const { dispatch } = useDataContext();
   const { login, userData, showLoader, setShowLoader } = useAuthContext();
   const navigate = useNavigate();
 
   return (
     <div className="card-horizontal">
-      <img className="card-img" alt={name} src={image} />
-      <section className="card-details-container">
-        <h3 className="card-heading">{brand}</h3>
+      <img
+        className="card-img cursor-pointer"
+        alt={name}
+        src={image}
+        onClick={() =>
+          navigate(`/products/${_id}`, { state: { product: item } })
+        }
+      />
+      <section className="card-details-container primaryBg-txt">
+        <Link
+          className="no-line primaryBg-txt"
+          to={`/products/${_id}`}
+          state={{ product: item }}
+        >
+          <h3 className="card-heading">{brand}</h3>
+        </Link>
         <div className="cart-item-desc-content">
           <p className="card-heading">{name}</p>
           <span className="card-desc">₹{(price * quantity).toFixed(2)} </span>

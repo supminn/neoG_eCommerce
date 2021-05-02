@@ -1,0 +1,26 @@
+.div-center{
+    margin: auto;
+}
+
+.icon-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.icon-container .fas{
+    padding: 0.3rem;
+}
+
+.rating>.fa-star:hover{
+    color: var(--theme200);
+}
+
+.rating>.rating-checked:hover{
+    color: var(--primaryBg);
+}
+
+.card-horizontal .wish-active,
+.card-horizontal .wish-inactive{
+    top: 2%;
+    right: 2%;
+}

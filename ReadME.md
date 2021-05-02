@@ -5,7 +5,8 @@ This e-commerce application would have the following features. It is being built
 ## Functionalities to be implemented
 
 1. Product Listing Page
-    * List of products - fetched via api
+    * List of products - fetched via ExpressAPI
+    * Product detail page
     * Search for products
     * Wishlist button
     * Add to cart button
@@ -15,7 +16,7 @@ This e-commerce application would have the following features. It is being built
         * Exclude "out of stock" products (Greyed out | Cannot be added to cart)
         * Show fast delivery products
         * Price range of products
-        * Category/brand checkbox (upcoming)
+        * Category & Brands 
 
 2. Cart functionality
     * Cart item list
@@ -40,22 +41,8 @@ This e-commerce application would have the following features. It is being built
     * Private route - wishlist and checkout
     * Sign up - new users
     * Persist login state
-
-## Practices
-* Mirage for backend. Setup database, products and address management | faker data - seeded to mirage
-* Custom hook for axios calls
-* useContext for product, cart and wishlist
-* useReducer to main the cart, product and wishlist state; address state.
-* Segregate into respective folders
-* ExpressJS api calls for backend. Data added on mongoDB using mongoose.
-
-### Additional Libraries
-1. Miragejs
-2. Faker
-3. Axios
-
+    * Data stored on MongoDB
 ### Future Enchancements
 * Add query params for filters.
-* Creating individual product page - /products/:productId
 * Password validation (conditions and strength).
 * Delete individual product on cart.
