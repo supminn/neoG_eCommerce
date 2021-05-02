@@ -1,4 +1,7 @@
 export { Home } from "./Home/Home";
+export { Toast } from "./Toast/toast";
+export { Navigation } from "./Navigation/Navigation";
+export { Footer } from "./Footer/Footer";
 
 export { AddToCart } from "./Cart/AddToCart";
 export { Cart } from "./Cart/Cart";
@@ -8,9 +11,6 @@ export { FilterProducts } from "./Product/FilterProducts";
 export { ProductListing } from "./Product/ProductListing";
 export { Product } from "./Product/Products";
 export { ProductDetails } from "./Product/ProductDetails";
-
-export { Toast } from "./Toast/toast";
-export { Navigation } from "./Navigation/Navigation";
 
 export { Login } from "./Authentication/Login";
 export { Signup } from "./Authentication/Signup";

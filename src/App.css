@@ -10,6 +10,7 @@
 @import './Components/Private/Address/address.css';
 @import './Components/Private/OrderSummary/summary.css';
 @import './Components/Product/productDetail.css';
+@import './Components/Footer/footer.css';
 
 .btn-sm {
   padding: 0.2rem 0.4rem;

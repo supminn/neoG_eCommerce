@@ -1,0 +1,13 @@
+.footer {
+    background-color: var(--theme900);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+}
+
+.fab {
+    padding: 0 0.5rem;
+}

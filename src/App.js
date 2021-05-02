@@ -14,7 +14,8 @@ import {
   UserProfile,
   OrderSummary,
   ProductDetails,
-  PrivateRoute
+  PrivateRoute,
+  Footer
 } from "./Components";
 import { useAuthContext } from './Context';
 import {useEffect, useMemo} from 'react';
@@ -87,6 +88,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
+      <Footer/>
     </div>
   );
 }
