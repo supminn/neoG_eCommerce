@@ -24,6 +24,7 @@ export const Cart = () => {
   }, []);
 
   const clearCart = async () => {
+   try{
     if (login) {
       setShowLoader(true);
       const { status } = await axios.delete(
@@ -32,6 +33,11 @@ export const Cart = () => {
     }
     dispatch({ type: "CLEAR_CART" });
     setShowLoader(false);
+   }
+   catch (err) {
+     console.error(err);
+     dispatch({type:"SHOW_TOAST", payload:" Could not clear cart, try again later"})
+   }
   };
   return (
     <>
