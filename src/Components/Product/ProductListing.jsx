@@ -55,10 +55,20 @@ export const ProductListing = () => {
 
   useEffect(() => {
     document.title = "SupMart | Products";
+  }, []);
+
+  const updateFilterDisplay = () => {
     if (window.innerWidth >= 768) {
       setShowFilters(true);
     }
-  }, []);
+  }
+
+  useEffect(() => {
+    updateFilterDisplay();
+    window.addEventListener("resize", updateFilterDisplay);
+    return () => window.removeEventListener("resize", updateFilterDisplay);
+    }, []);
+    
 
   return showLoader ? (
     <div className="loader-container">
