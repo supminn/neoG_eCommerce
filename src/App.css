@@ -12,6 +12,10 @@
 @import './Components/Product/productDetail.css';
 @import './Components/Footer/footer.css';
 
+.body-container {
+  min-height: 77vh;
+}
+
 .btn-sm {
   padding: 0.2rem 0.4rem;
 }
