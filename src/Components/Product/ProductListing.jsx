@@ -55,6 +55,7 @@ export const ProductListing = () => {
 
   useEffect(() => {
     document.title = "SupMart | Products";
+    window.scroll(0,0);
   }, []);
 
   const updateFilterDisplay = () => {
