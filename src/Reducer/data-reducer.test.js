@@ -7,15 +7,24 @@ describe("testing SET_CART in data reducer", () => {
       payload: [
         {
           _id: 123,
+          name: "Jump Rope",
+          inStock: true,
+          fastDelivery: false,
           quantity: 1,
         },
         {
           _id: 124,
+          name: "Weighted Jump Rope",
+          inStock: true,
+          fastDelivery: true,
           quantity: 2,
         },
         {
           _id: 125,
-          quantity: 3,
+          name: "Rush Athletics Mat",
+          inStock: true,
+          fastDelivery: false,
+          quantity: 1,
         },
       ],
     };
@@ -41,15 +50,24 @@ describe("testing SET_CART in data reducer", () => {
       itemsInCart: [
         {
           _id: 123,
+          name: "Jump Rope",
+          inStock: true,
+          fastDelivery: false,
           quantity: 1,
         },
         {
           _id: 124,
+          name: "Weighted Jump Rope",
+          inStock: true,
+          fastDelivery: true,
           quantity: 2,
         },
         {
           _id: 125,
-          quantity: 3,
+          name: "Rush Athletics Mat",
+          inStock: true,
+          fastDelivery: false,
+          quantity: 1,
         },
       ],
       itemsInWishlist: [],
@@ -218,37 +236,278 @@ describe("testing REMOVE_FROM_CART in data reducer", () => {
       ],
       toastMsg: "Cart updated successfully!",
     });
-
   });
 });
 
 describe("testing CLEAR_CART in data reducer", () => {
-    test("should clear or remove all items in the cart", () => {
-        const action = {
-            type:"CLEAR_CART"
-        }
+  test("should clear or remove all items in the cart", () => {
+    const action = {
+      type: "CLEAR_CART",
+    };
 
-        let state = {
-            itemsInCart:[{
-                _id: 123,
-                name: "Jump Rope",
-                inStock: true,
-                fastDelivery: false,
-                quantity: 2,
-              },
-              {
-                _id: 124,
-                name: "Jump Rope",
-                inStock: true,
-                fastDelivery: false,
-                quantity: 1,
-              }],
-        };
+    let state = {
+      itemsInCart: [
+        {
+          _id: 123,
+          name: "Jump Rope",
+          inStock: true,
+          fastDelivery: false,
+          quantity: 2,
+        },
+        {
+          _id: 124,
+          name: "Jump Rope",
+          inStock: true,
+          fastDelivery: false,
+          quantity: 1,
+        },
+      ],
+    };
 
-        state = dataReducer(state, action);
-        expect(state).toEqual({
-            itemsInCart:[]
-        })
-    })
-    
-})
+    state = dataReducer(state, action);
+    expect(state).toEqual({
+      itemsInCart: [],
+    });
+  });
+});
+
+describe("testing SET_WISHLIST in data reducer", () => {
+  test("should set items in  cart", () => {
+    const action = {
+      type: "SET_WISHLIST",
+      payload: [
+        {
+          _id: 123,
+          name: "Jump Rope",
+          inStock: true,
+          fastDelivery: false,
+        },
+        {
+          _id: 124,
+          name: "Weighted Jump Rope",
+          inStock: true,
+          fastDelivery: true,
+        },
+        {
+          _id: 125,
+          name: "Crossrope get lean set",
+          inStock: false,
+          fastDelivery: false,
+        },
+      ],
+    };
+
+    const initalState = {
+      itemsInWishlist: [],
+    };
+
+    const state = dataReducer(initalState, action);
+    expect(state).toEqual({
+      itemsInWishlist: [
+        {
+          _id: 123,
+          name: "Jump Rope",
+          inStock: true,
+          fastDelivery: false,
+        },
+        {
+          _id: 124,
+          name: "Weighted Jump Rope",
+          inStock: true,
+          fastDelivery: true,
+        },
+        {
+          _id: 125,
+          name: "Crossrope get lean set",
+          inStock: false,
+          fastDelivery: false,
+        },
+      ],
+    });
+  });
+});
+
+describe("testing ADD_TO_WISHLIST", () => {
+  test("should add product into wishlist & remove from cart if it exists", () => {
+    const action = {
+      type: "ADD_TO_WISHLIST",
+      payload: {
+        _id: 123,
+        name: "Jump Rope",
+        inStock: true,
+        fastDelivery: false,
+      },
+    };
+
+    let state = {
+      itemsInCart: [
+        {
+          _id: 123,
+          name: "Jump Rope",
+          inStock: true,
+          fastDelivery: false,
+          quantity: 3,
+        },
+        {
+          _id: 124,
+          name: "Weighted Jump Rope",
+          inStock: true,
+          fastDelivery: true,
+          quantity: 1,
+        },
+      ],
+      itemsInWishlist: [
+        {
+          _id: 125,
+          name: "Crossrope Get Lean Set",
+          inStock: false,
+          fastDelivery: true,
+        },
+      ],
+      toastMsg: "",
+    };
+
+    state = dataReducer(state, action);
+    expect(state).toEqual({
+      itemsInCart: [
+        {
+          _id: 124,
+          name: "Weighted Jump Rope",
+          inStock: true,
+          fastDelivery: true,
+          quantity: 1,
+        },
+      ],
+      itemsInWishlist: [
+        {
+          _id: 125,
+          name: "Crossrope Get Lean Set",
+          inStock: false,
+          fastDelivery: true,
+        },
+        {
+          _id: 123,
+          name: "Jump Rope",
+          inStock: true,
+          fastDelivery: false,
+        },
+      ],
+      toastMsg: '"Jump Rope" added to wishlist',
+    });
+  });
+});
+
+describe("testing REMOVE_FROM_WISHLIST", () => {
+  test("should remove product from wishlist", () => {
+    const action = {
+      type: "REMOVE_FROM_WISHLIST",
+      payload: {
+        _id: 123,
+        name: "Jump Rope",
+        inStock: true,
+        fastDelivery: false,
+      },
+    };
+
+    let state = {
+      itemsInWishlist: [
+        {
+          _id: 123,
+          name: "Jump Rope",
+          inStock: true,
+          fastDelivery: false,
+        },
+        {
+          _id: 125,
+          name: "Crossrope Get Lean Set",
+          inStock: false,
+          fastDelivery: true,
+        },
+      ],
+      toastMsg: "",
+    };
+
+    state = dataReducer(state, action);
+    expect(state).toEqual({
+      itemsInWishlist: [
+        {
+          _id: 125,
+          name: "Crossrope Get Lean Set",
+          inStock: false,
+          fastDelivery: true,
+        },
+      ],
+      toastMsg: '"Jump Rope" removed from wishlist',
+    });
+  });
+});
+
+describe("testing MOVE_TO_WISHLIST", () => {
+  test("should move product into wishlist & remove from cart", () => {
+    const action = {
+      type: "MOVE_TO_WISHLIST",
+      payload: {
+        _id: 123,
+        name: "Jump Rope",
+        inStock: true,
+        fastDelivery: false,
+      },
+    };
+
+    let state = {
+      itemsInCart: [
+        {
+          _id: 123,
+          name: "Jump Rope",
+          inStock: true,
+          fastDelivery: false,
+          quantity: 3,
+        },
+        {
+          _id: 124,
+          name: "Weighted Jump Rope",
+          inStock: true,
+          fastDelivery: true,
+          quantity: 1,
+        },
+      ],
+      itemsInWishlist: [
+        {
+          _id: 125,
+          name: "Crossrope Get Lean Set",
+          inStock: false,
+          fastDelivery: true,
+        },
+      ],
+      toastMsg: "",
+    };
+
+    state = dataReducer(state, action);
+    expect(state).toEqual({
+      itemsInCart: [
+        {
+          _id: 124,
+          name: "Weighted Jump Rope",
+          inStock: true,
+          fastDelivery: true,
+          quantity: 1,
+        },
+      ],
+      itemsInWishlist: [
+        {
+          _id: 125,
+          name: "Crossrope Get Lean Set",
+          inStock: false,
+          fastDelivery: true,
+        },
+        {
+          _id: 123,
+          name: "Jump Rope",
+          inStock: true,
+          fastDelivery: false,
+        },
+      ],
+      toastMsg: '"Jump Rope" moved to wishlist',
+    });
+  });
+});
