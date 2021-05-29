@@ -50,14 +50,19 @@ function App() {
     if (login) {
       if (cartItems) {
         cartItems.forEach((product) => {
+          (async () => {
           while (product.quantity-- > 0) {
-            updateCart(product, "ADD", dispatch, setShowLoader);
+              await updateCart(product, "ADD", dispatch, setShowLoader);
           }
+        })();
         });
       }
-      initializeUserCart(dispatch);
-      initializeUserWishlist(dispatch);
-      initializeUserAddresses(dispatch);
+      (async () => {
+        await initializeUserCart(dispatch);
+        await initializeUserWishlist(dispatch);
+        await initializeUserAddresses(dispatch);
+      })();
+   
     }
   }, [login]);
 
