@@ -2,10 +2,17 @@ import axios from "axios";
 import { API_URL } from "./apiDetails";
 
 export const initializeUserWishlist = async (dispatch) => {
-  const {
-    data: { wishlistItems },
-  } = await axios.get(`${API_URL}/wishlist/`);
-  dispatch({ type: "SET_WISHLIST", payload: wishlistItems });
+  try {
+    const {
+      data: { wishlistItems },
+    } = await axios.get(`${API_URL}/wishlist/`);
+    if (wishlistItems) {
+      dispatch({ type: "SET_WISHLIST", payload: wishlistItems });
+    }
+  } catch (err) {
+    dispatch({ type: "SHOW_TOAST", payload: "Couldn't fetch wishlist items" });
+    console.error(err);
+  } 
 };
 
 export const updateWishlist = async (

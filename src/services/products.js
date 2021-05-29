@@ -7,9 +7,13 @@ export const fetchAllProducts = async (dispatch, setShowLoader) => {
     const {
       data: { products },
     } = await axios.get(`${API_URL}/products`);
-    dispatch({ type: "SET_PRODUCTS", payload: products });
-    setShowLoader(false);
+    if (products) {
+      dispatch({ type: "SET_PRODUCTS", payload: products });
+    }
   } catch (err) {
+    dispatch({ type: "SHOW_TOAST", payload: "Couldn't fetch product list" });
     console.error(err);
+  } finally {
+    setShowLoader(false);
   }
 };

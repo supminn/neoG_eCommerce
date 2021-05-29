@@ -6,7 +6,9 @@ export const initializeUserAddresses = async (dispatch) => {
     const {
       data: { address },
     } = await axios.get(`${API_URL}/address/`);
-    dispatch({ type: "SET_ADDRESS", payload: address });
+    if (address) {
+      dispatch({ type: "SET_ADDRESS", payload: address });
+    }
   } catch (error) {
     dispatch({ type: "SHOW_TOAST", payload: "Unable to fetch address data." });
     console.error(error);

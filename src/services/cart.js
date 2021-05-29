@@ -6,7 +6,9 @@ export const initializeUserCart = async (dispatch) => {
   const {
     data: { cart },
   } = await axios.get(`${API_URL}/cart/`);
+  if(cart){
   dispatch({ type: "SET_CART", payload: cart });
+  }
 };
 
 export const updateCart = async (
