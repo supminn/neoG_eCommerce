@@ -4,14 +4,14 @@ import addToCart from "../../images/add-to-cart.svg";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { PriceDetails } from "./PriceDetail";
-import axios from "axios";
+import { emptyCart } from "../../services/cart";
 
 export const Cart = () => {
   const {
     state: { itemsInCart },
     dispatch,
   } = useDataContext();
-  const { login, userData, showLoader, setShowLoader } = useAuthContext();
+  const { login, showLoader, setShowLoader } = useAuthContext();
 
   const cartTotal = itemsInCart.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -24,28 +24,25 @@ export const Cart = () => {
   }, []);
 
   const clearCart = async () => {
-   try{
     if (login) {
-      setShowLoader(true);
-      const { status } = await axios.delete(
-        `https://api-supminn.herokuapp.com/cart/${userData._id}`
-      );
+      await emptyCart(dispatch, setShowLoader);
+    } else {
+      dispatch({ type: "CLEAR_CART" });
     }
-    dispatch({ type: "CLEAR_CART" });
-    setShowLoader(false);
-   }
-   catch (err) {
-     console.error(err);
-     dispatch({type:"SHOW_TOAST", payload:" Could not clear cart, try again later"})
-   }
   };
+
   return (
     <>
       <h2 className="txt-header-2">
         My <span className="secondary-txt">Cart</span>
       </h2>
       {totalItems > 0 && (
-        <button type="button" disabled={showLoader} className="btn btn-dark" onClick={clearCart}>
+        <button
+          type="button"
+          disabled={showLoader}
+          className="btn btn-dark"
+          onClick={clearCart}
+        >
           Remove All
         </button>
       )}

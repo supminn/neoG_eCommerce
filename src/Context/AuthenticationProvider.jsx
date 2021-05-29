@@ -1,28 +1,39 @@
 import { createContext, useContext, useReducer, useState } from "react";
 import axios from "axios";
 import { userCredReducer } from "../Reducer/auth-reducer";
+import jwt_decode from "jwt-decode";
+import { API_URL } from "../services/apiDetails";
+
 const AuthContext = createContext();
 
 export const useAuthContext = () => useContext(AuthContext);
 
-export const initialUserState = { name:"", username:"", password:"", email:"" };
+export const initialUserState = {
+  name: "",
+  username: "",
+  password: "",
+  email: "",
+};
 
 export const AuthenticationProvider = ({ children }) => {
-  const [login, setLogin] = useState(localStorage.getItem("login") || false);
-  const [userState, userDispatch] = useReducer(userCredReducer, initialUserState);
-  const [userData, setUser] = useState(JSON.parse(localStorage.getItem("userData")) || {});
+  const [login, setLogin] = useState(JSON.parse(localStorage.getItem("login")) || false);
+  const [userState, userDispatch] = useReducer(
+    userCredReducer,
+    initialUserState
+  );
+
   const [showLoader, setShowLoader] = useState(false);
 
   const loginUser = async (name, pwd) => {
     try {
-      const { data } = await axios.post("https://api-supminn.herokuapp.com/users/login", {
+      const { data } = await axios.post(`${API_URL}/users/login`, {
         username: name.toLowerCase(),
         password: pwd,
       });
-      setLogin(true);
-      localStorage.setItem("login", login);
-      setUser(data.user);
-      localStorage.setItem("userData", JSON.stringify(data.user));
+      const decoded = jwt_decode(data.token);
+      const loginData = {token:`Bearer ${data.token}`, user: decoded.name};
+      setLogin(loginData);
+      localStorage.setItem("login", JSON.stringify(loginData));
       userDispatch({ type: "CLEAR" });
       return data;
     } catch (err) {
@@ -34,24 +45,20 @@ export const AuthenticationProvider = ({ children }) => {
 
   const logOutUser = () => {
     setLogin(false);
-    setUser("");
-    localStorage.removeItem("login");
-    localStorage.removeItem("userData");
-
+    localStorage.clear();
   };
 
-  const registerUser = async (name,username, password, email) => {
+  const registerUser = async (name, username, password, email) => {
     try {
-      const { data } = await axios.post("https://api-supminn.herokuapp.com/users/signup", {
-        name,
-        username: username.toLowerCase(),
-        password,
-        email: email.toLowerCase(),
-      });
-      setLogin(true);
-      localStorage.setItem("login", login);
-      setUser(data.user);
-      localStorage.setItem("userData", JSON.stringify(data.user));
+      const { data } = await axios.post(
+        `${API_URL}/users/signup`,
+        {
+          name,
+          username: username.toLowerCase(),
+          password,
+          email: email.toLowerCase(),
+        }
+      );
       userDispatch({ type: "CLEAR" });
       return data;
     } catch (err) {
@@ -60,6 +67,7 @@ export const AuthenticationProvider = ({ children }) => {
       return err.response.data;
     }
   };
+
   return (
     <AuthContext.Provider
       value={{
@@ -69,9 +77,8 @@ export const AuthenticationProvider = ({ children }) => {
         userState,
         userDispatch,
         registerUser,
-        userData,
-        showLoader, 
-        setShowLoader
+        showLoader,
+        setShowLoader,
       }}
     >
       {children}

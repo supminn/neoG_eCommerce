@@ -20,14 +20,16 @@ import {
 import { useAuthContext } from "./Context";
 import { useEffect, useMemo } from "react";
 import axios from "axios";
-import { updateCart } from "./Utils/serverRequests";
+import { initializeUserCart, updateCart } from "./services/cart";
+import { initializeUserWishlist } from "./services/wishlist";
+import { initializeUserAddresses } from "./services/address";
 
 function App() {
   const {
     state: { toastMsg, itemsInCart },
     dispatch,
   } = useDataContext();
-  const { login, userData, setShowLoader } = useAuthContext();
+  const { login, setShowLoader } = useAuthContext();
 
   const cartItems = useMemo(() => {
     if (!login && itemsInCart.length > 0) {
@@ -35,46 +37,29 @@ function App() {
     }
   }, [itemsInCart]);
 
+
   useEffect(() => {
-    if (login && userData._id) {
+    if (login) {
+      axios.defaults.headers.common["Authorization"] = login.token;
+    } else {
+      delete axios.defaults.headers.common["Authorization"];
+    }
+  }, [login]);
+
+  useEffect(() => {
+    if (login) {
       if (cartItems) {
         cartItems.forEach((product) => {
           while (product.quantity-- > 0) {
-            updateCart(product, "ADD", userData._id, dispatch, setShowLoader);
+            updateCart(product, "ADD", dispatch, setShowLoader);
           }
         });
       }
-      (async () => {
-        const {
-          data: { cart },
-        } = await axios.get(
-          `https://api-supminn.herokuapp.com/cart/${userData._id}`
-        );
-        dispatch({ type: "SET_CART", payload: cart });
-      })();
+      initializeUserCart(dispatch);
+      initializeUserWishlist(dispatch);
+      initializeUserAddresses(dispatch);
     }
-  }, [login, userData]);
-
-  useEffect(() => {
-    if (login && userData._id) {
-      (async () => {
-        const {
-          data: { wishlistItems },
-        } = await axios.get(
-          `https://api-supminn.herokuapp.com/wishlist/${userData._id}`
-        );
-        dispatch({ type: "SET_WISHLIST", payload: wishlistItems });
-        const {
-          data: { address },
-        } = await axios.get(
-          `https://api-supminn.herokuapp.com/address/${userData._id}`
-        );
-        dispatch({ type: "SET_ADDRESS", payload: address });
-      })();
-    } else {
-      dispatch({ type: "SET_WISHLIST", payload: [] });
-    }
-  }, [login, userData, dispatch]);
+  }, [login]);
 
   return (
     <div className="App">

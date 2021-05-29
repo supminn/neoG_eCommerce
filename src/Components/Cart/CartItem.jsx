@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { useAuthContext, useDataContext } from "../../Context";
-import { updateCart } from "../../Utils/serverRequests";
+import { updateCart } from "../../services/cart";
 
 export const CartItem = ({ item }) => {
   const { _id, name, image, price, quantity, brand, rating, offer } = item;
   const { dispatch } = useDataContext();
-  const { login, userData, showLoader, setShowLoader } = useAuthContext();
+  const { login, showLoader, setShowLoader } = useAuthContext();
   const navigate = useNavigate();
 
   return (
@@ -52,13 +52,7 @@ export const CartItem = ({ item }) => {
               className="btn btn-light btn-sm"
               onClick={() =>
                 login
-                  ? updateCart(
-                      item,
-                      "REMOVE",
-                      userData._id,
-                      dispatch,
-                      setShowLoader
-                    )
+                  ? updateCart(item, "REMOVE", dispatch, setShowLoader)
                   : dispatch({ type: "REMOVE_FROM_CART", payload: item })
               }
             >
@@ -72,13 +66,7 @@ export const CartItem = ({ item }) => {
               className="btn btn-light btn-sm"
               onClick={() =>
                 login
-                  ? updateCart(
-                      item,
-                      "ADD",
-                      userData._id,
-                      dispatch,
-                      setShowLoader
-                    )
+                  ? updateCart(item, "ADD", dispatch, setShowLoader)
                   : dispatch({
                       type: "ADD_TO_CART",
                       payload: item,
@@ -93,7 +81,7 @@ export const CartItem = ({ item }) => {
             disabled={showLoader}
             onClick={() => {
               if (!login) navigate("/login");
-              updateCart(item, "MOVE", userData._id, dispatch, setShowLoader);
+              updateCart(item, "MOVE", dispatch, setShowLoader);
             }}
             className="btn btn-secondary"
           >
@@ -104,5 +92,3 @@ export const CartItem = ({ item }) => {
     </div>
   );
 };
-
-//remove and move to wishlist

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext, useDataContext } from "../../../Context";
-import { removeUserAddress } from "../../../Utils/serverRequests";
+import { removeUserAddress } from "../../../services/address";
 import { AddNewAddress } from "./AddNewAddress";
 
 export const AddressCard = ({
@@ -17,7 +17,7 @@ export const AddressCard = ({
 }) => {
   const [editMode, setEditMode] = useState(false);
   const { dispatch } = useDataContext();
-  const { userData, setShowLoader } = useAuthContext();
+  const { setShowLoader } = useAuthContext();
 
   return (
     <>
@@ -61,9 +61,7 @@ export const AddressCard = ({
             </i>
             <i
               className="fas fa-lg btn btn-dark fa-trash-alt"
-              onClick={() =>
-                removeUserAddress(_id, userData._id, dispatch, setShowLoader)
-              }
+              onClick={() => removeUserAddress(_id, dispatch, setShowLoader)}
             >
               {" "}
               Delete

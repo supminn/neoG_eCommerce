@@ -1,8 +1,8 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import Loader from "react-loader-spinner";
 import { useDataContext } from "../../Context";
 import shopProduct from "../../images/window-shop.svg";
+import { fetchAllProducts } from "../../services/products";
 import {
   FilterProducts,
   getSortedProducts,
@@ -40,36 +40,26 @@ export const ProductListing = () => {
 
   useEffect(() => {
     (async () => {
-      try {
-        setShowLoader(true);
-        const {
-          data: { products },
-        } = await axios.get("https://api-supminn.herokuapp.com/products");
-        dispatch({ type: "SET_PRODUCTS", payload: products });
-        setShowLoader(false);
-      } catch (err) {
-        console.error(err);
-      }
+      await fetchAllProducts(dispatch, setShowLoader);
     })();
   }, [dispatch]);
 
   useEffect(() => {
     document.title = "SupMart | Products";
-    window.scroll(0,0);
+    window.scroll(0, 0);
   }, []);
 
   const updateFilterDisplay = () => {
     if (window.innerWidth >= 768) {
       setShowFilters(true);
     }
-  }
+  };
 
   useEffect(() => {
     updateFilterDisplay();
     window.addEventListener("resize", updateFilterDisplay);
     return () => window.removeEventListener("resize", updateFilterDisplay);
-    }, []);
-    
+  }, []);
 
   return showLoader ? (
     <div className="loader-container">

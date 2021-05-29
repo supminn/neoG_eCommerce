@@ -45,4 +45,4 @@ This e-commerce application would have the following features. It is being built
 ### Future Enchancements
 * Add query params for filters.
 * Password validation (conditions and strength).
-* Delete individual product on cart.
+* Delete individual product from cart.

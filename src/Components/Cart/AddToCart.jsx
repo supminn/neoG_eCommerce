@@ -1,6 +1,7 @@
-import { useAuthContext,useDataContext } from "../../Context";
+import { useAuthContext, useDataContext } from "../../Context";
 import { useNavigate } from "react-router-dom";
-import { updateCart, updateWishlist } from "../../Utils/serverRequests";
+import { updateCart } from "../../services/cart";
+import { updateWishlist } from "../../services/wishlist";
 import { itemExists } from "../../Utils/arrayOperations";
 
 const itemExistsInCart = (cartItems, productId) =>
@@ -13,20 +14,14 @@ export const AddToCart = ({ product }) => {
     state: { itemsInCart, itemsInWishlist },
     dispatch,
   } = useDataContext();
-  const { login, userData ,showLoader, setShowLoader} = useAuthContext();
+  const { login, showLoader, setShowLoader } = useAuthContext();
   const isItemInCart = itemExistsInCart(itemsInCart, product._id);
   const navigate = useNavigate();
   const isWishlisted = itemExists(itemsInWishlist, product._id);
 
   const updateLists = () => {
-    updateWishlist(
-      product,
-      isWishlisted,
-      userData._id,
-      dispatch,
-      setShowLoader
-    );
-    updateCart(product, "ADD", userData._id, dispatch, setShowLoader);
+    updateWishlist(product, isWishlisted, dispatch, setShowLoader);
+    updateCart(product, "ADD", dispatch, setShowLoader);
   };
   return (
     <>
@@ -40,13 +35,7 @@ export const AddToCart = ({ product }) => {
             : login
             ? isWishlisted
               ? updateLists()
-              : updateCart(
-                  product,
-                  "ADD",
-                  userData._id,
-                  dispatch,
-                  setShowLoader
-                )
+              : updateCart(product, "ADD", dispatch, setShowLoader)
             : dispatch({
                 type: "ADD_TO_CART",
                 payload: product,

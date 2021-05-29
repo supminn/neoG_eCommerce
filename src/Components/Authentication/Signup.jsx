@@ -11,7 +11,7 @@ export const Signup = () => {
     userState: { name, username, password, email },
     userDispatch,
     registerUser,
-    userData,showLoader, setShowLoader
+    showLoader, setShowLoader
   } = useAuthContext();
 
   const signupHandler = async (e) => {
@@ -101,14 +101,14 @@ export const Signup = () => {
       {showMsg && (
         <div className="div-container">
           <p className="txt-desc primaryBg-txt">
-            Hi <b className="secondary-txt">{userData.name}</b>, thank you for
+            Thank you for
             signing up with <b>SupMart</b>.
           </p>
           <p className="txt-desc primaryBg-txt">
             You can now avail <em>express delivery</em> on select products
           </p>
-          <NavLink to="/products">
-            <button className="btn btn-primary">Start shopping!</button>
+          <NavLink to="/login">
+            <button className="btn btn-primary">Login to start shopping!</button>
           </NavLink>
         </div>
       )}

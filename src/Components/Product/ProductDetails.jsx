@@ -29,23 +29,23 @@ export const ProductDetails = () => {
           <h3 className="card-heading">{name}</h3>
           {fullRating.includes(rating) ? (
             <div className="rating">
-              {fullRating.map((rate) =>
+              {fullRating.map((rate, index) =>
                 rate <= rating ? (
-                  <i className="fa fa-star fa-lg rating-checked"></i>
+                  <i key={index} className="fa fa-star fa-lg rating-checked"></i>
                 ) : (
-                  <i className="fa fa-star fa-lg"></i>
+                  <i key={index} className="fa fa-star fa-lg"></i>
                 )
               )}
             </div>
           ) : (
             <div className="rating">
-              {fullRating.map((rate) =>
+              {fullRating.map((rate, index) =>
                 rate <= Math.floor(rating) ? (
-                  <i className="fa fa-star fa-lg rating-checked"></i>
+                  <i key={index} className="fa fa-star fa-lg rating-checked"></i>
                 ) : rate === Math.floor(rating) + 1 ? (
-                  <i className="fa fa-star-half-alt fa-lg rating-checked"></i>
+                  <i key={index} className="fa fa-star-half-alt fa-lg rating-checked"></i>
                 ) : (
-                  <i className="fa fa-star fa-lg"></i>
+                  <i key={index} className="fa fa-star fa-lg"></i>
                 )
               )}
             </div>

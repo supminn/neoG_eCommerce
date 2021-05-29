@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuthContext, useDataContext } from "../../../Context";
-import { updateUserAddress } from "../../../Utils/serverRequests";
+import { updateUserAddress } from "../../../services/address";
 
 const defaultData = {
   name: "",
@@ -15,7 +15,7 @@ const defaultData = {
 
 export const AddNewAddress = ({setEditMode, editAddress = defaultData}) => {
   const {dispatch} = useDataContext();
-  const {userData, showLoader, setShowLoader} = useAuthContext();
+  const {showLoader, setShowLoader} = useAuthContext();
   const [address, setAddress] = useState(editAddress);
   const [errorMsg, setErrorMsg] = useState({});
 
@@ -34,16 +34,9 @@ export const AddNewAddress = ({setEditMode, editAddress = defaultData}) => {
   const addNewAddress = (e) => {
     e.preventDefault();
     if(dataValidation()){
-      updateUserAddress(address, userData._id,dispatch, setShowLoader);
-      // if(editAddress._id){
-      // dispatch({type:"UPDATE_ADDRESS",payload: address})
-      // }
-      // else{
-      // dispatch({type:"ADD_ADDRESS", payload: address});
-      // }
+      updateUserAddress(address,dispatch, setShowLoader);
       setEditMode(val => !val);
     }
-
   };
 
   return (

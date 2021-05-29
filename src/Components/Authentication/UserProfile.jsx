@@ -2,13 +2,15 @@ import { Link } from "react-router-dom";
 import { useAuthContext, useDataContext } from "../../Context";
 
 export const UserProfile = () => {
-  const { logOutUser, userData } = useAuthContext();
+  const { logOutUser, login } = useAuthContext();
   const { dispatch } = useDataContext();
 
   const logOutHandler = () => {
+    dispatch({ type: "SET_WISHLIST", payload: [] });
     dispatch({ type: "CLEAR_CART" });
     logOutUser();
   };
+  
   return (
     <>
       <h2 className="txt-header-2">
@@ -17,7 +19,7 @@ export const UserProfile = () => {
       <div className="div-container">
         <i className="fas fa-5x fa-user-circle primaryBg-txt"></i>
         <h3 className="txt-header-3">
-          Welcome <span>{userData.name}</span>
+          Welcome <span>{login.user}</span>
         </h3>
         <div className="user-nav-container">
           <Link

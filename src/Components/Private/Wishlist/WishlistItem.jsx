@@ -1,5 +1,5 @@
 import { useAuthContext, useDataContext } from "../../../Context";
-import { updateWishlist } from "../../../Utils/serverRequests";
+import { updateWishlist } from "../../../services/wishlist";
 import { AddToCart } from "../..";
 import { Link } from "react-router-dom";
 
@@ -16,13 +16,13 @@ export const WishlistItem = ({ item }) => {
     fastDelivery,
   } = item;
   const { dispatch } = useDataContext();
-  const { userData, setShowLoader } = useAuthContext();
+  const { setShowLoader } = useAuthContext();
 
   return (
     <div className="card">
       <Link
         to={`/products/${_id}`}
-        state={{ product:item }}
+        state={{ product: item }}
         className="no-line link-container"
       >
         <img className="card-img" alt={name} src={image} />
@@ -58,9 +58,7 @@ export const WishlistItem = ({ item }) => {
       <AddToCart product={item} />
       <i
         className="fa fa-times wish-remove"
-        onClick={() =>
-          updateWishlist(item, true, userData._id, dispatch, setShowLoader)
-        }
+        onClick={() => updateWishlist(item, true, dispatch, setShowLoader)}
       ></i>
     </div>
   );
