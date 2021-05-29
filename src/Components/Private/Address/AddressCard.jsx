@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext, useDataContext } from "../../../Context";
-import { removeUserAddress } from "../../../services/address";
+import { removeUserAddress } from "../../../services";
 import { AddNewAddress } from "./AddNewAddress";
 
 export const AddressCard = ({

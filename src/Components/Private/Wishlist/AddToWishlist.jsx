@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { useAuthContext, useDataContext } from "../../../Context";
 import { itemExists } from "../../../Utils/arrayOperations";
-import { updateWishlist } from "../../../services/wishlist";
+import { updateWishlist } from "../../../services";
 
 export const AddToWishlist = ({ product }) => {
   const {

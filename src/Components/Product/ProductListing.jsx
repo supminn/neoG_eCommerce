@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Loader from "react-loader-spinner";
 import { useDataContext } from "../../Context";
 import shopProduct from "../../images/window-shop.svg";
-import { fetchAllProducts } from "../../services/products";
+import { fetchAllProducts } from "../../services";
 import {
   FilterProducts,
   getSortedProducts,

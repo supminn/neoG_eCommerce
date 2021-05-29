@@ -4,7 +4,7 @@ import addToCart from "../../images/add-to-cart.svg";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { PriceDetails } from "./PriceDetail";
-import { emptyCart } from "../../services/cart";
+import { emptyCart } from "../../services";
 
 export const Cart = () => {
   const {

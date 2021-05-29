@@ -1,7 +1,6 @@
 import { useAuthContext, useDataContext } from "../../Context";
 import { useNavigate } from "react-router-dom";
-import { updateCart } from "../../services/cart";
-import { updateWishlist } from "../../services/wishlist";
+import { updateWishlist, updateCart } from "../../services";
 import { itemExists } from "../../Utils/arrayOperations";
 
 const itemExistsInCart = (cartItems, productId) =>

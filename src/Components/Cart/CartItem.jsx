@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { useAuthContext, useDataContext } from "../../Context";
-import { updateCart } from "../../services/cart";
+import { updateCart } from "../../services";
 
 export const CartItem = ({ item }) => {
   const { _id, name, image, price, quantity, brand, rating, offer } = item;

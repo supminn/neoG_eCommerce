@@ -1,5 +1,5 @@
 import { useAuthContext, useDataContext } from "../../../Context";
-import { updateWishlist } from "../../../services/wishlist";
+import { updateWishlist } from "../../../services";
 import { AddToCart } from "../..";
 import { Link } from "react-router-dom";
 

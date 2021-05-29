@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuthContext, useDataContext } from "../../../Context";
-import { updateUserAddress } from "../../../services/address";
+import { updateUserAddress } from "../../../services";
 
 const defaultData = {
   name: "",

@@ -20,9 +20,12 @@ import {
 import { useAuthContext } from "./Context";
 import { useEffect, useMemo } from "react";
 import axios from "axios";
-import { initializeUserCart, updateCart } from "./services/cart";
-import { initializeUserWishlist } from "./services/wishlist";
-import { initializeUserAddresses } from "./services/address";
+import {
+  initializeUserWishlist,
+  initializeUserCart,
+  initializeUserAddresses,
+  updateCart,
+} from "./services";
 
 function App() {
   const {
@@ -37,7 +40,6 @@ function App() {
     }
   }, [itemsInCart]);
 
-
   useEffect(() => {
     if (login) {
       axios.defaults.headers.common["Authorization"] = login.token;
@@ -51,10 +53,10 @@ function App() {
       if (cartItems) {
         cartItems.forEach((product) => {
           (async () => {
-          while (product.quantity-- > 0) {
+            while (product.quantity-- > 0) {
               await updateCart(product, "ADD", dispatch, setShowLoader);
-          }
-        })();
+            }
+          })();
         });
       }
       (async () => {
@@ -62,7 +64,6 @@ function App() {
         await initializeUserWishlist(dispatch);
         await initializeUserAddresses(dispatch);
       })();
-   
     }
   }, [login]);
 
