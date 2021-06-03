@@ -2,6 +2,7 @@ import { dataReducer } from "./data-reducer";
 
 describe("testing cart modification operations on data reducer", () => {
   test("should load products already in cart once use logs in", () => {
+    //Arrange
     const action = {
       type: "SET_CART",
       payload: [
@@ -32,8 +33,10 @@ describe("testing cart modification operations on data reducer", () => {
       itemsInCart: [],
     };
 
+    //Act
     const state = dataReducer(initialState, action);
 
+    //Assert
     expect(state).toEqual({
       itemsInCart: [
         {
@@ -63,6 +66,7 @@ describe("testing cart modification operations on data reducer", () => {
 });
 
 test("should remove the product from wishlist if it exists and add the product to cart; should update the quantity of an existing product in cart", () => {
+  //Arrange
   const action = {
     type: "ADD_TO_CART",
     payload: {
@@ -94,7 +98,10 @@ test("should remove the product from wishlist if it exists and add the product t
     toastMsg: "",
   };
 
+  //Act
   let state = dataReducer(cartData, action);
+
+  //Assert
   expect(state).toEqual({
     itemsInWishlist: [],
     itemsInCart: [
@@ -116,7 +123,10 @@ test("should remove the product from wishlist if it exists and add the product t
     toastMsg: '"Jump Rope" added to cart',
   });
 
+  //Act
   state = dataReducer(state, action);
+
+  //Assert
   expect(state).toEqual({
     itemsInWishlist: [],
     itemsInCart: [
@@ -140,6 +150,7 @@ test("should remove the product from wishlist if it exists and add the product t
 });
 
 test("should decrement the quantity or remove an item from cart", () => {
+  //Arrange
   const action = {
     type: "REMOVE_FROM_CART",
     payload: {
@@ -170,7 +181,10 @@ test("should decrement the quantity or remove an item from cart", () => {
     toastMsg: "",
   };
 
+  //Act
   state = dataReducer(state, action);
+
+  //Assert
   expect(state).toEqual({
     itemsInCart: [
       {
@@ -191,7 +205,10 @@ test("should decrement the quantity or remove an item from cart", () => {
     toastMsg: "Cart updated successfully!",
   });
 
+  //Act
   state = dataReducer(state, action);
+
+  //Assert
   expect(state).toEqual({
     itemsInCart: [
       {
@@ -214,6 +231,7 @@ test("should decrement the quantity or remove an item from cart", () => {
 });
 
 test("should remove all items in the cart", () => {
+  //Arrange
   const action = {
     type: "CLEAR_CART",
   };
@@ -237,7 +255,10 @@ test("should remove all items in the cart", () => {
     ],
   };
 
+  //Act
   state = dataReducer(state, action);
+
+  //Assert
   expect(state).toEqual({
     itemsInCart: [],
   });
@@ -245,6 +266,7 @@ test("should remove all items in the cart", () => {
 
 describe("testing wishlist operations on data reducer", () => {
   test("should load products into wishlist when user logs in", () => {
+    //Arrange
     const action = {
       type: "SET_WISHLIST",
       payload: [
@@ -273,7 +295,10 @@ describe("testing wishlist operations on data reducer", () => {
       itemsInWishlist: [],
     };
 
+    //Act
     const state = dataReducer(initialState, action);
+
+    //Assert
     expect(state).toEqual({
       itemsInWishlist: [
         {
@@ -300,6 +325,7 @@ describe("testing wishlist operations on data reducer", () => {
 });
 
 test("should add product into wishlist & remove from cart if it exists", () => {
+  //Arrange
   const action = {
     type: "ADD_TO_WISHLIST",
     payload: {
@@ -338,7 +364,10 @@ test("should add product into wishlist & remove from cart if it exists", () => {
     toastMsg: "",
   };
 
+  //Act
   state = dataReducer(state, action);
+
+  //Assert
   expect(state).toEqual({
     itemsInCart: [
       {
@@ -368,6 +397,7 @@ test("should add product into wishlist & remove from cart if it exists", () => {
 });
 
 test("should remove product from wishlist", () => {
+  //Arrange
   const action = {
     type: "REMOVE_FROM_WISHLIST",
     payload: {
@@ -396,7 +426,10 @@ test("should remove product from wishlist", () => {
     toastMsg: "",
   };
 
+  //Act
   state = dataReducer(state, action);
+
+  //Assert
   expect(state).toEqual({
     itemsInWishlist: [
       {
@@ -411,6 +444,7 @@ test("should remove product from wishlist", () => {
 });
 
 test("should move product into wishlist & remove from cart", () => {
+  //Arrange
   const action = {
     type: "MOVE_TO_WISHLIST",
     payload: {
@@ -449,7 +483,10 @@ test("should move product into wishlist & remove from cart", () => {
     toastMsg: "",
   };
 
+  //Act
   state = dataReducer(state, action);
+
+  //Assert
   expect(state).toEqual({
     itemsInCart: [
       {

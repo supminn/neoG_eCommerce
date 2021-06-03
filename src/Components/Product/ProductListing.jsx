@@ -3,11 +3,8 @@ import Loader from "react-loader-spinner";
 import { useDataContext } from "../../Context";
 import shopProduct from "../../images/window-shop.svg";
 import { fetchAllProducts } from "../../services";
-import {
-  FilterProducts,
-  getSortedProducts,
-  getFilteredProducts,
-} from "./FilterProducts";
+import { getFilteredProducts, getSortedProducts } from "../../Utils/filterProducts";
+import { FilterProducts } from "./FilterProducts";
 import { Product } from "./Products";
 
 export const ProductListing = () => {
