@@ -1,8 +1,10 @@
+[![wakatime](https://wakatime.com/badge/github/supminn/neoG_eCommerce.svg)](https://wakatime.com/badge/github/supminn/neoG_eCommerce)
+
 # eCommerce Application 
 
 This e-commerce application would have the following features. It is being built on ReactJS. The main hooks being used here are useContext and useReducer.
 
-## Functionalities to be implemented
+## Functionalities 
 
 1. Product Listing Page
     * List of products - fetched via ExpressAPI
