@@ -14,7 +14,10 @@ export const userCredReducer = (state, { type, payload }) => {
     case "SET_EMAIL":
       return { ...state, email: payload };
 
+    case "CLEAR":
+      return { ...initialUserState };
+      
     default:
-      return { ...initialUserState};
+      return state;
   }
 };
