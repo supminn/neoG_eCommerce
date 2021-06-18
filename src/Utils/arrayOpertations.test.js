@@ -41,7 +41,7 @@ describe("testing array modification operations", () => {
     expect(result).toBe(false);
   });
 
-  test("show return a unique list of elements present in the array", () => {
+  test("should return a unique list of elements present in the array", () => {
     //Arrange
     const brands = ["Crossrope", "Crossrope","Rush Athletics","Amazon Basics","Rush Athletics","Crossrope","Amazon Basics"];
 

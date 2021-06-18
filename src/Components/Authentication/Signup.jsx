@@ -11,20 +11,35 @@ export const Signup = () => {
     userState: { name, username, password, email },
     userDispatch,
     registerUser,
-    showLoader, setShowLoader
+    showLoader,
+    setShowLoader,
   } = useAuthContext();
 
   const signupHandler = async (e) => {
     setShowLoader(true);
     e.preventDefault();
-    const res = await registerUser(name, username, password, email);
-    setShowLoader(false);
-    if (!res.success) {
-      setErrorMsg(res.message);
+    if (!isPasswordValid()) {
+      setErrorMsg("Password must contain at least 8 characters, at least 1 number and both lower and uppercase letters.");
     } else {
-      setShowMsg(true);
+      const res = await registerUser(name, username, password, email);
+      if (!res.success) {
+        setErrorMsg(res.message);
+      } else {
+        setShowMsg(true);
+      }
     }
+    setShowLoader(false);
   };
+
+  const isPasswordValid = () => {
+    if (
+      password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/) ==
+      null
+    )
+      return false;
+    else return true;
+  };
+
   return (
     <>
       <h2 className="txt-header-2">
@@ -101,14 +116,15 @@ export const Signup = () => {
       {showMsg && (
         <div className="div-container">
           <p className="txt-desc primaryBg-txt">
-            Thank you for
-            signing up with <b>SupMart</b>.
+            Thank you for signing up with <b>SupMart</b>.
           </p>
           <p className="txt-desc primaryBg-txt">
             You can now avail <em>express delivery</em> on select products
           </p>
           <NavLink to="/login">
-            <button className="btn btn-primary">Login to start shopping!</button>
+            <button className="btn btn-primary">
+              Login to start shopping!
+            </button>
           </NavLink>
         </div>
       )}
