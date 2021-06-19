@@ -42,19 +42,19 @@ SupMart is an e-commerce application that consists of products and accessories r
     * Sign up - new users
     * Persist login state
     * Data stored on MongoDB
-### Future Enchancements
+### Enchancements
 * Add query params for filters.
-* Password validation (conditions and strength).
 * Delete individual product from cart.
 
 ## Live link and demo
 
 [Deployed link](https://supmart.netlify.app/)
 
--- video
+https://user-images.githubusercontent.com/30731236/122634357-5a94c500-d0fb-11eb-98ab-1ad59b23b532.mp4
 
 ## Test user credentials
 **Username:** Tester
+
 **Password:** Testing1
 
 
