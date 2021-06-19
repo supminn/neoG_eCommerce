@@ -1,7 +1,53 @@
-@import './Components/components.css';
+@import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+@import './Components/Product/product.css';
+@import './Components/Cart/cart.css';
+@import './Components/Navigation/navigation.css';
+@import './Components/Product/filter.css';
+@import './Components/Toast/toast.css';
+@import './Components/Private/Wishlist/wishlist.css';
+@import './Components/Home/home.css';
+@import './Components/Authentication/authentication.css';
+@import './Components/Private/Address/address.css';
+@import './Components/Private/OrderSummary/summary.css';
+@import './Components/Product/productDetail.css';
+@import './Components/Footer/footer.css';
 
-.route-container{
- min-height: 3rem;
+.body-container {
+  min-height: 77vh;
+}
+
+.btn-sm {
+  padding: 0.2rem 0.4rem;
+}
+
+.card .rating,
+.card-horizontal .rating {
+  cursor: unset;
+}
+
+.txt-container {
+  flex-grow: 1;
+}
+
+.card .card-img {
+  flex-grow: 1;
+  max-height: 11rem;
+}
+
+.card-discount {
+  color: var(--secondaryTxt);
+}
+
+.txt-primaryBg {
+  color: var(--primaryBg);
+}
+
+.toastmsg-container {
+  min-height: 3rem;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 /* App defaults */
@@ -9,4 +55,3 @@
   text-align: center;
   overflow-x: hidden;
 }
-

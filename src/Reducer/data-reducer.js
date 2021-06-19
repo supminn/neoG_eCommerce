@@ -1,22 +1,27 @@
 export const dataReducer = (state, { type, payload }) => {
   switch (type) {
-    /* Setting page route */
-    case "ROUTE":
-      return { ...state, route: payload };
-    /* Product Catalogue */
     case "SET_PRODUCTS":
       return { ...state, products: payload };
-    /* Cart functionality */
+
+    case "SET_WISHLIST":
+      return { ...state, itemsInWishlist: payload };
+
+    case "SET_CART":
+      return { ...state, itemsInCart: payload };
+
+    case "SET_ADDRESS":
+      return { ...state, addresses: payload };
+
     case "ADD_TO_CART":
-      if (state.itemsInCart.some((cartItem) => cartItem.id === payload.id)) {
+      if (state.itemsInCart.some((cartItem) => cartItem._id === payload._id)) {
         return {
           ...state,
           toastMsg: `Cart updated successfully!`,
           itemsInWishlist: state.itemsInWishlist.filter(
-            (wishItem) => wishItem.id !== payload.id
+            (wishItem) => wishItem._id !== payload._id
           ),
           itemsInCart: state.itemsInCart.map((cartItem) =>
-            cartItem.id === payload.id
+            cartItem._id === payload._id
               ? { ...cartItem, quantity: cartItem.quantity + 1 }
               : cartItem
           ),
@@ -26,7 +31,7 @@ export const dataReducer = (state, { type, payload }) => {
           ...state,
           toastMsg: `"${payload.name}" added to cart`,
           itemsInWishlist: state.itemsInWishlist.filter(
-            (wishItem) => wishItem.id !== payload.id
+            (wishItem) => wishItem._id !== payload._id
           ),
           itemsInCart: state.itemsInCart.concat({
             ...payload,
@@ -39,7 +44,7 @@ export const dataReducer = (state, { type, payload }) => {
         ...state,
         toastMsg: `Cart updated successfully!`,
         itemsInCart: state.itemsInCart.map((cartItem) =>
-          cartItem.id === payload.id
+          cartItem._id === payload._id
             ? { ...cartItem, quantity: cartItem.quantity - 1 }
             : cartItem
         ),
@@ -47,13 +52,12 @@ export const dataReducer = (state, { type, payload }) => {
     case "CLEAR_CART":
       return { ...state, itemsInCart: [] };
 
-    /* Wishlist functionality */
     case "ADD_TO_WISHLIST":
       return {
         ...state,
         toastMsg: `"${payload.name}" added to wishlist`,
         itemsInCart: state.itemsInCart.filter(
-          (cartItem) => cartItem.id !== payload.id
+          (cartItem) => cartItem._id !== payload._id
         ),
         itemsInWishlist: state.itemsInWishlist.concat({
           ...payload,
@@ -64,7 +68,7 @@ export const dataReducer = (state, { type, payload }) => {
         ...state,
         toastMsg: `"${payload.name}" removed from wishlist`,
         itemsInWishlist: state.itemsInWishlist.filter(
-          (item) => item.id !== payload.id
+          (item) => item._id !== payload._id
         ),
       };
     case "MOVE_TO_WISHLIST":
@@ -73,11 +77,10 @@ export const dataReducer = (state, { type, payload }) => {
         toastMsg: `"${payload.name}" moved to wishlist`,
         itemsInWishlist: state.itemsInWishlist.concat(payload),
         itemsInCart: state.itemsInCart.filter(
-          (cartItem) => cartItem.id !== payload.id
+          (cartItem) => cartItem._id !== payload._id
         ),
       };
 
-    /* Product listing filters */
     case "SORT":
       return { ...state, sortBy: payload };
     case "TOGGLE_STOCK":
@@ -86,32 +89,60 @@ export const dataReducer = (state, { type, payload }) => {
       return { ...state, fastDelivery: !state.fastDelivery };
     case "PRICE_RANGE":
       return { ...state, priceRange: payload };
+    case "TOGGLE_BRAND":
+      return {
+        ...state,
+        brandFilter: state.brandFilter.some((value) => value === payload)
+          ? state.brandFilter.filter((value) => value !== payload)
+          : state.brandFilter.concat(payload),
+      };
+    case "TOGGLE_CATEGORY":
+      return {
+        ...state,
+        categoryFilter: state.categoryFilter.some((value) => value === payload)
+          ? state.categoryFilter.filter((value) => value !== payload)
+          : state.categoryFilter.concat(payload),
+      };
     case "CLEAR_ALL_FILTERS":
       return {
         ...state,
         sortBy: null,
         inStock: false,
         fastDelivery: false,
-        priceRange: 1000,
-        searchValue:""
+        priceRange: 30000,
+        searchValue: "",
+        brandFilter: [],
+        categoryFilter: [],
       };
-      case "SEARCH_PRODUCT":  return {...state, searchValue: payload.toLowerCase()};
-      
-    /* Toast message */
+    case "SEARCH_PRODUCT":
+      return { ...state, searchValue: payload.toLowerCase() };
+
     case "SHOW_TOAST":
       return { ...state, toastMsg: payload };
+
+    case "ADD_ADDRESS":
+      payload._id = state.addresses.length + 1;
+      return {
+        ...state,
+        toastMsg: "New address added successfully",
+        addresses: state.addresses.concat(payload),
+      };
+    case "UPDATE_ADDRESS":
+      return {
+        ...state,
+        toastMsg: "Address updated successfully",
+        addresses: state.addresses.map((address) =>
+          address._id === payload._id ? payload : address
+        ),
+      };
+    case "REMOVE_ADDRESS":
+      return {
+        ...state,
+        toastMsg: "Address removed",
+        addresses: state.addresses.filter((address) => address._id !== payload),
+      };
+
     default:
       return state;
   }
 };
-
-//---------------------------------------------------------------
-/*
-const [itemsInCart, setItemsInCart] = useState(
-  JSON.parse(localStorage.getItem('cartItems')) || []);
-const [toastMsg, setToastMsg] = useState("");
-
-useEffect(()=>{
-  localStorage.setItem('cartItems',JSON.stringify(itemsInCart));
-},[itemsInCart]);
-  */

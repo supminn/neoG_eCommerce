@@ -1,23 +1,30 @@
-/* Home component */
-export { Home } from './Home/home';
+export { Home } from "./Home/Home";
+export { Toast } from "./Toast/toast";
+export { Navigation } from "./Navigation/Navigation";
+export { Footer } from "./Footer/Footer";
 
-/* Cart Components */
-export { AddToCart } from "./Cart/addToCart";
-export { Cart } from "./Cart/cart";
-export { CartItem } from "./Cart/cartItem";
+export { AddToCart } from "./Cart/AddToCart";
+export { Cart } from "./Cart/Cart";
+export { CartItem } from "./Cart/CartItem";
 
-/* Product Components */
-export { FilterProducts } from "./Product/filterProducts";
-export { ProductListing } from "./Product/productListing";
-export { Product } from "./Product/products";
+export { FilterProducts } from "./Product/FilterProducts";
+export { ProductListing } from "./Product/ProductListing";
+export { Product } from "./Product/Products";
+export { ProductDetails } from "./Product/ProductDetails";
 
-/* Wishlist Components */
-export { AddToWishlist } from "./Wishlist/addToWishlist";
-export { Wishlist } from "./Wishlist/wishlist";
-export { WishlistItem } from "./Wishlist/wishlistItem";
+export { Login } from "./Authentication/Login";
+export { Signup } from "./Authentication/Signup";
+export { Password } from "./Authentication/Password";
+export { UserProfile } from "./Authentication/UserProfile";
 
-/* Toast */
-export { Toast } from './Toast/toast';
+export { PrivateRoute } from "./Private/PrivateRoute";
 
-/* Navigation */
-export { Navigation } from './Navigation/navigation';
+export { AddToWishlist } from "./Private/Wishlist/AddToWishlist";
+export { Wishlist } from "./Private/Wishlist/Wishlist";
+export { WishlistItem } from "./Private/Wishlist/WishlistItem";
+
+export { OrderSummary } from "./Private/OrderSummary/OrderSummary";
+export { Address } from "./Private/Address/Address";
+export { AddressCard } from "./Private/Address/AddressCard";
+export { AddNewAddress } from "./Private/Address/AddNewAddress";
+export { ShowAddresses } from "./Private/Address/ShowAddresses";

@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import { useDataContext } from "./Context";
 import {
   Home,
   Cart,
@@ -8,39 +8,84 @@ import {
   Wishlist,
   Toast,
   Navigation,
+  Login,
+  Address,
+  Signup,
+  UserProfile,
+  OrderSummary,
+  ProductDetails,
+  PrivateRoute,
+  Footer,
 } from "./Components";
-import { useDataContext } from "./Context/data-context";
-import { serverRequest } from "./api/serverRequest";
-
+import { useAuthContext } from "./Context";
+import { useEffect, useMemo } from "react";
+import axios from "axios";
+import {
+  initializeUserWishlist,
+  initializeUserCart,
+  initializeUserAddresses,
+  updateCart,
+} from "./services";
 
 function App() {
   const {
-    state: { toastMsg },
+    state: { toastMsg, itemsInCart },
     dispatch,
   } = useDataContext();
+  const { login, setShowLoader } = useAuthContext();
+
+  const cartItems = useMemo(() => {
+    if (!login && itemsInCart.length > 0) {
+      return itemsInCart.map((item) => item);
+    }
+  }, [itemsInCart]);
 
   useEffect(() => {
-    (async () => {
-      const {
-        response: { products },
-        error,
-      } = await serverRequest("api/products", "GET");
-      if (!error) {
-        dispatch({ type: "SET_PRODUCTS", payload: products });
+    if (login) {
+      axios.defaults.headers.common["Authorization"] = login.token;
+    } else {
+      delete axios.defaults.headers.common["Authorization"];
+    }
+  }, [login]);
+
+  useEffect(() => {
+    if (login) {
+      if (cartItems) {
+        cartItems.forEach((product) => {
+          (async () => {
+            while (product.quantity-- > 0) {
+              await updateCart(product, "ADD", dispatch, setShowLoader);
+            }
+          })();
+        });
       }
-    })();
-  }, [dispatch]);
+      (async () => {
+        await initializeUserCart(dispatch);
+        await initializeUserWishlist(dispatch);
+        await initializeUserAddresses(dispatch);
+      })();
+    }
+  }, [login]);
 
   return (
     <div className="App">
       <Navigation />
-      <div className="route-container">{toastMsg && <Toast />}</div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="products" element={<ProductListing />} />
-        <Route path="wishlist" element={<Wishlist />} />
-      </Routes>
+      <div className="toastmsg-container">{toastMsg && <Toast />}</div>
+      <section className="body-container">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/products" element={<ProductListing />} />
+          <Route path="/products/:productId" element={<ProductDetails />} />
+          <PrivateRoute path="/wishlist" element={<Wishlist />} />
+          <PrivateRoute path="/address" element={<Address />} />
+          <PrivateRoute path="/user-profile" element={<UserProfile />} />
+          <PrivateRoute path="/order-summary" element={<OrderSummary />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
+      </section>
+      <Footer />
     </div>
   );
 }

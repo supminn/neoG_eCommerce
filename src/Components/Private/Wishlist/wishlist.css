@@ -1,0 +1,63 @@
+/* Wishlist ♥ styling */
+.wish-active,
+.wish-inactive,
+.wish-remove {
+    cursor: pointer;
+    color: var(--secondaryTxt);
+    position: absolute;
+    top: 5%;
+    right: 8%;
+    border-radius: 50%;
+    padding: 3% 2%;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.wish-active:hover,
+.wish-inactive:hover,
+.wish-remove:hover {
+    background-color: var(--theme100);
+
+}
+
+/* Wishlist dismiss btn */
+.wish-remove {
+    top: 5%;
+    right: 7%;
+    padding: 2%;
+}
+
+.txt-header-2 {
+    margin-block-end: 0;
+}
+
+.grid-container,
+.wishes-container {
+    padding-top: 1rem;
+}
+
+.wishes-container {
+    display: grid;
+    margin: 1rem;
+    grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 768px) {
+    .grid-container {
+        padding: 1rem;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .grid-container {
+        padding: 1rem 2rem;
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .grid-container {
+        padding: 1rem 2rem;
+        grid-template-columns: repeat(5, 1fr);
+    }
+}

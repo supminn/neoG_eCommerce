@@ -8,6 +8,7 @@
     text-align: center;
     border-radius: 1rem;
     padding: 0 1rem;
+    margin:1rem;
 }
 
 .home-txt-desc .btn-solid{
@@ -35,20 +36,6 @@
 .cartegory-container .img-svg:hover{
     opacity: 0.8;
     transform: scale(1.1);
-}
-
-.footer {
-    background-color: var(--theme900);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 15vh;
-}
-
-.fab {
-    padding: 0 0.5rem;
 }
 
 
@@ -83,7 +70,8 @@
         height: 20rem;
     }
     .img-main{
-        max-height: 50vh;
+        max-height: 53vh;
+        width: auto;
     }
     .home-txt-desc{
         width: 60%;

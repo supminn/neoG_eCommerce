@@ -1,0 +1,79 @@
+.btn-clear{
+    background-color: transparent;
+    border: transparent;
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--secondaryTxt);
+}
+
+.btn-clear:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.txt-input{
+    width: 80vw;
+}
+
+.filter-component{
+    height: 76vh;
+    overflow-y: scroll;
+    width: 100vw;
+}
+
+.filter-component .txt-box{
+    display: unset;
+}
+
+.sort-container, .filter-container{
+    padding: 0 0.5rem;
+    line-height: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+@media screen and (min-width:768px) {
+    .txt-input{
+        width: 100%;
+    }
+    .txt-range{
+        display: block;
+    }
+    .sort-container, .filter-container{
+        line-height: 2.5;
+        padding-top: 1rem;
+    }
+    
+    .filter-component{
+        position: fixed;
+        top: 4rem;
+        left: 1rem;
+        width: unset;
+    }
+    .filter-header{
+        width: 15rem;
+    }
+}
+
+/* width */
+.filter-component::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  .filter-component::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px var(--theme300);
+    border-radius: 10px;
+  }
+  
+  /* Handle */
+  .filter-component::-webkit-scrollbar-thumb {
+    background: var(--theme700);
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  .filter-component::-webkit-scrollbar-thumb:hover {
+    background: var(--theme600);
+  }
