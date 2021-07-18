@@ -4,6 +4,7 @@ import { useAuthContext, useDataContext } from "../../../Context";
 import { loadStripe } from "@stripe/stripe-js";
 import { API_URL } from "../../../services";
 import Loader from "react-loader-spinner";
+import { NavLink } from "react-router-dom";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 
@@ -68,6 +69,12 @@ export const OrderSummary = () => {
       {showLoader && (
         <Loader type="Oval" color="#00BFFF" height={80} width={80} />
       )}
+      <NavLink to="/payment-transaction?status=success">
+        <button className="btn btn-primary">success</button>
+      </NavLink>
+      <NavLink to="/payment-transaction?status=failure">
+        <button className="btn btn-primary">failure</button>
+      </NavLink>
     </>
   );
 };
