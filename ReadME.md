@@ -11,8 +11,9 @@ SupMart is an e-commerce application that consists of products and accessories r
 - React Router v6 (beta) for routes
 - Express & Node for API [Repo Link](https://github.com/supminn/neoG_Backend/)
 - MongoDB using mongoose for data storage
+- Jest test cases for utils and reducer
 
-## Functionalities
+## Functionalities 
 
 1. Products listing and detail
 
