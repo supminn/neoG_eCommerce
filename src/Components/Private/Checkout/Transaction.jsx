@@ -4,6 +4,7 @@ import { useAuthContext, useDataContext } from "../../../Context";
 import { emptyCart } from "../../../services";
 import successLogo from "../../../images/payment-success.svg";
 import failureLogo from "../../../images/payment-failure.svg";
+import axios from "axios";
 export const Transaction = () => {
   const query = new URLSearchParams(useLocation().search);
   const status = query.get("status");
@@ -11,13 +12,12 @@ export const Transaction = () => {
   const { login, setShowLoader } = useAuthContext();
 
   useEffect(() => {
-    setTimeout(() => {
-      if (login && status === "success") {
-        (async () => {
-          await emptyCart(dispatch, setShowLoader);
-        })();
-      }
-    }, 2000);
+    if (login && status === "success") {
+      (async () => {
+        axios.defaults.headers.common["Authorization"] = login.token;
+        await emptyCart(dispatch, setShowLoader);
+      })();
+    }
   }, [login, status]);
 
   return (
@@ -56,7 +56,7 @@ export const Transaction = () => {
               <span className="secondary-txt">failed </span>😕
             </h3>
             <p className="txt-desc">
-              Your order couldn't be confirmed since there was an issue with the
+              Your order couldn't be confirmed. There was an issue with the
               payment transaction. Please try again.
             </p>
             <NavLink to="/cart">
