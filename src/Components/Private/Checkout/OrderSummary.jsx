@@ -1,5 +1,11 @@
+import axios from "axios";
 import { useLocation } from "react-router";
-import { useDataContext } from "../../../Context";
+import { useAuthContext, useDataContext } from "../../../Context";
+import { loadStripe } from "@stripe/stripe-js";
+import { API_URL } from "../../../services";
+import Loader from "react-loader-spinner";
+
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 
 export const OrderSummary = () => {
   const {
@@ -9,11 +15,29 @@ export const OrderSummary = () => {
   } = useLocation();
   const {
     state: { itemsInCart },
-    dispatch,
   } = useDataContext();
+  const { showLoader, setShowLoader } = useAuthContext();
   const totalPrice = Number(
     itemsInCart.reduce((acc, curr) => acc + curr.price * curr.quantity, 0) - 100
   ).toFixed(2);
+
+  const checkoutToPayment = async () => {
+    try {
+      setShowLoader(true);
+      const response = await axios.put(`${API_URL}/cart`);
+      if (response.data.success) {
+        let stripe = await stripePromise;
+        await stripe.redirectToCheckout({
+          sessionId: response.data.id,
+        });
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setShowLoader(false);
+    }
+  };
+
   return (
     <>
       <h2 className="txt-header-2">
@@ -36,17 +60,12 @@ export const OrderSummary = () => {
           </li>
         ))}
       </ul>
-      <button
-        className="btn btn-solid"
-        onClick={() => {
-          dispatch({
-            type: "SHOW_TOAST",
-            payload: "Functionality comming soon!",
-          });
-        }}
-      >
+      <button className="btn btn-solid" onClick={checkoutToPayment}>
         Proceed to Payment
       </button>
+      {showLoader && (
+        <Loader type="Oval" color="#00BFFF" height={80} width={80} />
+      )}
     </>
   );
 };

@@ -8,7 +8,7 @@
 @import './Components/Home/home.css';
 @import './Components/Authentication/authentication.css';
 @import './Components/Private/Address/address.css';
-@import './Components/Private/OrderSummary/summary.css';
+@import './Components/Private/Checkout/summary.css';
 @import './Components/Product/productDetail.css';
 @import './Components/Footer/footer.css';
 

@@ -1,0 +1,37 @@
+.txt-address{
+    color: var(--theme700);
+    display: block;
+    margin: 0.5rem;
+}
+
+.list-spaced{
+    margin: auto;
+}
+
+.list-spaced>li{
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
+
+.list-spaced>li:hover{
+    cursor: default;
+    background-color: unset;
+    box-shadow: unset;
+}
+
+.payment-status-container{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.payment-status-container .txt-desc{
+    width: unset;
+}
+@media screen and (min-width:768px) {
+    .payment-status-container{
+        flex-direction: row;
+    }
+}

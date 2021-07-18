@@ -16,6 +16,7 @@ import {
   ProductDetails,
   PrivateRoute,
   Footer,
+  Transaction,
 } from "./Components";
 import { useAuthContext } from "./Context";
 import { useEffect, useMemo } from "react";
@@ -81,6 +82,7 @@ function App() {
           <PrivateRoute path="/address" element={<Address />} />
           <PrivateRoute path="/user-profile" element={<UserProfile />} />
           <PrivateRoute path="/order-summary" element={<OrderSummary />} />
+          <PrivateRoute path="/payment-transaction" element={<Transaction />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>

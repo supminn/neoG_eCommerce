@@ -23,7 +23,8 @@ export { AddToWishlist } from "./Private/Wishlist/AddToWishlist";
 export { Wishlist } from "./Private/Wishlist/Wishlist";
 export { WishlistItem } from "./Private/Wishlist/WishlistItem";
 
-export { OrderSummary } from "./Private/OrderSummary/OrderSummary";
+export { OrderSummary } from "./Private/Checkout/OrderSummary";
+export { Transaction } from "./Private/Checkout/Transaction";
 export { Address } from "./Private/Address/Address";
 export { AddressCard } from "./Private/Address/AddressCard";
 export { AddNewAddress } from "./Private/Address/AddNewAddress";
