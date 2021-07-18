@@ -11,15 +11,15 @@ export const Transaction = () => {
   const { dispatch } = useDataContext();
   const { login, setShowLoader } = useAuthContext();
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     if (login && status === "success") {
-  //       (async () => {
-  //         await emptyCart(dispatch, setShowLoader);
-  //       })();
-  //     }
-  //   }, 2000);
-  // }, [login, status]);
+  useEffect(() => {
+    setTimeout(() => {
+      if (status === "success") {
+        (async () => {
+          await emptyCart(dispatch, setShowLoader);
+        })();
+      }
+    }, 2000);
+  }, [status]);
 
   return (
     <div>
