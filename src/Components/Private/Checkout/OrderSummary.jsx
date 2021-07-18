@@ -69,12 +69,6 @@ export const OrderSummary = () => {
       {showLoader && (
         <Loader type="Oval" color="#00BFFF" height={80} width={80} />
       )}
-      <NavLink to="/payment-transaction?status=success">
-        <button className="btn btn-primary">success</button>
-      </NavLink>
-      <NavLink to="/payment-transaction?status=failure">
-        <button className="btn btn-primary">failure</button>
-      </NavLink>
     </>
   );
 };

@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { useEffect } from "react/cjs/react.development";
 import { useAuthContext, useDataContext } from "../../../Context";
 import { emptyCart } from "../../../services";
 import successLogo from "../../../images/payment-success.svg";
 import failureLogo from "../../../images/payment-failure.svg";
-import axios from "axios";
 export const Transaction = () => {
   const query = new URLSearchParams(useLocation().search);
   const status = query.get("status");
@@ -13,12 +11,13 @@ export const Transaction = () => {
   const { login, setShowLoader } = useAuthContext();
 
   useEffect(() => {
-    if (login && status === "success") {
-      (async () => {
-        axios.defaults.headers.common["Authorization"] = login.token;
-        await emptyCart(dispatch, setShowLoader);
-      })();
-    }
+    setTimeout(() => {
+      if (login && status === "success") {
+        (async () => {
+          await emptyCart(dispatch, setShowLoader);
+        })();
+      }
+    }, 2000);
   }, [login, status]);
 
   return (
