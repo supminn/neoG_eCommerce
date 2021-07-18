@@ -12,14 +12,16 @@ export const Transaction = () => {
   const { login, setShowLoader } = useAuthContext();
 
   useEffect(() => {
-    setTimeout(() => {
-      if (status === "success") {
+    let timerId;
+    if (login && status === "success") {
+      clearTimeout(timerId);
+      timerId = setTimeout(() => {
         (async () => {
           await emptyCart(dispatch, setShowLoader);
         })();
-      }
-    }, 2000);
-  }, [status]);
+      }, 2000);
+    }
+  }, [login, status]);
 
   return (
     <div>
