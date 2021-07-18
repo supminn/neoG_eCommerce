@@ -24,7 +24,9 @@ export const OrderSummary = () => {
   const checkoutToPayment = async () => {
     try {
       setShowLoader(true);
-      const response = await axios.put(`${API_URL}/cart`);
+      let url = window.location.href;
+      url = url.slice(0, url.length - 13);
+      const response = await axios.put(`${API_URL}/cart`, { url });
       if (response.data.success) {
         let stripe = await stripePromise;
         await stripe.redirectToCheckout({
