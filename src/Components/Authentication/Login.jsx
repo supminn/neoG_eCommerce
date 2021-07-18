@@ -6,32 +6,33 @@ import { Password } from "./Password";
 
 export const Login = () => {
   const [ErrorMsg, setErrorMsg] = useState("");
-  const { loginUser, userDispatch, userState:{username, password},showLoader, setShowLoader } = useAuthContext();
+  const {
+    loginUser,
+    userDispatch,
+    userState: { username, password },
+    showLoader,
+    setShowLoader,
+  } = useAuthContext();
   const { state } = useLocation();
   const navigate = useNavigate();
- 
 
   const loginHandler = async (e) => {
-      setShowLoader(true);
-      e.preventDefault();
-      const res = await loginUser(username, password, state);
-      setShowLoader(false);
-      if(!res.success){
-        setErrorMsg(res.message);
-      }
-      else{
-        navigate(state?.from ? state.from : "/products");
-      }
-  }
+    setShowLoader(true);
+    e.preventDefault();
+    const res = await loginUser(username, password, state);
+    setShowLoader(false);
+    if (!res.success) {
+      setErrorMsg(res.message);
+    } else {
+      navigate(state?.from ? state.from : "/products");
+    }
+  };
   return (
     <>
       <h2 className="txt-header-2">
         Login to <span className="secondary-txt">continue!</span>
       </h2>
-      <form
-        className="div-container"
-        onSubmit={loginHandler}
-      >
+      <form className="div-container" onSubmit={loginHandler}>
         <div className="txt-box">
           <span className="txt-icon">
             <i className="fas fa-at fa-lg"></i>
@@ -51,6 +52,15 @@ export const Login = () => {
         <button type="submit" className="btn btn-primary">
           Login
         </button>
+        <p
+          className="btn-link"
+          onClick={() => {
+            userDispatch({ type: "SET_USERNAME", payload: "tester" });
+            userDispatch({ type: "SET_PASSWORD", payload: "Testing1" });
+          }}
+        >
+          Use test credentials
+        </p>
         {ErrorMsg && <p className="txt-desc primaryBg-txt">{ErrorMsg}</p>}
       </form>
 
@@ -63,8 +73,9 @@ export const Login = () => {
           Sign Up
         </button>
       </div>
-      {showLoader && <Loader type="Oval" color="#00BFFF" height={80} width={80} /> }
+      {showLoader && (
+        <Loader type="Oval" color="#00BFFF" height={80} width={80} />
+      )}
     </>
   );
 };
-
