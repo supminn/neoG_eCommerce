@@ -5,6 +5,7 @@ import { useAuthContext, useDataContext } from "../../../Context";
 import { emptyCart } from "../../../services";
 import successLogo from "../../../images/payment-success.svg";
 import failureLogo from "../../../images/payment-failure.svg";
+import axios from "axios";
 export const Transaction = () => {
   const query = new URLSearchParams(useLocation().search);
   const status = query.get("status");
@@ -12,14 +13,11 @@ export const Transaction = () => {
   const { login, setShowLoader } = useAuthContext();
 
   useEffect(() => {
-    let timerId;
     if (login && status === "success") {
-      clearTimeout(timerId);
-      timerId = setTimeout(() => {
-        (async () => {
-          await emptyCart(dispatch, setShowLoader);
-        })();
-      }, 2000);
+      (async () => {
+        axios.defaults.headers.common["Authorization"] = login.token;
+        await emptyCart(dispatch, setShowLoader);
+      })();
     }
   }, [login, status]);
 
