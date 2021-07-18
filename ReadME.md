@@ -1,50 +1,61 @@
 [![wakatime](https://wakatime.com/badge/github/supminn/neoG_eCommerce.svg)](https://wakatime.com/badge/github/supminn/neoG_eCommerce)
+
 # SupMart
-SupMart is an e-commerce application that consists of products and accessories related to jump rope. 
+
+SupMart is an e-commerce application that consists of products and accessories related to jump rope.
 
 ## Techonology Stack
+
 - React - Reducer + Context
 - Styling using personal CSS component library [StyleSUP](https://stylesup.netlify.app/)
 - React Router v6 (beta) for routes
 - Express & Node for API [Repo Link](https://github.com/supminn/neoG_Backend/)
 - MongoDB using mongoose for data storage
-## Functionalities 
+
+## Functionalities
+
 1. Products listing and detail
-    * List of products - fetched via ExpressAPI
-    * Product detail page
-    * Search for products
-    * Wishlist button
-    * Add to cart button
-    * Increment/decrement quantity for products added to cart. (Go to cart)
-    * Sort by Price 
-    * Filters as follows:
-        * Exclude "out of stock" products (Greyed out | Cannot be added to cart)
-        * Show fast delivery products
-        * Price range of products
-        * Category & Brands 
 
-2. Cart 
-    * Cart item list
-    * Remove item from cart
-    * Increment/decrement item quantity on cart
-    * Move from cart to wishlist
-    * Total items present in the cart with the overall cost
-    * Checkout to address data management (upcoming)
+   - List of products - fetched via ExpressAPI
+   - Product detail page
+   - Search for products
+   - Wishlist button
+   - Add to cart button
+   - Increment/decrement quantity for products added to cart. (Go to cart)
+   - Sort by Price
+   - Filters as follows:
+     - Exclude "out of stock" products (Greyed out | Cannot be added to cart)
+     - Show fast delivery products
+     - Price range of products
+     - Category & Brands
 
-3. Wishlist 
-    * Wishlist item list
-    * Remove from wishlist
-    * Move from wishlist to cart
+2. Cart
+
+   - Cart item list
+   - Remove item from cart
+   - Increment/decrement item quantity on cart
+   - Move from cart to wishlist
+   - Total items present in the cart with the overall cost
+   - Checkout to address data management
+   - Payment integration using Stripe
+
+3. Wishlist
+
+   - Wishlist item list
+   - Remove from wishlist
+   - Move from wishlist to cart
 
 4. Authentication using JWT
-    * Login form - existing users
-    * Private route - wishlist and checkout
-    * Sign up - new users
-    * Persist login state
-    * Data stored on MongoDB
+   - Login form - existing users
+   - Private route - wishlist and checkout
+   - Sign up - new users
+   - Persist login state
+   - Data stored on MongoDB
+
 ### Enchancements
-* Add query params for filters.
-* Delete individual product from cart.
+
+- Add query params for filters.
+- Delete individual product from cart.
 
 ## Live link and demo
 
@@ -53,10 +64,10 @@ SupMart is an e-commerce application that consists of products and accessories r
 https://user-images.githubusercontent.com/30731236/122634357-5a94c500-d0fb-11eb-98ab-1ad59b23b532.mp4
 
 ## Test user credentials
+
 **Username:** Tester
 
 **Password:** Testing1
-
 
 # Instructions on using SupMart locally.
 
@@ -83,6 +94,7 @@ cd my-app-name
 
 npm install
 ```
+
 ## Available Scripts
 
 In the project directory, you can run:
