@@ -26,6 +26,7 @@ import {
   initializeUserCart,
   initializeUserAddresses,
   updateCart,
+  fetchAllProducts,
 } from "./services";
 
 function App() {
@@ -40,6 +41,12 @@ function App() {
       return itemsInCart.map((item) => item);
     }
   }, [itemsInCart]);
+
+  useEffect(() => {
+    (async () => {
+      await fetchAllProducts(dispatch, setShowLoader);
+    })();
+  }, [dispatch]);
 
   useEffect(() => {
     if (login) {

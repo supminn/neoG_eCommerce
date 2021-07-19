@@ -4,7 +4,6 @@ import { useAuthContext, useDataContext } from "../../../Context";
 import { loadStripe } from "@stripe/stripe-js";
 import { API_URL } from "../../../services";
 import Loader from "react-loader-spinner";
-import { NavLink } from "react-router-dom";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 

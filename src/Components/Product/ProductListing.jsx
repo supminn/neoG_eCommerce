@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import Loader from "react-loader-spinner";
-import { useDataContext } from "../../Context";
+import { useAuthContext, useDataContext } from "../../Context";
 import shopProduct from "../../images/window-shop.svg";
-import { fetchAllProducts } from "../../services";
-import { getFilteredProducts, getSortedProducts } from "../../Utils/filterProducts";
+import {
+  getFilteredProducts,
+  getSortedProducts,
+} from "../../Utils/filterProducts";
 import { FilterProducts } from "./FilterProducts";
 import { Product } from "./Products";
 
 export const ProductListing = () => {
-  const [showLoader, setShowLoader] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+  const { showLoader } = useAuthContext();
   const {
     state: {
       products,
@@ -21,7 +23,6 @@ export const ProductListing = () => {
       brandFilter,
       categoryFilter,
     },
-    dispatch,
   } = useDataContext();
 
   const sortedProducts = getSortedProducts(products, sortBy);
@@ -34,12 +35,6 @@ export const ProductListing = () => {
     brandFilter,
     categoryFilter
   );
-
-  useEffect(() => {
-    (async () => {
-      await fetchAllProducts(dispatch, setShowLoader);
-    })();
-  }, [dispatch]);
 
   useEffect(() => {
     document.title = "SupMart | Products";
