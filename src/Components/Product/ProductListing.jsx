@@ -11,7 +11,6 @@ import { Product } from "./Products";
 
 export const ProductListing = () => {
   const [showFilters, setShowFilters] = useState(false);
-  const { showLoader } = useAuthContext();
   const {
     state: {
       products,
@@ -53,11 +52,7 @@ export const ProductListing = () => {
     return () => window.removeEventListener("resize", updateFilterDisplay);
   }, []);
 
-  return showLoader ? (
-    <div className="loader-container">
-      <Loader type="Oval" color="#00BFFF" height={80} width={80} />
-    </div>
-  ) : (
+  return (
     <>
       <h2 className="txt-header-2">
         Product <span className="secondary-txt">Catalogue</span>
