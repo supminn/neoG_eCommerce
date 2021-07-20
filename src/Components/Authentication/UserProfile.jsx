@@ -22,13 +22,6 @@ export const UserProfile = () => {
           Welcome <span>{login.user}</span>
         </h3>
         <div className="user-nav-container">
-          {/* <Link
-            to="/products"
-            className="no-line fas fa-lg fa-store secondary-txt"
-          >
-            <span className="txt-small primaryBg-txt"> Products Catelogue</span>
-          </Link> */}
-
           <Link
             to="/wishlist"
             className="no-line fas fa-lg fa-heart secondary-txt"
