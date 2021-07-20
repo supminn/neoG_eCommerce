@@ -65,6 +65,19 @@ export const OrderSummary = () => {
       <button className="btn btn-solid" onClick={checkoutToPayment}>
         Proceed to Payment
       </button>
+      <p className="txt-desc txt-small">
+        Stripe payment integration have been implmented. <br />
+        Kindly use any of the test card details on{" "}
+        <a
+          className="btn-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://stripe.com/docs/testing#cards"
+        >
+          Stripe
+        </a>{" "}
+        to proceed with the transaction.
+      </p>
       {showLoader && (
         <Loader type="Oval" color="#00BFFF" height={80} width={80} />
       )}

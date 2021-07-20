@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import Loader from "react-loader-spinner";
-import { useAuthContext, useDataContext } from "../../Context";
+import { useDataContext } from "../../Context";
 import shopProduct from "../../images/window-shop.svg";
 import {
   getFilteredProducts,
