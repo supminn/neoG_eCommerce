@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Loader from "react-loader-spinner";
 import { useDataContext } from "../../Context";
 import shopProduct from "../../images/window-shop.svg";
 import {
@@ -8,7 +9,7 @@ import {
 import { FilterProducts } from "./FilterProducts";
 import { Product } from "./Products";
 
-export const ProductListing = () => {
+export const ProductListing = ({ loader }) => {
   const [showFilters, setShowFilters] = useState(false);
   const {
     state: {
@@ -51,7 +52,11 @@ export const ProductListing = () => {
     return () => window.removeEventListener("resize", updateFilterDisplay);
   }, []);
 
-  return (
+  return loader ? (
+    <div className="loader-container">
+      <Loader type="Oval" color="#00BFFF" height={80} width={80} />
+    </div>
+  ) : (
     <>
       <h2 className="txt-header-2">
         Product <span className="secondary-txt">Catalogue</span>

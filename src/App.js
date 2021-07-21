@@ -19,7 +19,7 @@ import {
   Transaction,
 } from "./Components";
 import { useAuthContext } from "./Context";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import {
   initializeUserWishlist,
@@ -42,9 +42,10 @@ function App() {
     }
   }, [itemsInCart]);
 
+  const [loader, setLoader] = useState(false);
   useEffect(() => {
     (async () => {
-      await fetchAllProducts(dispatch, setShowLoader);
+      await fetchAllProducts(dispatch, setLoader);
     })();
   }, [dispatch]);
 
@@ -83,7 +84,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/products" element={<ProductListing />} />
+          <Route
+            path="/products"
+            element={<ProductListing loader={loader} />}
+          />
           <Route path="/products/:productId" element={<ProductDetails />} />
           <PrivateRoute path="/wishlist" element={<Wishlist />} />
           <PrivateRoute path="/address" element={<Address />} />
