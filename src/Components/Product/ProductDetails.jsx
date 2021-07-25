@@ -1,5 +1,5 @@
+import { useEffect } from "react";
 import { useLocation } from "react-router";
-import { useEffect } from "react/cjs/react.development";
 import { AddToCart } from "../Cart/AddToCart";
 import { AddToWishlist } from "../Private/Wishlist/AddToWishlist";
 
@@ -22,7 +22,7 @@ export const ProductDetails = () => {
 
   useEffect(() => {
     document.title = `SupMart | ${brand}`;
-  });
+  }, [brand]);
 
   return (
     <>
