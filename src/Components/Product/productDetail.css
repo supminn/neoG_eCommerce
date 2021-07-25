@@ -21,6 +21,6 @@
 
 .card-horizontal .wish-active,
 .card-horizontal .wish-inactive{
-    top: 2%;
-    right: 2%;
+    top: 0;
+    right: 0;
 }
