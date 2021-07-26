@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useLocation } from "react-router";
 import { AddToCart } from "../Cart/AddToCart";
 import { AddToWishlist } from "../Private/Wishlist/AddToWishlist";
@@ -19,10 +20,16 @@ export const ProductDetails = () => {
   } = product;
   const fullRating = [1, 2, 3, 4, 5];
 
+  useEffect(() => {
+    document.title = `SupMart | ${brand}`;
+  }, [brand]);
+
   return (
     <>
-      <h2 className="txt-header-2">Product <span className="secondary-txt">Details</span></h2>
-      <br/>
+      <h2 className="txt-header-2">
+        Product <span className="secondary-txt">Details</span>
+      </h2>
+      <br />
       <div className="card-horizontal div-center">
         <img className="card-img" src={image} alt="product" />
         <section className="card-details-container">
@@ -31,7 +38,10 @@ export const ProductDetails = () => {
             <div className="rating">
               {fullRating.map((rate, index) =>
                 rate <= rating ? (
-                  <i key={index} className="fa fa-star fa-lg rating-checked"></i>
+                  <i
+                    key={index}
+                    className="fa fa-star fa-lg rating-checked"
+                  ></i>
                 ) : (
                   <i key={index} className="fa fa-star fa-lg"></i>
                 )
@@ -41,9 +51,15 @@ export const ProductDetails = () => {
             <div className="rating">
               {fullRating.map((rate, index) =>
                 rate <= Math.floor(rating) ? (
-                  <i key={index} className="fa fa-star fa-lg rating-checked"></i>
+                  <i
+                    key={index}
+                    className="fa fa-star fa-lg rating-checked"
+                  ></i>
                 ) : rate === Math.floor(rating) + 1 ? (
-                  <i key={index} className="fa fa-star-half-alt fa-lg rating-checked"></i>
+                  <i
+                    key={index}
+                    className="fa fa-star-half-alt fa-lg rating-checked"
+                  ></i>
                 ) : (
                   <i key={index} className="fa fa-star fa-lg"></i>
                 )
@@ -64,30 +80,28 @@ export const ProductDetails = () => {
           )}
           <AddToWishlist product={product} />
           <div className="icon-container">
-          <i className="fas fa-certificate secondary-txt">
-            <span className="primaryBg-txt txt-small">
-              {" "}{offer}
-            </span>
-          </i>
-          <i className="fas fa-shipping-fast secondary-txt">
-            <span className="primaryBg-txt txt-small">
-              {fastDelivery
-                ? " 2 days Fast Delivery"
-                : " 5 days Standard Delivery"}
-            </span>
-          </i>
-          {inStock ? (
-            <i className="fas fa-store-alt secondary-txt">
-              <span className="primaryBg-txt txt-small"> Item in Stock</span>
+            <i className="fas fa-certificate secondary-txt">
+              <span className="primaryBg-txt txt-small"> {offer}</span>
             </i>
-          ) : (
-            <i className="fas fa-store-alt-slash secondary-txt">
+            <i className="fas fa-shipping-fast secondary-txt">
               <span className="primaryBg-txt txt-small">
-                {" "}
-                Item not in Stock
+                {fastDelivery
+                  ? " 2 days Fast Delivery"
+                  : " 5 days Standard Delivery"}
               </span>
             </i>
-          )}
+            {inStock ? (
+              <i className="fas fa-store-alt secondary-txt">
+                <span className="primaryBg-txt txt-small"> Item in Stock</span>
+              </i>
+            ) : (
+              <i className="fas fa-store-alt-slash secondary-txt">
+                <span className="primaryBg-txt txt-small">
+                  {" "}
+                  Item not in Stock
+                </span>
+              </i>
+            )}
           </div>
         </section>
       </div>

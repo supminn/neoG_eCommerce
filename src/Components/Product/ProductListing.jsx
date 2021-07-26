@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import Loader from "react-loader-spinner";
 import { useDataContext } from "../../Context";
 import shopProduct from "../../images/window-shop.svg";
-import { fetchAllProducts } from "../../services";
-import { getFilteredProducts, getSortedProducts } from "../../Utils/filterProducts";
+import {
+  getFilteredProducts,
+  getSortedProducts,
+} from "../../Utils/filterProducts";
 import { FilterProducts } from "./FilterProducts";
 import { Product } from "./Products";
 
-export const ProductListing = () => {
-  const [showLoader, setShowLoader] = useState(false);
+export const ProductListing = ({ loader }) => {
   const [showFilters, setShowFilters] = useState(false);
   const {
     state: {
@@ -21,7 +22,6 @@ export const ProductListing = () => {
       brandFilter,
       categoryFilter,
     },
-    dispatch,
   } = useDataContext();
 
   const sortedProducts = getSortedProducts(products, sortBy);
@@ -34,12 +34,6 @@ export const ProductListing = () => {
     brandFilter,
     categoryFilter
   );
-
-  useEffect(() => {
-    (async () => {
-      await fetchAllProducts(dispatch, setShowLoader);
-    })();
-  }, [dispatch]);
 
   useEffect(() => {
     document.title = "SupMart | Products";
@@ -58,7 +52,7 @@ export const ProductListing = () => {
     return () => window.removeEventListener("resize", updateFilterDisplay);
   }, []);
 
-  return showLoader ? (
+  return loader ? (
     <div className="loader-container">
       <Loader type="Oval" color="#00BFFF" height={80} width={80} />
     </div>

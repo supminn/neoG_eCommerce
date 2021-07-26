@@ -3,6 +3,7 @@ import axios from "axios";
 import { userCredReducer } from "../Reducer/auth-reducer";
 import jwt_decode from "jwt-decode";
 import { API_URL } from "../services/apiDetails";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
@@ -16,7 +17,10 @@ export const initialUserState = {
 };
 
 export const AuthenticationProvider = ({ children }) => {
-  const [login, setLogin] = useState(JSON.parse(localStorage.getItem("login")) || false);
+  const navigate = useNavigate();
+  const [login, setLogin] = useState(
+    JSON.parse(localStorage.getItem("login")) || false
+  );
   const [userState, userDispatch] = useReducer(
     userCredReducer,
     initialUserState
@@ -31,7 +35,7 @@ export const AuthenticationProvider = ({ children }) => {
         password: pwd,
       });
       const decoded = jwt_decode(data.token);
-      const loginData = {token:`Bearer ${data.token}`, user: decoded.name};
+      const loginData = { token: `Bearer ${data.token}`, user: decoded.name };
       setLogin(loginData);
       localStorage.setItem("login", JSON.stringify(loginData));
       userDispatch({ type: "CLEAR" });
@@ -46,19 +50,17 @@ export const AuthenticationProvider = ({ children }) => {
   const logOutUser = () => {
     setLogin(false);
     localStorage.clear();
+    navigate("/");
   };
 
   const registerUser = async (name, username, password, email) => {
     try {
-      const { data } = await axios.post(
-        `${API_URL}/users/signup`,
-        {
-          name,
-          username: username.toLowerCase(),
-          password,
-          email: email.toLowerCase(),
-        }
-      );
+      const { data } = await axios.post(`${API_URL}/users/signup`, {
+        name,
+        username: username.toLowerCase(),
+        password,
+        email: email.toLowerCase(),
+      });
       userDispatch({ type: "CLEAR" });
       return data;
     } catch (err) {

@@ -16,15 +16,17 @@ import {
   ProductDetails,
   PrivateRoute,
   Footer,
+  Transaction,
 } from "./Components";
 import { useAuthContext } from "./Context";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import {
   initializeUserWishlist,
   initializeUserCart,
   initializeUserAddresses,
   updateCart,
+  fetchAllProducts,
 } from "./services";
 
 function App() {
@@ -39,6 +41,13 @@ function App() {
       return itemsInCart.map((item) => item);
     }
   }, [itemsInCart]);
+
+  const [loader, setLoader] = useState(false);
+  useEffect(() => {
+    (async () => {
+      await fetchAllProducts(dispatch, setLoader);
+    })();
+  }, [dispatch]);
 
   useEffect(() => {
     if (login) {
@@ -75,12 +84,16 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/products" element={<ProductListing />} />
+          <Route
+            path="/products"
+            element={<ProductListing loader={loader} />}
+          />
           <Route path="/products/:productId" element={<ProductDetails />} />
           <PrivateRoute path="/wishlist" element={<Wishlist />} />
           <PrivateRoute path="/address" element={<Address />} />
           <PrivateRoute path="/user-profile" element={<UserProfile />} />
           <PrivateRoute path="/order-summary" element={<OrderSummary />} />
+          <PrivateRoute path="/payment-transaction" element={<Transaction />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
