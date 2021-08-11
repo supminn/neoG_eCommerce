@@ -39,7 +39,7 @@ export const dataReducer = (state, { type, payload }) => {
           }),
         };
       }
-    case "REMOVE_FROM_CART":
+    case "DECREMENT_FROM_CART":
       return {
         ...state,
         toastMsg: `Cart updated successfully!`,
@@ -49,6 +49,15 @@ export const dataReducer = (state, { type, payload }) => {
             : cartItem
         ),
       };
+    case "REMOVE_FROM_CART":
+      return {
+        ...state,
+        toastMsg: `"${payload.name}" removed from cart`,
+        itemsInCart: state.itemsInCart.filter(
+          (cartItem) => cartItem._id !== payload._id
+        ),
+      };
+
     case "CLEAR_CART":
       return { ...state, itemsInCart: [] };
 
