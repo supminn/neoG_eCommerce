@@ -6,8 +6,8 @@ export const initializeUserCart = async (dispatch) => {
   const {
     data: { cart },
   } = await axios.get(`${API_URL}/cart/`);
-  if(cart){
-  dispatch({ type: "SET_CART", payload: cart });
+  if (cart) {
+    dispatch({ type: "SET_CART", payload: cart });
   }
 };
 
@@ -34,7 +34,7 @@ export const updateCart = async (
           break;
         case "REMOVE":
           dispatch({
-            type: "REMOVE_FROM_CART",
+            type: "DECREMENT_FROM_CART",
             payload: product,
           });
           break;
@@ -56,6 +56,27 @@ export const updateCart = async (
   }
 };
 
+export const removeFromCart = async (product, dispatch, setShowLoader) => {
+  try {
+    setShowLoader(true);
+    dispatch({ type: "SHOW_TOAST", payload: "Removing from cart..." });
+    const { data } = await axios.put(`${API_URL}/cart/`, {
+      _id: product._id,
+    });
+    if (data.success) {
+      dispatch({
+        type: "REMOVE_FROM_CART",
+        payload: product,
+      });
+    }
+  } catch (error) {
+    dispatch({ type: "SHOW_TOAST", payload: "Unable to update cart data." });
+    console.error(error);
+  } finally {
+    setShowLoader(false);
+  }
+};
+
 export const emptyCart = async (dispatch, setShowLoader) => {
   try {
     setShowLoader(true);
@@ -64,7 +85,10 @@ export const emptyCart = async (dispatch, setShowLoader) => {
       dispatch({ type: "CLEAR_CART" });
     }
   } catch (error) {
-    dispatch({type:"SHOW_TOAST", payload:" Could not empty cart, try again later"})
+    dispatch({
+      type: "SHOW_TOAST",
+      payload: " Could not empty cart, try again later",
+    });
     console.error(error);
   } finally {
     setShowLoader(false);

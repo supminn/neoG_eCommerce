@@ -152,7 +152,7 @@ test("should remove the product from wishlist if it exists and add the product t
 test("should decrement the quantity or remove an item from cart", () => {
   //Arrange
   const action = {
-    type: "REMOVE_FROM_CART",
+    type: "DECREMENT_FROM_CART",
     payload: {
       _id: 123,
       name: "Jump Rope",
@@ -227,6 +227,55 @@ test("should decrement the quantity or remove an item from cart", () => {
       },
     ],
     toastMsg: "Cart updated successfully!",
+  });
+});
+
+test("should remove an individual item from cart", () => {
+  //Arrange
+  const action = {
+    type: "REMOVE_FROM_CART",
+    payload: {
+      _id: 123,
+      name: "Jump Rope",
+      inStock: true,
+      fastDelivery: false,
+    },
+  };
+
+  let state = {
+    itemsInCart: [
+      {
+        _id: 123,
+        name: "Jump Rope",
+        inStock: true,
+        fastDelivery: false,
+        quantity: 2,
+      },
+      {
+        _id: 124,
+        name: "Jump Rope",
+        inStock: true,
+        fastDelivery: false,
+        quantity: 1,
+      },
+    ],
+    toastMsg: "",
+  };
+
+  //Act
+  state = dataReducer(state, action);
+  //Assert
+  expect(state).toEqual({
+    itemsInCart: [
+      {
+        _id: 124,
+        name: "Jump Rope",
+        inStock: true,
+        fastDelivery: false,
+        quantity: 1,
+      },
+    ],
+    toastMsg: '"Jump Rope" removed from cart',
   });
 });
 
