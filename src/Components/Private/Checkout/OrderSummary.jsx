@@ -26,7 +26,7 @@ export const OrderSummary = () => {
       setShowLoader(true);
       let url = window.location.href;
       url = url.slice(0, url.length - 13);
-      const response = await axios.put(`${API_URL}/cart`, { url });
+      const response = await axios.post(`${API_URL}/cart/checkout`, { url });
       if (response.data.success) {
         let stripe = await stripePromise;
         await stripe.redirectToCheckout({

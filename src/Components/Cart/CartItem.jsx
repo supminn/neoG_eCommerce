@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { useAuthContext, useDataContext } from "../../Context";
-import { updateCart } from "../../services";
+import { removeFromCart, updateCart } from "../../services";
 
 export const CartItem = ({ item }) => {
   const { _id, name, image, price, quantity, brand, rating, offer } = item;
@@ -53,7 +53,7 @@ export const CartItem = ({ item }) => {
               onClick={() =>
                 login
                   ? updateCart(item, "REMOVE", dispatch, setShowLoader)
-                  : dispatch({ type: "REMOVE_FROM_CART", payload: item })
+                  : dispatch({ type: "DECREMENT_FROM_CART", payload: item })
               }
             >
               {item.quantity > 1 ? "-" : <i className="fas fa-trash"></i>}
@@ -76,17 +76,31 @@ export const CartItem = ({ item }) => {
               +
             </button>
           </span>
-          <button
-            type="button"
-            disabled={showLoader}
-            onClick={() => {
-              if (!login) navigate("/login");
-              updateCart(item, "MOVE", dispatch, setShowLoader);
-            }}
-            className="btn btn-secondary"
-          >
-            Move to Wishlist
-          </button>
+          <div>
+            <button
+              type="button"
+              disabled={showLoader}
+              onClick={() => {
+                if (!login) navigate("/login");
+                updateCart(item, "MOVE", dispatch, setShowLoader);
+              }}
+              className="btn btn-secondary"
+            >
+              Move to Wishlist
+            </button>
+            <button
+              type="button"
+              disabled={showLoader}
+              className="btn btn-light"
+              onClick={() =>
+                login
+                  ? removeFromCart(item, dispatch, setShowLoader)
+                  : dispatch({ type: "REMOVE_FROM_CART", payload: item })
+              }
+            >
+              Remove
+            </button>
+          </div>
         </div>
       </section>
     </div>
